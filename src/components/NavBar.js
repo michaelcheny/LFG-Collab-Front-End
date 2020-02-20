@@ -7,6 +7,7 @@ const NavBar = () => {
       <Link className="nav-routes" to="/">
         <h3>React Redux Project</h3>
       </Link>
+
       <ul className="nav-links">
         <Link className="nav-routes" to="/link1">
           <li>link1</li>
@@ -18,6 +19,10 @@ const NavBar = () => {
 
         <Link className="nav-routes" to="/link3">
           <li>link3</li>
+        </Link>
+
+        <Link className="nav-routes" to="/link4">
+          <li>link4</li>
         </Link>
       </ul>
     </nav>
