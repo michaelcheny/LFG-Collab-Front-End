@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "../styles/App.css";
 import NavBar from "../components/NavBar";
-import Home from "./Home";
+import HomeContainer from "./HomeContainer";
+import ProjectContainer from "./ProjectContainer";
 
 const App = () => {
   return (
@@ -12,8 +13,8 @@ const App = () => {
         <NavBar />
 
         <Switch>
-          <Route path="/" exact component={Home} />
-          {/* <Route path="/link1" component={something} /> */}
+          <Route path="/" exact component={HomeContainer} />
+          <Route path="/projects" component={ProjectContainer} />
           {/* <Route path="/link2" component={something} /> */}
           {/* <Route path="/link3" component={something} /> */}
         </Switch>
