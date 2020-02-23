@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LogInForm from "./LogInForm";
 
 const NavBar = () => {
   return (
@@ -24,6 +25,10 @@ const NavBar = () => {
         <Link className="nav-routes" to="/account">
           <li>My Profile</li>
         </Link>
+
+        <li className="nav-routes">
+          <LogInForm />
+        </li>
       </ul>
     </nav>
   );
