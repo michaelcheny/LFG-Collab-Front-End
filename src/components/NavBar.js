@@ -5,24 +5,24 @@ const NavBar = () => {
   return (
     <nav>
       <Link className="nav-routes" to="/">
-        <h3>React Redux Project</h3>
+        <h3>LFG Collab</h3>
       </Link>
 
       <ul className="nav-links">
-        <Link className="nav-routes" to="/link1">
-          <li>link1</li>
+        <Link className="nav-routes" to="/projects">
+          <li>Projects</li>
         </Link>
 
-        <Link className="nav-routes" to="/link2">
-          <li>link2</li>
+        <Link className="nav-routes" to="/myprojects">
+          <li>My Projects</li>
         </Link>
 
         <Link className="nav-routes" to="/link3">
           <li>link3</li>
         </Link>
 
-        <Link className="nav-routes" to="/link4">
-          <li>link4</li>
+        <Link className="nav-routes" to="/account">
+          <li>My Profile</li>
         </Link>
       </ul>
     </nav>
