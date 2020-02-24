@@ -23,6 +23,7 @@ const Projects = () => {
             key={index}
             name={project.name}
             description={project.description}
+            users={project.users}
           />
         );
       })}
