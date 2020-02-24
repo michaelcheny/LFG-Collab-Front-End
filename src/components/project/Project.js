@@ -2,15 +2,15 @@ import React from "react";
 
 const Project = ({ name, description, users }) => {
   return (
-    <div>
+    <div className="project-cards">
       <p>{name}</p>
       <p>{description}</p>
-      <div>
+      <ul>
         Collaborators:{" "}
-        {users.map(user => (
-          <p>{user.name}</p>
+        {users.map((user, index) => (
+          <li key={index}>{user.name}</li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
