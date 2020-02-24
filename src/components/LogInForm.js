@@ -15,12 +15,14 @@ const LogInForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        className="mr-sm-2"
         type="text"
         placeholder="Email"
         onChange={e => setEmail(e.target.value)}
         value={email}
       />
       <input
+        className="mr-sm-2"
         type="password"
         placeholder="Password"
         onChange={e => setPassword(e.target.value)}

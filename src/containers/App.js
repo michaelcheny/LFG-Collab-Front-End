@@ -10,17 +10,17 @@ import ProjectContainer from "./ProjectContainer";
 const App = () => {
   return (
     <div className="App">
-      <Router>
-        <NavBar />
-        <Layout>
+      <NavBar />
+      <Layout>
+        <Router>
           <Switch>
             <Route path="/" exact component={HomeContainer} />
             <Route path="/projects" component={ProjectContainer} />
             {/* <Route path="/link2" component={something} /> */}
             {/* <Route path="/link3" component={something} /> */}
           </Switch>
-        </Layout>
-      </Router>
+        </Router>
+      </Layout>
     </div>
   );
 };
