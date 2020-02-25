@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Layout } from "../components/Layout";
-import "../styles/App.css";
+// import "../styles/App.css";
 import NavBar from "../components/NavBar";
 import HomeContainer from "./HomeContainer";
 import ProjectContainer from "./ProjectContainer";

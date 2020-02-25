@@ -5,16 +5,18 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      const res = await fetch("http://localhost:3001/api/v1/projects/");
-      const data = await res.json();
-      console.log(data);
-      setProjects(data);
-      // console.log(projects);
-    };
     fetchProjects();
+
+    return () => {};
   }, []);
 
+  const fetchProjects = async () => {
+    const res = await fetch("http://localhost:3001/api/v1/projects/");
+    const data = await res.json();
+    console.log(data);
+    setProjects(data);
+    //
+  };
   return (
     <div>
       {projects.map((project, index) => {
