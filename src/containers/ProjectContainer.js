@@ -26,6 +26,7 @@ const Projects = () => {
             name={project.name}
             description={project.description}
             users={project.users}
+            addedOn={project.created_at}
           />
         );
       })}
