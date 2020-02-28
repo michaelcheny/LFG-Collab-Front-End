@@ -1,6 +1,6 @@
 import { GETTING_TOKEN, ADD_TOKEN } from "../actions/actionTypes";
 
-const authorizationReducer = (
+const tokenReducer = (
   state = {
     token: null,
     loading: false
@@ -25,4 +25,4 @@ const authorizationReducer = (
   }
 };
 
-export default authorizationReducer;
+export default tokenReducer;

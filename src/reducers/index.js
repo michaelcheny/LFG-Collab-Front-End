@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import projectsReducer from "./projectsReducer";
-import authorizationReducer from "./authorizationReducer";
+import tokenReducer from "./tokenReducer";
 
 const rootReducer = combineReducers({
   projects: projectsReducer,
-  auth: authorizationReducer
+  token: tokenReducer
 });
 
 export default rootReducer;
