@@ -4,7 +4,7 @@ import authorizationReducer from "./authorizationReducer";
 
 const rootReducer = combineReducers({
   projects: projectsReducer,
-  authorizationReducer
+  auth: authorizationReducer
 });
 
 export default rootReducer;
