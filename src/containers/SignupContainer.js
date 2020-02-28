@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 class SignupContainer extends Component {
   constructor(props) {
@@ -15,7 +17,9 @@ class SignupContainer extends Component {
   }
 
   handleChange = event => {
-    [event.target.name] = event.target.value;
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   };
 
   handleSubmit = event => {
@@ -26,41 +30,71 @@ class SignupContainer extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            required
-          />
-          <input
-            type="name"
-            name="name"
-            placeholder="Name"
-            value={this.state.name}
-            onChange={this.handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Confirm Password"
-            value={this.state.password_confirmation}
-            onChange={this.handleChange}
-            required
-          />
-          <input type="submit" />
-        </form>
+        <h1>Registration</h1>
+
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              name="email"
+              placeholder="Enter email"
+              value={this.state.email}
+              onChange={this.handleChange}
+              required
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicName">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="name"
+              name="name"
+              placeholder="Enter name"
+              value={this.state.name}
+              onChange={this.handleChange}
+              required
+            />
+            <Form.Text className="text-muted">
+              Please enter first and last name.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              required
+            />
+            <Form.Text className="text-muted">
+              Choose a password between 6 to 20 characters.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicConfirmPassword">
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              type="password"
+              name="password_confirmation"
+              placeholder="Confirm your password"
+              value={this.state.password_confirmation}
+              onChange={this.handleChange}
+              required
+            />
+            <Form.Text className="text-muted">Confirm your password.</Form.Text>
+          </Form.Group>
+
+          <Button variant="secondary" type="submit" size="md" block>
+            Submit
+          </Button>
+        </Form>
       </div>
     );
   }
