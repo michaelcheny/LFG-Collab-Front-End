@@ -3,7 +3,7 @@ import projectsReducer from "./projectsReducer";
 import authorizationReducer from "./authorizationReducer";
 
 const rootReducer = combineReducers({
-  projectsReducer,
+  projects: projectsReducer,
   authorizationReducer
 });
 

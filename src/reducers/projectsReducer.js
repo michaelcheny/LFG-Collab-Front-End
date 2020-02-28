@@ -1,3 +1,5 @@
+import { LOADING_PROJECTS, ADD_PROJECTS } from "../actions/actionTypes";
+
 const projectsReducer = (
   state = {
     projects: [],
@@ -6,9 +8,9 @@ const projectsReducer = (
   action
 ) => {
   switch (action.type) {
-    case "LOADING_PROJECTS":
+    case LOADING_PROJECTS:
       return { ...state, loading: true };
-    case "ADD_PROJECT":
+    case ADD_PROJECTS:
       return {
         ...state,
         projects: action.payload,

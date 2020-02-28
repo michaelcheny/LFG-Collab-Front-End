@@ -39,47 +39,50 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Project from "../components/project/Project";
+import { fetchProjects } from "../actions/fetchProjects";
+import Spinner from "react-bootstrap/Spinner";
 
 export class ProjectContainer extends Component {
-  state = {
-    projects: []
-  };
-
-  fetchProjects = async () => {
-    const res = await fetch("http://localhost:3001/api/v1/projects/");
-    const data = await res.json();
-    console.log(data);
-    this.setState({
-      projects: data
-    });
-  };
-
   componentDidMount() {
-    this.fetchProjects();
+    this.props.fetchProjects();
   }
 
   render() {
-    const { projects } = this.state;
+    const { projects, loading } = this.props;
+    // console.log(this.props);
     return (
       <div>
-        {projects.map((project, index) => {
-          return (
-            <Project
-              key={index}
-              name={project.name}
-              description={project.description}
-              users={project.users}
-              addedOn={project.created_at}
-            />
-          );
-        })}
+        {!loading ? (
+          projects.map((project, index) => {
+            return (
+              <Project
+                key={index}
+                name={project.name}
+                description={project.description}
+                users={project.users}
+                addedOn={project.created_at}
+              />
+            );
+          })
+        ) : (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => {
+  const { projects } = state;
+  return { projects: projects.projects, loading: projects.loading };
+};
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchProjects: () => dispatch(fetchProjects())
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectContainer);
