@@ -25,6 +25,12 @@ class SignupContainer extends Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log(this.state);
+    this.setState({
+      name: "",
+      email: "",
+      password: "",
+      password_confirmation: ""
+    });
   };
 
   render() {
@@ -92,7 +98,7 @@ class SignupContainer extends Component {
           </Form.Group>
 
           <Button variant="secondary" type="submit" size="md" block>
-            Submit
+            Register
           </Button>
         </Form>
       </div>
