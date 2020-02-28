@@ -1,19 +1,11 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import moment from "moment";
 
 const Project = ({ name, description, users, addedOn }) => {
+  const addDate = moment(addedOn).format("MMM DD, YYYY - h:mma");
   return (
-    // <div className="project-cards">
-    //   <p>{name}</p>
-    //   <p>{description}</p>
-    //   <ul>
-    //     Collaborators:{" "}
-    //     {users.map((user, index) => (
-    //       <li key={index}>{user.name}</li>
-    //     ))}
-    //   </ul>
-    // </div>
     <>
       <br />
       <Card>
@@ -23,7 +15,7 @@ const Project = ({ name, description, users, addedOn }) => {
           <Card.Text>{description}</Card.Text>
           <Button variant="dark">Go somewhere</Button>
         </Card.Body>
-        <Card.Footer className="text-muted">{addedOn}</Card.Footer>
+        <Card.Footer className="text-muted">{addDate}</Card.Footer>
       </Card>
     </>
   );

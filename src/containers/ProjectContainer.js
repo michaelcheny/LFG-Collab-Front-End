@@ -41,7 +41,6 @@ import { connect } from "react-redux";
 import Project from "../components/project/Project";
 import { fetchProjects } from "../actions/fetchProjects";
 import Spinner from "react-bootstrap/Spinner";
-const moment = require("moment");
 
 class ProjectContainer extends Component {
   componentDidMount() {
@@ -53,6 +52,7 @@ class ProjectContainer extends Component {
     // console.log(this.props);
     return (
       <div>
+        <h1>Available Projects</h1>
         {!loading ? (
           projects.map((project, index) => {
             return (
@@ -61,9 +61,7 @@ class ProjectContainer extends Component {
                 name={project.name}
                 description={project.description}
                 users={project.users}
-                addedOn={moment(project.created_at).format(
-                  "MMM DD, YYYY - h:mma"
-                )}
+                addedOn={project.created_at}
               />
             );
           })
