@@ -29,12 +29,19 @@ const NavBar = () => (
           <Nav.Item>
             <Nav.Link href="/">Home</Nav.Link>
           </Nav.Item>
+
           <Nav.Item>
             <Nav.Link href="/projects">Projects</Nav.Link>
           </Nav.Item>
+
           <Nav.Item>
             <Nav.Link href="/myprojects">My Projects</Nav.Link>
           </Nav.Item>
+
+          <Nav.Item>
+            <Nav.Link href="/registration">Register</Nav.Link>
+          </Nav.Item>
+
           <LogInForm />
         </Nav>
       </Navbar.Collapse>

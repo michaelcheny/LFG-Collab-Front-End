@@ -6,6 +6,7 @@ import { Layout } from "../components/Layout";
 import NavBar from "../components/NavBar";
 import HomeContainer from "./HomeContainer";
 import ProjectContainer from "./ProjectContainer";
+import SignupContainer from "./SignupContainer";
 
 const App = () => {
   return (
@@ -17,7 +18,7 @@ const App = () => {
           <Switch>
             <Route path="/" exact component={HomeContainer} />
             <Route path="/projects" component={ProjectContainer} />
-            {/* <Route path="/link2" component={something} /> */}
+            <Route path="/registration" component={SignupContainer} />
             {/* <Route path="/link3" component={something} /> */}
           </Switch>
         </Router>
