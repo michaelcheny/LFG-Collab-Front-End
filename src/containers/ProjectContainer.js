@@ -42,7 +42,7 @@ import Project from "../components/project/Project";
 import { fetchProjects } from "../actions/fetchProjects";
 import Spinner from "react-bootstrap/Spinner";
 
-export class ProjectContainer extends Component {
+class ProjectContainer extends Component {
   componentDidMount() {
     this.props.fetchProjects();
   }
