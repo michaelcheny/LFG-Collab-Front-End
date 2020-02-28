@@ -1,36 +1,58 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Button from "react-bootstrap/Button";
 
-const LogInForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    // send the inputs to the login thing
-    console.log(email, password);
-    setEmail("");
-    setPassword("");
+class LogInForm extends Component {
+  state = {
+    email: "",
+    password: ""
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        className="mr-sm-2"
-        type="text"
-        placeholder="Email"
-        onChange={e => setEmail(e.target.value)}
-        value={email}
-      />
-      <input
-        className="mr-sm-2"
-        type="password"
-        placeholder="Password"
-        onChange={e => setPassword(e.target.value)}
-        value={password}
-      />
-      <input type="submit" />
-    </form>
-  );
-};
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
-export default LogInForm;
+  handleSubmit = event => {
+    event.preventDefault();
+    // send the inputs to the login thing
+    console.log(this.state);
+    this.setState({
+      email: "",
+      password: ""
+    });
+  };
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <input
+          className="mr-sm-2"
+          type="text"
+          name="email"
+          placeholder="Email"
+          onChange={this.handleChange}
+          value={this.state.email}
+        />
+        <input
+          className="mr-sm-2"
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={this.handleChange}
+          value={this.state.password}
+        />
+        <Button variant="secondary" size="sm">
+          Log In
+        </Button>
+      </form>
+    );
+  }
+}
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogInForm);
