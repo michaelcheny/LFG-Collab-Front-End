@@ -17,25 +17,32 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.authenticated);
+    const { authenticated } = this.props;
     return (
       // <div className="App">
       <>
-        <Layout>
-          <Router>
-            <NavBar />
+        <Router>
+          <NavBar authenticated={authenticated} />
+          <Layout>
             <Switch>
               <Route path="/" exact component={HomeContainer} />
               <Route path="/projects" component={ProjectContainer} />
               <Route path="/registration" component={SignupContainer} />
               {/* <Route path="/link3" component={something} /> */}
             </Switch>
-          </Router>
-        </Layout>
+          </Layout>
+        </Router>
         {/* // </div> */}
       </>
     );
   }
 }
+
+const mapStateToProps = state => {
+  const { user } = state;
+  return { authenticated: user.authenticated };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -43,4 +50,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

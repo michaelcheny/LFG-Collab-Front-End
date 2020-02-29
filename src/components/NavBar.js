@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { StyledNav } from "../styles/styledComponents";
 
-const NavBar = () => (
+const NavBar = ({ authenticated }) => {
   //   <Navbar bg="dark" variant="dark" expand="md">
   //   <Navbar.Brand href="/">LFG Collab</Navbar.Brand>
   //   <Nav className="mr-auto">
@@ -48,33 +48,49 @@ const NavBar = () => (
   //   </Navbar>
   // </StyledNav>
 
-  <nav>
-    <Link className="nav-routes" to="/">
-      <h3>LFG Collab</h3>
-    </Link>
+  const renderAuthLinks = () => {
+    return (
+      <>
+        <Link className="nav-routes" to="/registration">
+          <li>Register</li>
+        </Link>
 
-    <ul className="nav-links">
-      <Link className="nav-routes" to="/projects">
-        <li>Projects</li>
+        <li className="nav-routes">
+          <LogInForm />
+        </li>
+      </>
+    );
+  };
+
+  return (
+    <nav>
+      <Link className="nav-routes" to="/">
+        <h3>LFG Collab</h3>
       </Link>
 
-      <Link className="nav-routes" to="/myprojects">
-        <li>My Projects</li>
-      </Link>
+      <ul className="nav-links">
+        <Link className="nav-routes" to="/projects">
+          <li>Projects</li>
+        </Link>
 
-      <Link className="nav-routes" to="/link3">
-        <li>link3</li>
-      </Link>
+        <Link className="nav-routes" to="/myprojects">
+          <li>My Projects</li>
+        </Link>
 
-      <Link className="nav-routes" to="/account">
-        <li>My Profile</li>
-      </Link>
+        {authenticated ? (
+          <Link className="nav-routes" to="/account">
+            <li>My Profile</li>
+          </Link>
+        ) : (
+          renderAuthLinks()
+        )}
 
-      <li className="nav-routes">
-        <LogInForm />
-      </li>
-    </ul>
-  </nav>
-);
+        {/* <li className="nav-routes">
+          <LogInForm />
+        </li> */}
+      </ul>
+    </nav>
+  );
+};
 
 export default NavBar;

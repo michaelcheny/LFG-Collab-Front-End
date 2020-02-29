@@ -10,10 +10,6 @@ class LogInForm extends Component {
     password: ""
   };
 
-  // async componentDidMount() {
-  //   await this.props.getToken();
-  // }
-
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -24,12 +20,9 @@ class LogInForm extends Component {
     const { token } = this.props;
     const { email, password } = this.state;
     event.preventDefault();
-    // console.log(this.props.token);
-    // await Login(token, email, password);
 
     await this.props.login(token, email, password);
-    // send the inputs to the login thing
-    // console.log(this.state);
+
     this.setState({
       email: "",
       password: ""
@@ -65,9 +58,7 @@ class LogInForm extends Component {
 
 const mapStateToProps = state => {
   const { token, user } = state;
-  // console.log(token);
-  // console.log(user);
-  // console.log(state);
+
   return {
     token: token.token,
     user: user.user
@@ -76,7 +67,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // getToken: () => dispatch(getToken()),
     login: (token, email, password) => dispatch(Login(token, email, password))
   };
 };
