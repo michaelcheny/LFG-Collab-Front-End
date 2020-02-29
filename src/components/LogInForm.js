@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 import { getToken } from "../actions/getToken";
+import { Login } from "../actions/Login";
 
 class LogInForm extends Component {
   state = {
@@ -67,7 +68,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getToken: () => dispatch(getToken())
+    getToken: () => dispatch(getToken()),
+    login: () => dispatch(Login())
   };
 };
 
