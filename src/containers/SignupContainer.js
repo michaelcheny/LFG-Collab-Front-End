@@ -39,7 +39,7 @@ class SignupContainer extends Component {
     const { auth } = this.props;
 
     if (auth) {
-      return <Redirect to="/home" />;
+      return <Redirect to="/" />;
     }
 
     return (
@@ -116,9 +116,10 @@ class SignupContainer extends Component {
 
 const mapStateToProps = state => {
   const { user } = state;
+  console.log(user);
 
   return {
-    auth: user.auth
+    auth: user.authenticated
   };
 };
 

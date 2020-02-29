@@ -17,9 +17,13 @@ const Carousel = ({ carouselItems, ...rest }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    const time = setTimeout(() => {
       setActive((active + 1) % carouselItems.length);
     }, 4000);
+
+    return () => {
+      clearTimeout(time);
+    };
   });
 
   return (

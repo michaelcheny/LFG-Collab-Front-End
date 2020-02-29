@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getToken } from "../actions/getToken";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import { Layout } from "../components/Layout";
-// import "../styles/App.css";
 import NavBar from "../components/NavBar";
 import HomeContainer from "./HomeContainer";
 import ProjectContainer from "./ProjectContainer";
@@ -17,10 +14,8 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.props.authenticated);
     const { authenticated } = this.props;
     return (
-      // <div className="App">
       <>
         <Router>
           <NavBar authenticated={authenticated} />
@@ -33,7 +28,6 @@ class App extends Component {
             </Switch>
           </Layout>
         </Router>
-        {/* // </div> */}
       </>
     );
   }

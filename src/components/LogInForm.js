@@ -34,13 +34,12 @@ class LogInForm extends Component {
     const { auth } = this.props;
 
     if (auth) {
-      return <Redirect to="/home" />;
+      return <Redirect to="/" />;
     }
 
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="nav-routes">
         <input
-          className="nav-routes"
           type="text"
           name="email"
           placeholder="Email"
@@ -48,7 +47,6 @@ class LogInForm extends Component {
           value={this.state.email}
         />
         <input
-          className="nav-routes"
           type="password"
           name="password"
           placeholder="Password"
@@ -74,7 +72,7 @@ const mapStateToProps = state => {
   return {
     token: token.token,
     user: user.user,
-    auth: user.auth
+    auth: user.authenticated
   };
 };
 
