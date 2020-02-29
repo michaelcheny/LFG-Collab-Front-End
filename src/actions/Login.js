@@ -18,13 +18,14 @@ export const Login = (csrf_token, email, password) => {
           "Content-Type": "application/json",
           "X-CSRF-TOKEN": csrf_token
         },
-        body: JSON.stringify(dispatch),
+        body: JSON.stringify({ email, password }),
         credentials: "include"
       });
       if (!res.ok) {
         throw res;
       }
       return await res.json();
+      call the add user to the user state HEREEEREREERERERER
     } catch (error) {
       console.log(error);
     }

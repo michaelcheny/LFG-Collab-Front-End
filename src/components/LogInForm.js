@@ -20,11 +20,16 @@ class LogInForm extends Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
+    const { token } = this.props;
+    const { email, password } = this.state;
     event.preventDefault();
-    console.log(this.props.token);
+    // console.log(this.props.token);
+    // await Login(token, email, password);
+
+    await this.props.login(token, email, password);
     // send the inputs to the login thing
-    console.log(this.state);
+    // console.log(this.state);
     this.setState({
       email: "",
       password: ""
@@ -59,17 +64,20 @@ class LogInForm extends Component {
 }
 
 const mapStateToProps = state => {
-  const { token } = state.token;
-  console.log(token);
+  const { token, user } = state;
+  // console.log(token);
+  // console.log(user);
+  // console.log(state);
   return {
-    token: token
+    token: token.token,
+    user: user.user
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     getToken: () => dispatch(getToken()),
-    login: () => dispatch(Login())
+    login: (token, email, password) => dispatch(Login(token, email, password))
   };
 };
 
