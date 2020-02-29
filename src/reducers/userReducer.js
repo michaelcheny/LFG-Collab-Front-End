@@ -15,6 +15,7 @@ const userReducer = (
         loading: true
       };
     case LOG_IN:
+      console.log(action.payload);
       return {
         ...state,
         user: {
@@ -22,6 +23,7 @@ const userReducer = (
           name: action.payload.name,
           email: action.payload.email
         },
+        authenticated: !!action.payload.authenticated,
         loading: false
       };
     case LOG_OUT:
