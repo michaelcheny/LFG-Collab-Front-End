@@ -16,12 +16,12 @@ class LogInForm extends Component {
     });
   };
 
-  handleSubmit = async event => {
+  handleSubmit = event => {
     const { token } = this.props;
     const { email, password } = this.state;
     event.preventDefault();
 
-    await this.props.login(token, email, password);
+    this.props.login(token, email, password);
 
     this.setState({
       email: "",
