@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
-import { getToken } from "../actions/getToken";
+// import { getToken } from "../actions/getToken";
 import { Login } from "../actions/Login";
 
 class LogInForm extends Component {
@@ -10,9 +10,9 @@ class LogInForm extends Component {
     password: ""
   };
 
-  componentDidMount() {
-    this.props.getToken();
-  }
+  // async componentDidMount() {
+  //   await this.props.getToken();
+  // }
 
   handleChange = event => {
     this.setState({
@@ -76,7 +76,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getToken: () => dispatch(getToken()),
+    // getToken: () => dispatch(getToken()),
     login: (token, email, password) => dispatch(Login(token, email, password))
   };
 };

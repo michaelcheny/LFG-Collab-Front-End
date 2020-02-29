@@ -1,4 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getToken } from "../actions/getToken";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Layout } from "../components/Layout";
@@ -8,24 +11,36 @@ import HomeContainer from "./HomeContainer";
 import ProjectContainer from "./ProjectContainer";
 import SignupContainer from "./SignupContainer";
 
-const App = () => {
-  return (
-    // <div className="App">
-    <>
-      <NavBar />
-      <Layout>
-        <Router>
-          <Switch>
-            <Route path="/" exact component={HomeContainer} />
-            <Route path="/projects" component={ProjectContainer} />
-            <Route path="/registration" component={SignupContainer} />
-            {/* <Route path="/link3" component={something} /> */}
-          </Switch>
-        </Router>
-      </Layout>
-      {/* // </div> */}
-    </>
-  );
+class App extends Component {
+  async componentDidMount() {
+    await this.props.getToken();
+  }
+
+  render() {
+    return (
+      // <div className="App">
+      <>
+        <Layout>
+          <Router>
+            <NavBar />
+            <Switch>
+              <Route path="/" exact component={HomeContainer} />
+              <Route path="/projects" component={ProjectContainer} />
+              <Route path="/registration" component={SignupContainer} />
+              {/* <Route path="/link3" component={something} /> */}
+            </Switch>
+          </Router>
+        </Layout>
+        {/* // </div> */}
+      </>
+    );
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getToken: () => dispatch(getToken())
+  };
 };
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);
