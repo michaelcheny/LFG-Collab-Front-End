@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -34,6 +36,12 @@ class SignupContainer extends Component {
   };
 
   render() {
+    const { auth } = this.props;
+
+    if (auth) {
+      return <Redirect to="/home" />;
+    }
+
     return (
       <div>
         <h1>Registration</h1>
@@ -106,7 +114,13 @@ class SignupContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => {
+  const { user } = state;
+
+  return {
+    auth: user.auth
+  };
+};
 
 const mapDispatchToProps = {};
 

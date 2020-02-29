@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 // import { getToken } from "../actions/getToken";
+import { Redirect } from "react-router-dom";
 import { Login } from "../actions/Login";
 
 class LogInForm extends Component {
@@ -30,10 +31,16 @@ class LogInForm extends Component {
   };
 
   render() {
+    const { auth } = this.props;
+
+    if (auth) {
+      return <Redirect to="/home" />;
+    }
+
     return (
       <form onSubmit={this.handleSubmit}>
         <input
-          className="mr-sm-2"
+          className="nav-routes"
           type="text"
           name="email"
           placeholder="Email"
@@ -41,14 +48,19 @@ class LogInForm extends Component {
           value={this.state.email}
         />
         <input
-          className="mr-sm-2"
+          className="nav-routes"
           type="password"
           name="password"
           placeholder="Password"
           onChange={this.handleChange}
           value={this.state.password}
         />
-        <Button variant="secondary" size="sm" onClick={this.handleSubmit}>
+        <Button
+          className="nav-routes"
+          variant="secondary"
+          size="sm"
+          onClick={this.handleSubmit}
+        >
           Log In
         </Button>
       </form>
@@ -61,7 +73,8 @@ const mapStateToProps = state => {
 
   return {
     token: token.token,
-    user: user.user
+    user: user.user,
+    auth: user.auth
   };
 };
 

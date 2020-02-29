@@ -51,8 +51,8 @@ const NavBar = ({ authenticated }) => {
   const renderAuthLinks = () => {
     return (
       <>
-        <Link className="nav-routes" to="/registration">
-          <li>Register</li>
+        <Link to="/registration">
+          <li className="nav-routes">Register</li>
         </Link>
 
         <li className="nav-routes">
@@ -69,17 +69,17 @@ const NavBar = ({ authenticated }) => {
       </Link>
 
       <ul className="nav-links">
-        <Link className="nav-routes" to="/projects">
-          <li>Projects</li>
+        <Link to="/projects">
+          <li className="nav-routes">Projects</li>
         </Link>
 
-        <Link className="nav-routes" to="/myprojects">
-          <li>My Projects</li>
+        <Link to="/myprojects">
+          <li className="nav-routes">My Projects</li>
         </Link>
 
         {authenticated ? (
-          <Link className="nav-routes" to="/account">
-            <li>My Profile</li>
+          <Link to="/account">
+            <li className="nav-routes">My Profile</li>
           </Link>
         ) : (
           renderAuthLinks()

@@ -28,9 +28,11 @@ nav {
   width: 50%;
   justify-content: space-around;
   align-items: center;
+  padding-left: 10px;
 }
 
 .nav-routes {
   text-decoration: none;
   color: whitesmoke;
+  /* padding-left: 2px; */
 }
