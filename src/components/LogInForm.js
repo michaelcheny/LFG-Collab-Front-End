@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
+import { getToken } from "../actions/getToken";
 
 class LogInForm extends Component {
   state = {
     email: "",
     password: ""
   };
+
+  componentDidMount() {
+    this.props.getToken();
+  }
 
   handleChange = event => {
     this.setState({
@@ -16,6 +21,7 @@ class LogInForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log(this.props.token);
     // send the inputs to the login thing
     console.log(this.state);
     this.setState({
@@ -43,7 +49,7 @@ class LogInForm extends Component {
           onChange={this.handleChange}
           value={this.state.password}
         />
-        <Button variant="secondary" size="sm">
+        <Button variant="secondary" size="sm" onClick={this.handleSubmit}>
           Log In
         </Button>
       </form>
@@ -51,8 +57,18 @@ class LogInForm extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => {
+  const { token } = state.token;
+  console.log(token);
+  return {
+    token: token
+  };
+};
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => {
+  return {
+    getToken: () => dispatch(getToken())
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogInForm);
