@@ -1,7 +1,6 @@
 import {
   LOADING_PROJECTS,
   ADD_PROJECTS,
-  LOADING_MY_PROJECTS,
   ADD_MY_PROJECTS
 } from "../actions/actionTypes";
 
@@ -22,8 +21,6 @@ const projectsReducer = (
         projects: action.payload,
         loading: false
       };
-    case LOADING_MY_PROJECTS:
-      return { ...state, loading: true };
     case ADD_MY_PROJECTS:
       return {
         ...state,

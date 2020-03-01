@@ -1,4 +1,9 @@
-import { LOADING_PROJECTS, ADD_PROJECTS } from "./actionTypes";
+import {
+  LOADING_PROJECTS,
+  ADD_PROJECTS,
+  LOADING_MY_PROJECTS,
+  ADD_MY_PROJECTS
+} from "./actionTypes";
 
 export const fetchProjects = () => {
   return async dispatch => {
@@ -21,13 +26,17 @@ export const fetchPersonalProjects = () => {
     try {
       dispatch({ type: LOADING_PROJECTS });
       const res = await fetch(
-        "http://localhost:3001/api/v1/personal-projects/"
+        "http://localhost:3001/api/v1/personal-projects",
+        {
+          credentials: "include"
+        }
       );
       if (!res.ok) {
         throw res;
       }
       const data = await res.json();
-      dispatch({ type: ADD_PROJECTS, payload: data });
+      console.log(data.projects);
+      dispatch({ type: ADD_MY_PROJECTS, payload: data.projects });
     } catch (error) {
       console.log(error.message);
     }
