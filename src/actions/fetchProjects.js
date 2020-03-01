@@ -1,9 +1,4 @@
-import {
-  LOADING_PROJECTS,
-  ADD_PROJECTS,
-  LOADING_MY_PROJECTS,
-  ADD_MY_PROJECTS
-} from "./actionTypes";
+import { LOADING_PROJECTS, ADD_PROJECTS, ADD_MY_PROJECTS } from "./actionTypes";
 
 export const fetchProjects = () => {
   return async dispatch => {
