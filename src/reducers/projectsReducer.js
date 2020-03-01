@@ -1,8 +1,14 @@
-import { LOADING_PROJECTS, ADD_PROJECTS } from "../actions/actionTypes";
+import {
+  LOADING_PROJECTS,
+  ADD_PROJECTS,
+  LOADING_MY_PROJECTS,
+  ADD_MY_PROJECTS
+} from "../actions/actionTypes";
 
 const projectsReducer = (
   state = {
     projects: [],
+    personalProjects: [],
     loading: false
   },
   action
@@ -14,6 +20,14 @@ const projectsReducer = (
       return {
         ...state,
         projects: action.payload,
+        loading: false
+      };
+    case LOADING_MY_PROJECTS:
+      return { ...state, loading: true };
+    case ADD_MY_PROJECTS:
+      return {
+        ...state,
+        personalProjects: action.payload,
         loading: false
       };
     default:
