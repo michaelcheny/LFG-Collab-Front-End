@@ -51,9 +51,11 @@ const NavBar = ({ authenticated }) => {
   const renderAuthLinks = () => {
     return (
       <>
-        <Link to="/registration">
-          <li className="nav-routes">Register</li>
-        </Link>
+        <Nav.Item>
+          <Link to="/registration">
+            <li className="nav-routes">Register</li>
+          </Link>
+        </Nav.Item>
 
         <li className="nav-routes">
           <LogInForm />
@@ -63,33 +65,63 @@ const NavBar = ({ authenticated }) => {
   };
 
   return (
-    <nav>
-      <Link className="nav-routes" to="/">
-        <h3>LFG Collab</h3>
-      </Link>
+    <StyledNav>
+      <Navbar expand="lg">
+        <Navbar.Brand hred="/"> LFG Collab </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto">
+            {/* <nav> */}
+            <Nav.Item>
+              <Link to="/">
+                <li className="nav-routes">Home</li>
+              </Link>
+            </Nav.Item>
 
-      <ul className="nav-links">
-        <Link to="/projects">
-          <li className="nav-routes">Projects</li>
-        </Link>
+            <Nav.Item>
+              <Link to="/projects">
+                <li className="nav-routes">Projects</li>
+              </Link>
+            </Nav.Item>
 
-        <Link to="/myprojects">
-          <li className="nav-routes">My Projects</li>
-        </Link>
+            <Nav.Item>
+              <Link to="/myprojects">
+                <li className="nav-routes">My Projects</li>
+              </Link>
+            </Nav.Item>
 
-        {authenticated ? (
-          <Link to="/account">
-            <li className="nav-routes">My Profile</li>
-          </Link>
-        ) : (
-          renderAuthLinks()
-        )}
+            {/* <Nav.Item>
+                <Nav.Link>Home</Nav.Link>
+              </Nav.Item> */}
 
-        {/* <li className="nav-routes">
+            {/* <ul className="nav-links">
+                <Link to="/projects">
+                  <li className="nav-routes">Projects</li>
+                </Link> */}
+
+            {/* <Link to="/myprojects">
+                  <li className="nav-routes">My Projects</li>
+                </Link> */}
+
+            {authenticated ? (
+              <Nav.Item>
+                <Link to="/account">
+                  <li className="nav-routes">My Profile</li>
+                </Link>
+              </Nav.Item>
+            ) : (
+              renderAuthLinks()
+            )}
+
+            {/* <li className="nav-routes">
           <LogInForm />
         </li> */}
-      </ul>
-    </nav>
+            {/* </ul> */}
+            {/* </nav> */}
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </StyledNav>
   );
 };
 

@@ -38,7 +38,7 @@ class LogInForm extends Component {
     }
 
     return (
-      <form onSubmit={this.handleSubmit} className="nav-routes">
+      <form onSubmit={this.handleSubmit}>
         <input
           type="text"
           name="email"

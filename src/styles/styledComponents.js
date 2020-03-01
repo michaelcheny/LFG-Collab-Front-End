@@ -5,8 +5,10 @@ const StyledNav = styled.div`
     background-color: #222;
   }
   .navbar-brand,
-  .navbar-nav .nav-link {
+  .navbar-nav .nav-routes {
     color: #bbb;
+    list-style: none;
+    padding-left: 10px;
 
     &:hover {
       color: white;
