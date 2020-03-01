@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import NavBar from "../components/NavBar";
 import HomePage from "./HomePage";
-import ProjectPage from "./ProjectPage";
+import ProjectPage from "./ProjectsPage";
+import PersonalProjectsPage from "./PersonalProjectsPage";
 import SignupPage from "./SignupPage";
 
 class App extends Component {
@@ -23,7 +24,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={HomePage} />
               <Route path="/projects" component={ProjectPage} />
-              <Route path="/myprojects" component={ProjectPage} />
+              <Route path="/myprojects" component={PersonalProjectsPage} />
               <Route path="/registration" component={SignupPage} />
               {/* <Route path="/link3" component={something} /> */}
             </Switch>
