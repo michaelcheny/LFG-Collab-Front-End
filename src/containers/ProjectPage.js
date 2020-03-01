@@ -42,7 +42,7 @@ import Project from "../components/project/Project";
 import { fetchProjects } from "../actions/fetchProjects";
 import Spinner from "react-bootstrap/Spinner";
 
-class ProjectContainer extends Component {
+class ProjectPage extends Component {
   componentDidMount() {
     this.props.fetchProjects();
   }
@@ -86,4 +86,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectPage);

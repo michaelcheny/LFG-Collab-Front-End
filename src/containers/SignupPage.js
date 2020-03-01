@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-class SignupContainer extends Component {
+class SignupPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -125,4 +125,4 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);

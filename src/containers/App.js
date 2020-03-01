@@ -4,9 +4,9 @@ import { getToken } from "../actions/getToken";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import NavBar from "../components/NavBar";
-import HomeContainer from "./HomeContainer";
-import ProjectContainer from "./ProjectContainer";
-import SignupContainer from "./SignupContainer";
+import HomePage from "./HomePage";
+import ProjectPage from "./ProjectPage";
+import SignupPage from "./SignupPage";
 
 class App extends Component {
   async componentDidMount() {
@@ -21,9 +21,10 @@ class App extends Component {
           <NavBar authenticated={authenticated} />
           <Layout>
             <Switch>
-              <Route path="/" exact component={HomeContainer} />
-              <Route path="/projects" component={ProjectContainer} />
-              <Route path="/registration" component={SignupContainer} />
+              <Route path="/" exact component={HomePage} />
+              <Route path="/projects" component={ProjectPage} />
+              <Route path="/myprojects" component={ProjectPage} />
+              <Route path="/registration" component={SignupPage} />
               {/* <Route path="/link3" component={something} /> */}
             </Switch>
           </Layout>
