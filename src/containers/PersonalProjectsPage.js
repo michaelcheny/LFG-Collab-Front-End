@@ -8,13 +8,12 @@ class PersonalProjectsPage extends Component {
   }
 
   render() {
-    console.log(this.props.projects);
+    console.log(this.props.projects); // MAP OVER THIS MOFO AND RENDER THAT SHIT YDIDADADA
     return <div>sddsf</div>;
   }
 }
 
-const mapStateToProps = state => {
-  const { projects } = state;
+const mapStateToProps = ({ projects }) => {
   return { projects: projects.personalProjects, loading: projects.loading };
 };
 

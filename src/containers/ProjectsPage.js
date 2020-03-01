@@ -36,8 +36,7 @@ class ProjectPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { projects } = state;
+const mapStateToProps = ({ projects }) => {
   return { projects: projects.projects, loading: projects.loading };
 };
 
