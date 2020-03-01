@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchPersonalProjects } from "../actions/fetchProjects";
+import Project from "../components/project/Project";
 
 class PersonalProjectsPage extends Component {
   componentDidMount() {
@@ -9,7 +10,14 @@ class PersonalProjectsPage extends Component {
 
   render() {
     console.log(this.props.projects); // MAP OVER THIS MOFO AND RENDER THAT SHIT YDIDADADA
-    return <div>sddsf</div>;
+    const { projects } = this.props;
+    return (
+      <div>
+        {projects.map(project => {
+          return <Project key={project.id} id={project.id} project={project} />;
+        })}
+      </div>
+    );
   }
 }
 
