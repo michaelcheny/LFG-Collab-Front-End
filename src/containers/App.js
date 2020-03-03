@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getToken } from "../actions/getToken";
-import { Logout } from "../actions/usersActions";
+// import { getToken } from "../actions/tokenActions";
+// import { Logout } from "../actions/usersActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import NavBar from "../components/NavBar";
@@ -11,20 +11,20 @@ import PersonalProjectsPage from "./PersonalProjectsPage";
 import SignupPage from "./SignupPage";
 
 class App extends Component {
-  componentDidMount() {
-    this.props.getToken();
-  }
+  // componentDidMount() {
+  //   this.props.getToken();
+  // }
 
   render() {
-    const { authenticated, currentUser, logOut, token } = this.props;
+    // const { authenticated, currentUser, logOut, token } = this.props;
     return (
       <>
         <Router>
           <NavBar
-            loggedIn={authenticated}
-            currentUser={currentUser.name}
-            logOut={logOut}
-            token={token}
+          // loggedIn={authenticated}
+          // currentUser={currentUser.name}
+          // logOut={logOut}
+          // token={token}
           />
           <Layout>
             <Switch>
@@ -41,21 +41,22 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { user, token } = state;
-  console.log(user);
-  return {
-    authenticated: user.authenticated,
-    currentUser: user.user,
-    token: token.token
-  };
-};
+// const mapStateToProps = state => {
+//   const { user, token } = state;
+//   console.log(user);
+//   return {
+//     authenticated: user.authenticated,
+//     currentUser: user.user,
+//     token: token.token
+//   };
+// };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getToken: () => dispatch(getToken()),
-    logOut: token => dispatch(Logout(token))
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getToken: () => dispatch(getToken()),
+//     logOut: token => dispatch(Logout(token))
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
