@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
-// import { getToken } from "../actions/getToken";
+import { getToken } from "../actions/tokenActions";
 import { Redirect } from "react-router-dom";
 import { Login } from "../actions/usersActions";
 
@@ -17,11 +17,12 @@ class LogInForm extends Component {
     });
   };
 
-  handleSubmit = event => {
-    const { token } = this.props;
+  handleSubmit = async event => {
+    // const { token } = this.props;
     const { email, password } = this.state;
     event.preventDefault();
 
+    let token = await this.props.getToken();
     this.props.login(token, email, password);
 
     this.setState({
@@ -78,7 +79,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (token, email, password) => dispatch(Login(token, email, password))
+    login: (token, email, password) => dispatch(Login(token, email, password)),
+    getToken: () => dispatch(getToken())
   };
 };
 

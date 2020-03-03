@@ -11,5 +11,6 @@ export const getToken = () => {
       type: ADD_TOKEN,
       payload: data.csrf_auth_token
     });
+    return data.csrf_auth_token;
   };
 };
