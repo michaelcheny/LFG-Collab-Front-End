@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getToken } from "../actions/getToken";
+import { Logout } from "../actions/usersActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import NavBar from "../components/NavBar";
@@ -10,16 +11,21 @@ import PersonalProjectsPage from "./PersonalProjectsPage";
 import SignupPage from "./SignupPage";
 
 class App extends Component {
-  async componentDidMount() {
-    await this.props.getToken();
+  componentDidMount() {
+    this.props.getToken();
   }
 
   render() {
-    const { authenticated, currentUser } = this.props;
+    const { authenticated, currentUser, logOut, token } = this.props;
     return (
       <>
         <Router>
-          <NavBar loggedIn={authenticated} currentUser={currentUser} />
+          <NavBar
+            loggedIn={authenticated}
+            currentUser={currentUser.name}
+            logOut={logOut}
+            token={token}
+          />
           <Layout>
             <Switch>
               <Route path="/" exact component={HomePage} />
@@ -36,14 +42,19 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const { user } = state;
+  const { user, token } = state;
   console.log(user);
-  return { authenticated: user.authenticated, currentUser: user.user.name };
+  return {
+    authenticated: user.authenticated,
+    currentUser: user.user,
+    token: token.token
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getToken: () => dispatch(getToken())
+    getToken: () => dispatch(getToken()),
+    logOut: token => dispatch(Logout(token))
   };
 };
 

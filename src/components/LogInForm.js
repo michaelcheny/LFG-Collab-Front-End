@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 // import { getToken } from "../actions/getToken";
 import { Redirect } from "react-router-dom";
-import { Login } from "../actions/Login";
+import { Login } from "../actions/usersActions";
 
 class LogInForm extends Component {
   state = {

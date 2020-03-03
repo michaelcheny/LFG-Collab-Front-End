@@ -5,7 +5,12 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { StyledNav } from "../styles/styledComponents";
 
-const NavBar = ({ loggedIn, currentUser }) => {
+const NavBar = ({ loggedIn, currentUser, logOut, token }) => {
+  const handleLogout = () => {
+    console.log(token);
+    logOut(token);
+  };
+
   const renderAuthLinks = () => {
     if (loggedIn) {
       return (
@@ -24,7 +29,9 @@ const NavBar = ({ loggedIn, currentUser }) => {
 
           <Nav.Item>
             {/* <Link to="/logout"> */}
-            <li className="nav-routes">Log Out</li>
+            <li className="nav-routes" onClick={handleLogout}>
+              Log Out
+            </li>
             {/* </Link> */}
           </Nav.Item>
         </>

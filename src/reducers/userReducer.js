@@ -29,7 +29,8 @@ const userReducer = (
     case LOG_OUT:
       return {
         ...state,
-        user: {}
+        user: {},
+        authenticated: false
       };
     default:
       return state;
