@@ -125,11 +125,11 @@ class NavBar extends Component {
           </Nav.Item>
 
           <Nav.Item>
-            {/* <Link to="/logout"> */}
-            <li className="nav-routes" onClick={this.handleLogout}>
-              Log Out
-            </li>
-            {/* </Link> */}
+            <Link to="#">
+              <li className="nav-routes" onClick={this.handleLogout}>
+                Log Out
+              </li>
+            </Link>
           </Nav.Item>
         </>
       );
