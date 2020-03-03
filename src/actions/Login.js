@@ -19,8 +19,6 @@ export const Login = (csrf_token, email, password) => {
         throw res;
       }
       const data = await res.json();
-      // call the add user to the user state HEREEEREREERERERER
-      // console.log(data);
       dispatch({
         type: LOG_IN,
         payload: {
