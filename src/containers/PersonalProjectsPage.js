@@ -13,6 +13,8 @@ class PersonalProjectsPage extends Component {
     const { projects } = this.props;
     return (
       <div>
+        <h1>My Projects</h1>
+
         {projects.map(project => {
           console.log(project);
           return (

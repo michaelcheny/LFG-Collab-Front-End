@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <>
         <Router>
-          <NavBar authenticated={authenticated} />
+          <NavBar loggedIn={authenticated} />
           <Layout>
             <Switch>
               <Route path="/" exact component={HomePage} />

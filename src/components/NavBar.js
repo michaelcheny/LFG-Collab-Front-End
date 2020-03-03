@@ -5,9 +5,9 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { StyledNav } from "../styles/styledComponents";
 
-const NavBar = ({ authenticated }) => {
+const NavBar = ({ loggedIn }) => {
   const renderAuthLinks = () => {
-    if (authenticated) {
+    if (loggedIn) {
       return (
         <>
           <Nav.Item>
@@ -20,6 +20,12 @@ const NavBar = ({ authenticated }) => {
             <Link to="/account">
               <li className="nav-routes">My Profile</li>
             </Link>
+          </Nav.Item>
+
+          <Nav.Item>
+            {/* <Link to="/logout"> */}
+            <li className="nav-routes">Log Out</li>
+            {/* </Link> */}
           </Nav.Item>
         </>
       );
