@@ -102,12 +102,14 @@ import { Logout } from "../actions/usersActions";
 
 class NavBar extends Component {
   handleLogout = () => {
-    console.log(this.props.token);
-    this.props(this.props.token);
+    // console.log(this.props.token);
+    const { token } = this.props;
+    this.props.logOut(token);
   };
 
   renderAuthLinks = () => {
-    if (this.props.authenticated) {
+    const { authenticated } = this.props;
+    if (authenticated) {
       return (
         <>
           <Nav.Item>
@@ -149,7 +151,8 @@ class NavBar extends Component {
   };
 
   greeting = () => {
-    if (this.props.authenticated) {
+    const { authenticated } = this.props;
+    if (authenticated) {
       return (
         <Nav.Item>
           {/* <Link to="/registration">

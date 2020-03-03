@@ -68,10 +68,10 @@ class LogInForm extends Component {
 }
 
 const mapStateToProps = state => {
-  const { token, user } = state;
+  const { user } = state;
 
   return {
-    token: token.token,
+    // token: token.token,
     user: user.user,
     auth: user.authenticated
   };

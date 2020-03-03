@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 // import { getToken } from "../actions/tokenActions";
 // import { Logout } from "../actions/usersActions";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

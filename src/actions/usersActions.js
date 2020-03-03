@@ -1,4 +1,4 @@
-import { LOGGING_IN, LOG_IN, LOGGING_OUT, LOG_OUT } from "./actionTypes";
+import { LOGGING_IN, LOG_IN, LOG_OUT } from "./actionTypes";
 
 export const Login = (csrf_token, email, password) => {
   return async dispatch => {
