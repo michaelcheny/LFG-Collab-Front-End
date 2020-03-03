@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { StyledNav } from "../styles/styledComponents";
 
-const NavBar = ({ loggedIn }) => {
+const NavBar = ({ loggedIn, currentUser }) => {
   const renderAuthLinks = () => {
     if (loggedIn) {
       return (
@@ -46,6 +46,19 @@ const NavBar = ({ loggedIn }) => {
     }
   };
 
+  const greeting = () => {
+    if (loggedIn) {
+      return (
+        <Nav.Item>
+          {/* <Link to="/registration">
+              <li className="nav-routes">Register</li>
+            </Link> */}
+          <li className="nav-routes">Hi {currentUser}!</li>
+        </Nav.Item>
+      );
+    }
+  };
+
   return (
     <StyledNav>
       <Navbar expand="lg">
@@ -53,6 +66,8 @@ const NavBar = ({ loggedIn }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
+            {greeting()}
+
             <Nav.Item>
               <Link to="/">
                 <li className="nav-routes">Home</li>

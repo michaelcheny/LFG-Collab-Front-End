@@ -15,11 +15,11 @@ class App extends Component {
   }
 
   render() {
-    const { authenticated } = this.props;
+    const { authenticated, currentUser } = this.props;
     return (
       <>
         <Router>
-          <NavBar loggedIn={authenticated} />
+          <NavBar loggedIn={authenticated} currentUser={currentUser} />
           <Layout>
             <Switch>
               <Route path="/" exact component={HomePage} />
@@ -37,7 +37,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   const { user } = state;
-  return { authenticated: user.authenticated };
+  console.log(user);
+  return { authenticated: user.authenticated, currentUser: user.user.name };
 };
 
 const mapDispatchToProps = dispatch => {
