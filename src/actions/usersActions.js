@@ -1,4 +1,4 @@
-import { LOGGING_IN, LOG_IN, LOG_OUT } from "./actionTypes";
+import { LOGGING_IN, LOG_IN, LOG_OUT, CLEAR_TOKEN } from "./actionTypes";
 
 export const Login = (csrf_token, email, password) => {
   return async dispatch => {
@@ -48,6 +48,7 @@ export const Logout = token => {
         credentials: "include"
       });
       dispatch({ type: LOG_OUT });
+      dispatch({ type: CLEAR_TOKEN });
       return await res.json();
     } catch (error) {
       console.log(error);

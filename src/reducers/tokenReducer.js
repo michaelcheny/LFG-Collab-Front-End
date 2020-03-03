@@ -1,4 +1,4 @@
-import { GETTING_TOKEN, ADD_TOKEN } from "../actions/actionTypes";
+import { GETTING_TOKEN, ADD_TOKEN, CLEAR_TOKEN } from "../actions/actionTypes";
 
 const tokenReducer = (
   state = {
@@ -19,6 +19,11 @@ const tokenReducer = (
         ...state,
         token: action.payload,
         loading: false
+      };
+    case CLEAR_TOKEN:
+      return {
+        ...state,
+        token: null
       };
     default:
       return state;

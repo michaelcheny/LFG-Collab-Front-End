@@ -197,7 +197,7 @@ class NavBar extends Component {
 
 const mapStateToProps = state => {
   const { user, token } = state;
-  console.log(user);
+  // console.log(user);
   return {
     authenticated: user.authenticated,
     currentUser: user.user,
