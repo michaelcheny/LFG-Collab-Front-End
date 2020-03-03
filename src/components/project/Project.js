@@ -5,17 +5,31 @@ import moment from "moment";
 
 const Project = ({ name, description, users, addedOn }) => {
   const addDate = moment(addedOn).format("MMM DD, YYYY - h:mma");
+
+  const renderCollaborators = () => {
+    return (
+      <ul>
+        Collaborators:
+        {users.map(user => (
+          <li>{user.name}</li>
+        ))}
+      </ul>
+    );
+  };
+
   return (
     <>
       <br />
       <Card>
-        <Card.Header>(add category here)</Card.Header>
+        <Card.Header>(add category here) {addDate}</Card.Header>
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>{description}</Card.Text>
           <Button variant="dark">Go somewhere</Button>
         </Card.Body>
-        <Card.Footer className="text-muted">{addDate}</Card.Footer>
+        <Card.Footer className="text-muted">
+          {renderCollaborators()}
+        </Card.Footer>
       </Card>
     </>
   );
