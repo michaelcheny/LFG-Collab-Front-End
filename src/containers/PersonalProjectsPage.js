@@ -9,12 +9,22 @@ class PersonalProjectsPage extends Component {
   }
 
   render() {
-    console.log(this.props.projects); // MAP OVER THIS MOFO AND RENDER THAT SHIT YDIDADADA
+    console.log(this.props.projects);
     const { projects } = this.props;
     return (
       <div>
         {projects.map(project => {
-          return <Project key={project.id} id={project.id} project={project} />;
+          console.log(project);
+          return (
+            <Project
+              key={project.id}
+              id={project.id}
+              name={project.name}
+              description={project.description}
+              users={project.users}
+              addedOn={project.created_at}
+            />
+          );
         })}
       </div>
     );
