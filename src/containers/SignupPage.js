@@ -25,11 +25,8 @@ class SignupPage extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    console.log(this.state);
-
     let token = await this.props.getToken();
-    const user = this.state;
-    this.props.register(token, user);
+    this.props.register(token, this.state);
     this.setState({
       name: "",
       email: "",
@@ -119,8 +116,6 @@ class SignupPage extends Component {
 
 const mapStateToProps = state => {
   const { user } = state;
-  console.log(user);
-
   return {
     authenticated: user.authenticated
   };

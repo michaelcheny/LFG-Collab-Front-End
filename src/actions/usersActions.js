@@ -82,9 +82,6 @@ export const Logout = token => {
 };
 
 export const Signup = (token, user) => {
-  console.log(user);
-  const { name, email, password, password_confirmation } = user;
-
   return async dispatch => {
     try {
       dispatch({ type: SIGNING_UP });
@@ -95,14 +92,7 @@ export const Signup = (token, user) => {
           "Content-Type": "application/json",
           "X-CSRF-TOKEN": token
         },
-        body: JSON.stringify({
-          user: {
-            name,
-            email,
-            password,
-            password_confirmation
-          }
-        }),
+        body: JSON.stringify({ user: user }),
         credentials: "include"
       });
       const data = await res.json();
