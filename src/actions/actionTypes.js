@@ -9,6 +9,8 @@ const LOG_IN = "LOG_IN";
 const LOG_OUT = "LOG_OUT";
 const ADD_MY_PROJECTS = "ADD_MY_PROJECTS";
 const LOGGING_OUT = "LOGGING_OUT";
+const SIGNING_UP = "SIGNING_UP";
+const SIGN_UP = "SIGN_UP";
 
 export {
   GET_TOKEN,
@@ -21,5 +23,7 @@ export {
   LOG_IN,
   LOG_OUT,
   ADD_MY_PROJECTS,
-  LOGGING_OUT
+  LOGGING_OUT,
+  SIGNING_UP,
+  SIGN_UP
 };

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
-import { getToken } from "../actions/tokenActions";
+// import { getToken } from "../actions/tokenActions";
 import { Redirect } from "react-router-dom";
-import { Login } from "../actions/usersActions";
+import { getToken, Login } from "../actions/usersActions";
 
 class LogInForm extends Component {
   state = {

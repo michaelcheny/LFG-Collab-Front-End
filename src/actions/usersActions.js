@@ -1,4 +1,29 @@
-import { LOGGING_IN, LOG_IN, LOG_OUT, CLEAR_TOKEN } from "./actionTypes";
+import {
+  LOGGING_IN,
+  LOG_IN,
+  LOG_OUT,
+  CLEAR_TOKEN,
+  SIGNING_UP,
+  GET_TOKEN,
+  ADD_TOKEN
+} from "./actionTypes";
+
+// import { GET_TOKEN, ADD_TOKEN } from "./actionTypes";
+
+export const getToken = () => {
+  return async dispatch => {
+    dispatch({ type: GET_TOKEN });
+    const res = await fetch("http://localhost:3001/api/v1/auth-check", {
+      credentials: "include"
+    });
+    const data = await res.json();
+    dispatch({
+      type: ADD_TOKEN,
+      payload: data.csrf_auth_token
+    });
+    return data.csrf_auth_token;
+  };
+};
 
 export const Login = (csrf_token, email, password) => {
   return async dispatch => {
@@ -52,6 +77,48 @@ export const Logout = token => {
       return await res.json();
     } catch (error) {
       console.log(error);
+    }
+  };
+};
+
+export const Signup = (token, user) => {
+  console.log(user);
+  const { name, email, password, password_confirmation } = user;
+
+  return async dispatch => {
+    try {
+      dispatch({ type: SIGNING_UP });
+      const res = await fetch("http://localhost:3001/api/v1/signup", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({
+          user: {
+            name,
+            email,
+            password,
+            password_confirmation
+          }
+        }),
+        credentials: "include"
+      });
+      const data = await res.json();
+      console.log(data);
+      dispatch({
+        type: LOG_IN,
+        payload: {
+          id: data.id,
+          email: data.email,
+          name: data.name,
+          authenticated: true
+        }
+      });
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
     }
   };
 };

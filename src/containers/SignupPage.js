@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { getToken, Signup } from "../actions/usersActions";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -12,9 +13,7 @@ class SignupPage extends Component {
       name: "",
       email: "",
       password: "",
-      password_confirmation: "",
-      registrationErrors: "",
-      redirectToHomepage: false
+      password_confirmation: ""
     };
   }
 
@@ -24,9 +23,13 @@ class SignupPage extends Component {
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
     console.log(this.state);
+
+    let token = await this.props.getToken();
+    const user = this.state;
+    this.props.register(token, user);
     this.setState({
       name: "",
       email: "",
@@ -36,9 +39,9 @@ class SignupPage extends Component {
   };
 
   render() {
-    const { auth } = this.props;
+    const { authenticated } = this.props;
 
-    if (auth) {
+    if (authenticated) {
       return <Redirect to="/" />;
     }
 
@@ -119,10 +122,15 @@ const mapStateToProps = state => {
   console.log(user);
 
   return {
-    auth: user.authenticated
+    authenticated: user.authenticated
   };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => {
+  return {
+    register: (token, user) => dispatch(Signup(token, user)),
+    getToken: () => dispatch(getToken())
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);
