@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
-// import { getToken } from "../actions/tokenActions";
 import { Redirect } from "react-router-dom";
 import { getToken, Login } from "../actions/usersActions";
 
@@ -18,7 +17,6 @@ class LogInForm extends Component {
   };
 
   handleSubmit = async event => {
-    // const { token } = this.props;
     const { email, password } = this.state;
     event.preventDefault();
 
@@ -71,7 +69,6 @@ const mapStateToProps = state => {
   const { user } = state;
 
   return {
-    // token: token.token,
     user: user.user,
     auth: user.authenticated
   };

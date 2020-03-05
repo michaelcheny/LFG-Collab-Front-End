@@ -11,7 +11,6 @@ const tokenReducer = (
     case GETTING_TOKEN:
       return {
         ...state,
-        // token: action.payload,
         loading: true
       };
     case ADD_TOKEN:
