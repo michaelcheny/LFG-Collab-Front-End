@@ -8,8 +8,6 @@ import {
   ADD_TOKEN
 } from "./actionTypes";
 
-// import { GET_TOKEN, ADD_TOKEN } from "./actionTypes";
-
 export const getToken = () => {
   return async dispatch => {
     dispatch({ type: GET_TOKEN });

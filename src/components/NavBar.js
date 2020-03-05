@@ -3,11 +3,9 @@ import LogInForm from "./LogInForm";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { StyledNav } from "../styles/styledComponents";
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getToken } from "../actions/tokenActions";
-import { Logout } from "../actions/usersActions";
+import { getToken, Logout } from "../actions/usersActions";
 
 class NavBar extends Component {
   handleLogout = () => {
@@ -20,6 +18,12 @@ class NavBar extends Component {
     if (authenticated) {
       return (
         <>
+          <Nav.Item>
+            <Link to="/newproject">
+              <li className="nav-routes">New Project</li>
+            </Link>
+          </Nav.Item>
+
           <Nav.Item>
             <Link to="/myprojects">
               <li className="nav-routes">My Projects</li>
@@ -58,19 +62,19 @@ class NavBar extends Component {
     }
   };
 
-  greeting = () => {
-    const { authenticated } = this.props;
-    if (authenticated) {
-      return (
-        <Nav.Item>
-          {/* <Link to="/registration">
-              <li className="nav-routes">Register</li>
-            </Link> */}
-          <li className="nav-routes">Hi {this.props.currentUser.name}!</li>
-        </Nav.Item>
-      );
-    }
-  };
+  // greeting = () => {
+  //   const { authenticated } = this.props;
+  //   if (authenticated) {
+  //     return (
+  //       <Nav.Item>
+  //         {/* <Link to="/registration">
+  //             <li className="nav-routes">Register</li>
+  //           </Link> */}
+  //         <li className="nav-routes">Hi {this.props.currentUser.name}!</li>
+  //       </Nav.Item>
+  //     );
+  //   }
+  // };
 
   render() {
     return (
@@ -80,7 +84,7 @@ class NavBar extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              {this.greeting()}
+              {/* {this.greeting()} */}
 
               <Nav.Item>
                 <Link to="/">

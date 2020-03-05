@@ -9,6 +9,7 @@ import HomePage from "./HomePage";
 import ProjectPage from "./ProjectsPage";
 import PersonalProjectsPage from "./PersonalProjectsPage";
 import SignupPage from "./SignupPage";
+import NewProjectPage from "./NewProjectPage";
 
 class App extends Component {
   // componentDidMount() {
@@ -32,6 +33,7 @@ class App extends Component {
               <Route path="/projects" component={ProjectPage} />
               <Route path="/myprojects" component={PersonalProjectsPage} />
               <Route path="/registration" component={SignupPage} />
+              <Route path="/newproject" component={NewProjectPage} />
               {/* <Route path="/link3" component={something} /> */}
             </Switch>
           </Layout>
