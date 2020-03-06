@@ -8,7 +8,8 @@ class NewProjectPage extends Component {
   state = {
     name: "",
     description: "",
-    online: true
+    online: true,
+    category: "programming"
   };
 
   handleSubmit = event => {
@@ -20,6 +21,10 @@ class NewProjectPage extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
+  };
+
+  handleCategoryChange = event => {
+    this.setState({ category: event.target.value });
   };
 
   render() {
@@ -42,17 +47,21 @@ class NewProjectPage extends Component {
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlSelect1">
-            <Form.Label>Example select</Form.Label>
-            <Form.Control as="select">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <Form.Label>Categories</Form.Label>
+            <Form.Control
+              as="select"
+              value={this.state.category}
+              onChange={this.handleCategoryChange}
+            >
+              <option value="Automotive">Automotive</option>
+              <option value="Health and Fitness">Health and Fitness</option>
+              <option value="Food">Food</option>
+              <option value="Programming">Programming</option>
+              <option value="Others">Others</option>
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlSelect2">
+          {/* <Form.Group controlId="exampleForm.ControlSelect2">
             <Form.Label>Example multiple select</Form.Label>
             <Form.Control as="select" multiple>
               <option>1</option>
@@ -61,7 +70,7 @@ class NewProjectPage extends Component {
               <option>4</option>
               <option>5</option>
             </Form.Control>
-          </Form.Group>
+          </Form.Group> */}
 
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Description</Form.Label>
@@ -87,7 +96,7 @@ class NewProjectPage extends Component {
           />
 
           <Button variant="dark" type="submit" block>
-            Submit
+            Post Project
           </Button>
         </Form>
       </div>
