@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Project from "../components/project/Project";
-import { fetchProjects } from "../actions/fetchProjects";
+import { fetchProjects } from "../actions/projectActions";
 import Spinner from "react-bootstrap/Spinner";
 
 class ProjectPage extends Component {

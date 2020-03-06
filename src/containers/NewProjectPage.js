@@ -43,34 +43,29 @@ class NewProjectPage extends Component {
               placeholder="Example: Drink More Water App (Open Source)"
               onChange={this.handleChange}
               value={this.state.name}
+              required
             />
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlSelect1">
-            <Form.Label>Categories</Form.Label>
+            <Form.Label>Category</Form.Label>
             <Form.Control
               as="select"
               value={this.state.category}
               onChange={this.handleCategoryChange}
+              required
             >
-              <option value="Automotive">Automotive</option>
-              <option value="Health and Fitness">Health and Fitness</option>
-              <option value="Food">Food</option>
-              <option value="Programming">Programming</option>
-              <option value="Others">Others</option>
+              <option disabled>Select a category</option>
+              <option value="automotive">Automotive</option>
+              <option value="charity">Charity</option>
+              <option value="makers_and_crafting">Makers and Crafting</option>
+              <option value="math_and_science">Math and Science</option>
+              <option value="health_and_fitness">Health and Fitness</option>
+              <option value="food">Food</option>
+              <option value="programming">Programming</option>
+              <option value="others">Others</option>
             </Form.Control>
           </Form.Group>
-
-          {/* <Form.Group controlId="exampleForm.ControlSelect2">
-            <Form.Label>Example multiple select</Form.Label>
-            <Form.Control as="select" multiple>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </Form.Control>
-          </Form.Group> */}
 
           <Form.Group controlId="exampleForm.ControlTextarea1">
             <Form.Label>Description</Form.Label>
@@ -80,6 +75,7 @@ class NewProjectPage extends Component {
               name="description"
               onChange={this.handleChange}
               value={this.state.description}
+              required
             />
           </Form.Group>
 

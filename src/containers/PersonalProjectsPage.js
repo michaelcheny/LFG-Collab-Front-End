@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchPersonalProjects } from "../actions/fetchProjects";
+import { fetchPersonalProjects } from "../actions/projectActions";
 import Project from "../components/project/Project";
 
 class PersonalProjectsPage extends Component {
