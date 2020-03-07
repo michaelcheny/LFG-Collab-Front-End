@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { createProject } from "../actions/projectActions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -13,8 +14,10 @@ class NewProjectPage extends Component {
   };
 
   handleSubmit = event => {
+    const { token, createProject } = this.props;
     event.preventDefault();
     console.log(this.state);
+    createProject(token, this.state);
   };
 
   handleChange = event => {
@@ -58,11 +61,12 @@ class NewProjectPage extends Component {
               <option disabled>Select a category</option>
               <option value="automotive">Automotive</option>
               <option value="charity">Charity</option>
+              <option value="educational">Educational</option>
               <option value="makers_and_crafting">Makers and Crafting</option>
-              <option value="math_and_science">Math and Science</option>
               <option value="health_and_fitness">Health and Fitness</option>
-              <option value="food">Food</option>
+              <option value="food_and_drink">Food and Drink</option>
               <option value="programming">Programming</option>
+              <option value="social_media">Social Media</option>
               <option value="others">Others</option>
             </Form.Control>
           </Form.Group>
@@ -100,12 +104,17 @@ class NewProjectPage extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => {
+const mapStateToProps = ({ user, token }) => {
   const { authenticated } = user;
-
-  return { authenticated };
+  // const { token } = token;
+  console.log(token);
+  return { authenticated, token: token.token };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => {
+  return {
+    createProject: (token, project) => dispatch(createProject(token, project))
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewProjectPage);

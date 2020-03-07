@@ -37,3 +37,13 @@ export const fetchPersonalProjects = () => {
     }
   };
 };
+
+export const createProject = (token, project) => {
+  return async dispatch => {
+    try {
+      console.log(project);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
