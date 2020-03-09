@@ -3,8 +3,9 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import moment from "moment";
 
-const Project = ({ name, description, users, addedOn }) => {
+const Project = ({ name, description, users, addedOn, category }) => {
   const addDate = moment(addedOn).format("MMM DD, YYYY - h:mma");
+  const categoryCapped = category.charAt(0).toUpperCase() + category.slice(1);
 
   const renderCollaborators = () => {
     return (
@@ -21,7 +22,7 @@ const Project = ({ name, description, users, addedOn }) => {
     <>
       <br />
       <Card>
-        <Card.Header>(add category here) {addDate}</Card.Header>
+        <Card.Header>{categoryCapped}</Card.Header>
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>{description}</Card.Text>

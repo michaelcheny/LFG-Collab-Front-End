@@ -25,6 +25,7 @@ class PersonalProjectsPage extends Component {
               description={project.description}
               users={project.users}
               addedOn={project.created_at}
+              category={project.category.name}
             />
           );
         })}

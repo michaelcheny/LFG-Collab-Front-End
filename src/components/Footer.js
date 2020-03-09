@@ -6,7 +6,8 @@ const Footer = () => {
       <hr />
       <h6
         style={{
-          textAlign: "center"
+          textAlign: "center",
+          padding: "20px"
         }}
       >
         Footer
