@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 import HomePage from "./HomePage";
 import ProjectPage from "./ProjectsPage";
 import PersonalProjectsPage from "./PersonalProjectsPage";
@@ -35,6 +36,8 @@ class App extends Component {
               {/* <Route path="/link3" component={something} /> */}
             </Switch>
           </Layout>
+
+          <Footer />
         </Router>
       </>
     );
