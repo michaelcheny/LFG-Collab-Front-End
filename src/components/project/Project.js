@@ -5,8 +5,6 @@ import moment from "moment";
 
 const Project = ({ name, description, users, addedOn, category }) => {
   const addDate = moment(addedOn).format("MMM DD, YYYY - h:mma");
-  const cat = category.split("_").join(" ");
-  const categoryCapped = cat.charAt(0).toUpperCase() + cat.slice(1);
 
   const renderCollaborators = () => {
     return (
@@ -23,7 +21,7 @@ const Project = ({ name, description, users, addedOn, category }) => {
     <>
       <br />
       <Card>
-        <Card.Header>{categoryCapped}</Card.Header>
+        <Card.Header>{category}</Card.Header>
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>{description}</Card.Text>

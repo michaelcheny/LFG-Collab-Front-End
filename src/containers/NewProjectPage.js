@@ -59,15 +59,15 @@ class NewProjectPage extends Component {
               required
             >
               <option disabled>Select a category</option>
-              <option value="automotive">Automotive</option>
-              <option value="charity">Charity</option>
-              <option value="educational">Educational</option>
-              <option value="makers_and_crafting">Makers and Crafting</option>
-              <option value="health_and_fitness">Health and Fitness</option>
-              <option value="food_and_drink">Food and Drink</option>
-              <option value="programming">Programming</option>
-              <option value="social_media">Social Media</option>
-              <option value="others">Others</option>
+              <option value="Automotive">Automotive</option>
+              <option value="Charity">Charity</option>
+              <option value="Educational">Educational</option>
+              <option value="Makers and Crafting">Makers and Crafting</option>
+              <option value="Health and Fitness">Health and Fitness</option>
+              <option value="Food and Drink">Food and Drink</option>
+              <option value="Programming">Programming</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Others">Others</option>
             </Form.Control>
           </Form.Group>
 
