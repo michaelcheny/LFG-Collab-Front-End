@@ -34,6 +34,12 @@ code {
   color: #bbb;
 }
 
+#dropdown-basic-button {
+  /* display: flex; */
+  /* text-align: right; */
+  float: right;
+}
+
 /* nav {
   display: flex;
   justify-content: space-around;

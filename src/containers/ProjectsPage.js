@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Project from "../components/project/Project";
 import { fetchProjects } from "../actions/projectActions";
 import Spinner from "react-bootstrap/Spinner";
+import { CategorySelector } from "../components/project/CategorySelector";
 
 class ProjectPage extends Component {
   componentDidMount() {
@@ -14,6 +15,7 @@ class ProjectPage extends Component {
     return (
       <div>
         <h1>Available Projects</h1>
+        <CategorySelector /> <br />
         {!loading ? (
           projects.map((project, index) => {
             return (
