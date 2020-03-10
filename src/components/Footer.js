@@ -11,15 +11,15 @@ const Footer = () => {
         right: "0"
       }}
     >
-      <hr />
+      {/* <hr /> */}
       <h6
         style={{
           textAlign: "center",
-          padding: "10px",
+          padding: "15px",
           color: "white"
         }}
       >
-        Footer
+        ©2020 Michael Chen
       </h6>
     </div>
   );
