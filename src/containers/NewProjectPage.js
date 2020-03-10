@@ -10,7 +10,7 @@ class NewProjectPage extends Component {
     name: "",
     description: "",
     online: true,
-    category: "programming"
+    category: "Automotive"
   };
 
   handleSubmit = event => {
@@ -87,7 +87,7 @@ class NewProjectPage extends Component {
             type="switch"
             id="custom-switch"
             label="Online project"
-            checked={this.state.online}
+            defaultChecked={this.state.online}
             onClick={() =>
               this.setState(prevState => ({
                 online: !prevState.online

@@ -15,39 +15,33 @@ class ProjectPage extends Component {
   }
 
   renderProjects = () => {
-    const { projects, loading } = this.props;
+    const { allProjects, loading } = this.props;
+    let projects;
+    let selected;
+
+    if (this.state.categoryId) {
+      selected = allProjects.filter(
+        project => project.category_id.toString() === this.state.categoryId
+      );
+    }
+
+    this.state.categoryId === null || this.state.categoryId === "all"
+      ? (projects = allProjects)
+      : (projects = selected);
+
     if (!loading) {
-      if (this.state.categoryId) {
-        const selectedCategory = projects.filter(project => {
-          return project.category_id.toString() === this.state.categoryId;
-        });
-        USE TERNARY TO SELECT WHICH THING TO MAP if all or null then projects, else selectedCategory
-        return selectedCategory.map(project => {
-          return (
-            <Project
-              key={project.id}
-              name={project.name}
-              description={project.description}
-              users={project.users}
-              addedOn={project.created_at}
-              category={project.category.name}
-            />
-          );
-        });
-      } else {
-        return projects.map(project => {
-          return (
-            <Project
-              key={project.id}
-              name={project.name}
-              description={project.description}
-              users={project.users}
-              addedOn={project.created_at}
-              category={project.category.name}
-            />
-          );
-        });
-      }
+      return projects.map(project => {
+        return (
+          <Project
+            key={project.id}
+            name={project.name}
+            description={project.description}
+            users={project.users}
+            addedOn={project.created_at}
+            category={project.category.name}
+          />
+        );
+      });
     } else {
       return (
         <Spinner animation="border" role="status">
@@ -73,7 +67,7 @@ class ProjectPage extends Component {
 }
 
 const mapStateToProps = ({ projects }) => {
-  return { projects: projects.projects, loading: projects.loading };
+  return { allProjects: projects.projects, loading: projects.loading };
 };
 
 const mapDispatchToProps = dispatch => {
