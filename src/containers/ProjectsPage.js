@@ -15,7 +15,8 @@ class ProjectPage extends Component {
     return (
       <div>
         <h1>Available Projects</h1>
-        <CategorySelector /> <br />
+        <CategorySelector />
+        <br />
         {!loading ? (
           projects.map((project, index) => {
             return (
