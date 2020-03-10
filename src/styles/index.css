@@ -18,7 +18,7 @@ code {
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 10px;
+  padding-bottom: 11px;
 }
 
 .footer {
@@ -30,7 +30,7 @@ code {
 
 .footer-text {
   text-align: center;
-  padding: 10px;
+  padding: 11px;
   color: #bbb;
 }
 

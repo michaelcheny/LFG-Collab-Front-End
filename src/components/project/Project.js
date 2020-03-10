@@ -11,7 +11,7 @@ const Project = ({ name, description, users, addedOn, category }) => {
       <ul>
         Collaborators:
         {users.map(user => (
-          <li>{user.name}</li>
+          <li key={user.id}>{user.name}</li>
         ))}
       </ul>
     );
