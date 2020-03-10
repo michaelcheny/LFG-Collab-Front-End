@@ -2,12 +2,17 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: "#222"
+      }}
+    >
       <hr />
       <h6
         style={{
           textAlign: "center",
-          padding: "20px"
+          padding: "20px",
+          color: "white"
         }}
       >
         Footer

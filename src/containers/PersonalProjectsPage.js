@@ -16,7 +16,7 @@ class PersonalProjectsPage extends Component {
         <h1>My Projects</h1>
 
         {projects.map(project => {
-          console.log(project);
+          // console.log(project);
           return (
             <Project
               key={project.id}

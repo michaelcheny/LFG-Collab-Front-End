@@ -5,7 +5,8 @@ import moment from "moment";
 
 const Project = ({ name, description, users, addedOn, category }) => {
   const addDate = moment(addedOn).format("MMM DD, YYYY - h:mma");
-  const categoryCapped = category.charAt(0).toUpperCase() + category.slice(1);
+  const cat = category.split("_").join(" ");
+  const categoryCapped = cat.charAt(0).toUpperCase() + cat.slice(1);
 
   const renderCollaborators = () => {
     return (
