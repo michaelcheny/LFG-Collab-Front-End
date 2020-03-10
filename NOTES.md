@@ -15,3 +15,9 @@ has_many :projects, through: :user_projcts
 
 Project ()
 :Topic,
+
+add maps and location
+
+allow users to set project collaborations in person or online and add google maps to show location
+
+ADD CATEGORY

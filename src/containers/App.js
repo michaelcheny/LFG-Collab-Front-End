@@ -18,14 +18,9 @@ class App extends Component {
   render() {
     // const { authenticated, currentUser, logOut, token } = this.props;
     return (
-      <>
+      <div className="app">
         <Router>
-          <NavBar
-          // loggedIn={authenticated}
-          // currentUser={currentUser.name}
-          // logOut={logOut}
-          // token={token}
-          />
+          <NavBar />
           <Layout>
             <Switch>
               <Route path="/" exact component={HomePage} />
@@ -36,10 +31,9 @@ class App extends Component {
               {/* <Route path="/link3" component={something} /> */}
             </Switch>
           </Layout>
-
           <Footer />
         </Router>
-      </>
+      </div>
     );
   }
 }
