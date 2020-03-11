@@ -34,6 +34,7 @@ class ProjectPage extends Component {
         return (
           <Project
             key={project.id}
+            id={project.id}
             name={project.name}
             description={project.description}
             users={project.users}

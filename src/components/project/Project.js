@@ -1,9 +1,10 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 import moment from "moment";
 
-const Project = ({ name, description, users, addedOn, category }) => {
+const Project = ({ id, name, description, users, addedOn, category }) => {
   const addDate = moment(addedOn).format("MMM DD, YYYY - h:mma");
 
   const renderCollaborators = () => {
@@ -23,7 +24,9 @@ const Project = ({ name, description, users, addedOn, category }) => {
       <Card>
         <Card.Header>{category}</Card.Header>
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
+          <Card.Title>
+            <Link to={`projects/${id}`}>{name}</Link>
+          </Card.Title>
           <Card.Text>{description}</Card.Text>
           <Button variant="dark">Go somewhere</Button>
         </Card.Body>

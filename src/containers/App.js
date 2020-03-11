@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import HomePage from "./HomePage";
 import ProjectPage from "./ProjectsPage";
 import PersonalProjectsPage from "./PersonalProjectsPage";
+import ProjectDetail from "../components/project/ProjectDetail";
 import SignupPage from "./SignupPage";
 import NewProjectPage from "./NewProjectPage";
 
@@ -24,7 +25,9 @@ class App extends Component {
           <Layout>
             <Switch>
               <Route path="/" exact component={HomePage} />
-              <Route path="/projects" component={ProjectPage} />
+              <Route path="/projects" exact component={ProjectPage} />
+              <Route path="/projects/:id" component={ProjectDetail} />
+
               <Route path="/myprojects" component={PersonalProjectsPage} />
               <Route path="/registration" component={SignupPage} />
               <Route path="/newproject" component={NewProjectPage} />
