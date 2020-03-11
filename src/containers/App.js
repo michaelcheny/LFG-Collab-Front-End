@@ -25,10 +25,10 @@ class App extends Component {
           <Layout>
             <Switch>
               <Route path="/" exact component={HomePage} />
+              <Route path="/myprojects" exact component={ProjectPage} />
               <Route path="/projects" exact component={ProjectPage} />
               <Route path="/projects/:id" component={ProjectDetail} />
 
-              <Route path="/myprojects" component={PersonalProjectsPage} />
               <Route path="/registration" component={SignupPage} />
               <Route path="/newproject" component={NewProjectPage} />
               {/* <Route path="/link3" component={something} /> */}

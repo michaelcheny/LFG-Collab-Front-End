@@ -13,9 +13,8 @@ class NewProjectPage extends Component {
     category: "Automotive"
   };
 
-  handleSubmit = event => {
+  handleSubmit = () => {
     const { token, createProject } = this.props;
-    event.preventDefault();
     console.log(this.state);
     createProject(token, this.state);
   };
@@ -29,6 +28,12 @@ class NewProjectPage extends Component {
   handleCategoryChange = event => {
     this.setState({ category: event.target.value });
   };
+
+  handleKeyPress(target) {
+    if (target.key === "Enter") {
+      this.handleSubmit();
+    }
+  }
 
   render() {
     const { authenticated } = this.props;
@@ -79,6 +84,7 @@ class NewProjectPage extends Component {
               name="description"
               onChange={this.handleChange}
               value={this.state.description}
+              onKeyPress={e => this.handleKeyPress(e)}
               required
             />
           </Form.Group>
@@ -88,6 +94,7 @@ class NewProjectPage extends Component {
             id="custom-switch"
             label="Online project"
             defaultChecked={this.state.online}
+            onKeyPress={e => this.handleKeyPress(e)}
             onClick={() =>
               this.setState(prevState => ({
                 online: !prevState.online
@@ -95,7 +102,15 @@ class NewProjectPage extends Component {
             }
           />
 
-          <Button variant="dark" type="submit" block>
+          <Button
+            variant="dark"
+            type="submit"
+            onClick={e => {
+              e.preventDefault();
+              this.handleSubmit();
+            }}
+            block
+          >
             Post Project
           </Button>
         </Form>

@@ -30,7 +30,7 @@ export const fetchPersonalProjects = () => {
         throw res;
       }
       const data = await res.json();
-      console.log(data.projects);
+      // console.log(data.projects);
       dispatch({ type: ADD_MY_PROJECTS, payload: data.projects });
     } catch (error) {
       console.log(error.message);

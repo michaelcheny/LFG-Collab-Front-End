@@ -16,9 +16,9 @@ class LogInForm extends Component {
     });
   };
 
-  handleSubmit = async event => {
+  handleSubmit = async () => {
     const { email, password } = this.state;
-    event.preventDefault();
+    // event.preventDefault();
 
     let token = await this.props.getToken();
     this.props.login(token, email, password);
@@ -28,6 +28,12 @@ class LogInForm extends Component {
       password: ""
     });
   };
+
+  handleKeyPress(target) {
+    if (target.key === "Enter") {
+      this.handleSubmit();
+    }
+  }
 
   render() {
     const { auth } = this.props;
@@ -51,6 +57,7 @@ class LogInForm extends Component {
           placeholder="Password"
           onChange={this.handleChange}
           value={this.state.password}
+          onKeyPress={e => this.handleKeyPress(e)}
         />
         <Button
           className="nav-routes"

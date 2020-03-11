@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Project from "../components/project/Project";
-import { fetchProjects } from "../actions/projectActions";
+import {
+  fetchProjects,
+  fetchPersonalProjects
+} from "../actions/projectActions";
 import Spinner from "react-bootstrap/Spinner";
 import { CategorySelector } from "../components/project/CategorySelector";
 
@@ -11,23 +14,42 @@ class ProjectPage extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchProjects();
+    console.log(this.props.match);
+    console.log(this.props.match.url);
+    const { url } = this.props.match;
+    if (url === "/projects") {
+      this.props.fetchProjects();
+    } else {
+      this.props.fetchMyProjects();
+    }
   }
 
   renderProjects = () => {
-    const { allProjects, loading } = this.props;
+    const { allProjects, myProjects, loading, match } = this.props;
     let projects;
-    let selected;
+    // let selected;
 
-    if (this.state.categoryId) {
-      selected = allProjects.filter(
-        project => project.category_id.toString() === this.state.categoryId
-      );
+    // console.log(this.props);
+
+    if (match.url == "/projects") {
+      if (this.state.categoryId === null || this.state.categoryId === "all") {
+        projects = allProjects;
+      } else {
+        projects = allProjects.filter(
+          project => project.category_id == this.state.categoryId
+        );
+      }
+    } else {
+      if (this.state.categoryId === null || this.state.categoryId === "all") {
+        projects = myProjects;
+      } else {
+        projects = myProjects.filter(
+          project => project.category_id == this.state.categoryId
+        );
+      }
     }
 
-    this.state.categoryId === null || this.state.categoryId === "all"
-      ? (projects = allProjects)
-      : (projects = selected);
+    console.log(projects);
 
     if (!loading) {
       return projects.map(project => {
@@ -68,12 +90,17 @@ class ProjectPage extends Component {
 }
 
 const mapStateToProps = ({ projects }) => {
-  return { allProjects: projects.projects, loading: projects.loading };
+  return {
+    allProjects: projects.projects,
+    myProjects: projects.personalProjects,
+    loading: projects.loading
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchProjects: () => dispatch(fetchProjects())
+    fetchProjects: () => dispatch(fetchProjects()),
+    fetchMyProjects: () => dispatch(fetchPersonalProjects())
   };
 };
 
