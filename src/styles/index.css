@@ -13,17 +13,17 @@ code {
     monospace;
 }
 
-.App {
+.app {
   min-height: 100vh; /* will cover the 100% of viewport */
   overflow: hidden;
   display: block;
   position: relative;
-  padding-bottom: 11px;
+  padding-bottom: 60px;
 }
 
 .footer {
   background-color: #222;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
