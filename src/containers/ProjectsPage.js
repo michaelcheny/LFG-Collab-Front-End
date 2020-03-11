@@ -14,8 +14,8 @@ class ProjectPage extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.match);
-    console.log(this.props.match.url);
+    // console.log(this.props.match);
+    // console.log(this.props.match.url);
     const { url } = this.props.match;
     if (url === "/projects") {
       this.props.fetchProjects();
@@ -24,29 +24,48 @@ class ProjectPage extends Component {
     }
   }
 
+  // to allow switching from projects to myprojects since they share same component
+  componentDidUpdate(prevProps) {
+    // console.log(this.props.location.pathname);
+    const { pathname } = this.props.location;
+    if (
+      pathname === "/projects" &&
+      prevProps.location.pathname === "/myprojects"
+    ) {
+      console.log("the previous path was " + prevProps.location.pathname);
+      this.props.fetchProjects();
+    } else if (
+      pathname === "/myprojects" &&
+      prevProps.location.pathname === "/projects"
+    ) {
+      console.log("the previous path was " + prevProps.location.pathname);
+
+      this.props.fetchMyProjects();
+    }
+  }
+
+  // filterProjects = projects => {
+  //   return projects.filter(
+  //     project => project.category_id == this.state.categoryId
+  //   );
+  // };
+
   renderProjects = () => {
     const { allProjects, myProjects, loading, match } = this.props;
     let projects;
-    // let selected;
 
-    // console.log(this.props);
-
-    if (match.url == "/projects") {
-      if (this.state.categoryId === null || this.state.categoryId === "all") {
-        projects = allProjects;
-      } else {
-        projects = allProjects.filter(
-          project => project.category_id == this.state.categoryId
-        );
-      }
+    if (match.url === "/projects") {
+      this.state.categoryId === null || this.state.categoryId === "all"
+        ? (projects = allProjects)
+        : (projects = allProjects.filter(
+            project => project.category_id == this.state.categoryId
+          ));
     } else {
-      if (this.state.categoryId === null || this.state.categoryId === "all") {
-        projects = myProjects;
-      } else {
-        projects = myProjects.filter(
-          project => project.category_id == this.state.categoryId
-        );
-      }
+      this.state.categoryId === null || this.state.categoryId === "all"
+        ? (projects = myProjects)
+        : (projects = myProjects.filter(
+            project => project.category_id == this.state.categoryId
+          ));
     }
 
     console.log(projects);
