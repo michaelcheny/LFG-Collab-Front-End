@@ -6,8 +6,7 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import HomePage from "./HomePage";
 import ProjectPage from "./ProjectsPage";
-import PersonalProjectsPage from "./PersonalProjectsPage";
-import ProjectDetail from "../components/project/ProjectDetail";
+import ProjectDetail from "./ProjectDetail";
 import SignupPage from "./SignupPage";
 import NewProjectPage from "./NewProjectPage";
 

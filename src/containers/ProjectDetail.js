@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import CommentForm from "../CommentForm";
-import Comments from "../Comments";
+import CommentForm from "../components/CommentForm";
+import Comments from "../components/Comments";
 
 class ProjectDetail extends Component {
   state = {
