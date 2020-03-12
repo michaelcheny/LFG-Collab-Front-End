@@ -3,30 +3,31 @@ import { connect } from "react-redux";
 import CommentForm from "../components/CommentForm";
 import Comments from "../components/Comments";
 import { createComment } from "../actions/commentActions";
+import { fetchProject } from "../actions/projectActions";
 
 class ProjectDetail extends Component {
-  state = {
-    project: []
-  };
+  // state = {
+  //   project: []
+  // };
 
   componentDidMount() {
-    this.fetchProject();
+    this.props.fetchProject(this.props.match.params.id);
   }
 
-  fetchProject = async () => {
-    const { id } = this.props.match.params;
-    const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`);
-    const data = await res.json();
-    console.log(data);
-    this.setState({
-      project: data
-    });
-    // shove this data into the state and make a show detail page YEEEEEET
-  };
+  // fetchProject = async () => {
+  //   const { id } = this.props.match.params;
+  //   const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`);
+  //   const data = await res.json();
+  //   console.log(data);
+  //   this.setState({
+  //     project: data
+  //   });
+  //   // shove this data into the state and make a show detail page YEEEEEET
+  // };
 
   render() {
-    console.log(this.state.project);
-    const { project } = this.state;
+    // console.log(this.state.project);
+    const { project } = this.props;
 
     return (
       <div>
@@ -46,8 +47,9 @@ class ProjectDetail extends Component {
 }
 
 const mapStateToProps = ({ projects, token }) => {
+  console.log(projects);
   return {
-    projects,
+    project: projects.currentProject,
     token: token.token
   };
 };
@@ -55,7 +57,8 @@ const mapStateToProps = ({ projects, token }) => {
 const mapDispatchToProps = dispatch => {
   return {
     addComment: (id, token, comment) =>
-      dispatch(createComment(id, token, comment))
+      dispatch(createComment(id, token, comment)),
+    fetchProject: id => dispatch(fetchProject(id))
   };
 };
 
