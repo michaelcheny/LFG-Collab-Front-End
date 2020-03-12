@@ -40,6 +40,11 @@ code {
   float: right;
 }
 
+.project-date {
+  float: right;
+  font-size: small;
+}
+
 /* nav {
   display: flex;
   justify-content: space-around;

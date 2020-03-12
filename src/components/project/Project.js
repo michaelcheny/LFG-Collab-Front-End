@@ -13,7 +13,8 @@ const Project = ({
   category,
   authenticated
 }) => {
-  const addDate = moment(addedOn).format("MMM DD, YYYY - h:mma");
+  // const addDate = moment(addedOn).format("MMM DD, YYYY - h:mma");
+  const addDate = moment(addedOn).format("MMM DD, YYYY");
 
   const renderCollaborators = () => {
     return (
@@ -26,22 +27,35 @@ const Project = ({
     );
   };
 
+  // const renderButton = () => {
+  //   return (
+  //     <Button variant="dark" disabled={!authenticated} size="sm">
+  //           Join Project
+  //         </Button>
+  //   )
+  // }
+  // }
+
   return (
     <>
       <br />
       <Card>
-        <Card.Header>{category}</Card.Header>
+        <Card.Header>
+          {category}
+          <span className="project-date">{addDate}</span>
+        </Card.Header>
         <Card.Body>
           <Card.Title>
             <Link to={`projects/${id}`}>{name}</Link>
           </Card.Title>
           <Card.Text>{description}</Card.Text>
+          <hr />
+          {renderCollaborators()}
+        </Card.Body>
+        <Card.Footer className="text-muted">
           <Button variant="dark" disabled={!authenticated} size="sm">
             Join Project
           </Button>
-        </Card.Body>
-        <Card.Footer className="text-muted">
-          {renderCollaborators()}
         </Card.Footer>
       </Card>
     </>
