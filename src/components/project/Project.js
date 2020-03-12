@@ -17,6 +17,7 @@ const Project = ({ authenticated, project }) => {
     comments,
     reactions
   } = project;
+
   const addDate = moment(created_at).format("MMM DD, YYYY");
 
   const renderCollaborators = () => {
@@ -52,11 +53,11 @@ const Project = ({ authenticated, project }) => {
         </Card.Body>
         <Card.Footer className="text-muted">
           <Link to={`projects/${id}`}>view project</Link>
-          <Button className="like-button" variant="dark" size="sm">
+          <Button className="button" variant="dark" size="sm">
             comments <Badge variant="light">{comments.length}</Badge>
           </Button>{" "}
           <Button
-            className="like-button"
+            className="button"
             variant="dark"
             // disabled={!authenticated}
             size="sm"

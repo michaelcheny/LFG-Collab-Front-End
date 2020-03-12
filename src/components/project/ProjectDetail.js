@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import CommentForm from "../CommentForm";
 
 class ProjectDetail extends Component {
   state = {
@@ -32,6 +33,8 @@ class ProjectDetail extends Component {
         {project.name}
 
         {project.description}
+
+        <CommentForm />
       </div>
     );
   }
