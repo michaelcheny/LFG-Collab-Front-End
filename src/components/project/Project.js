@@ -4,7 +4,15 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
-const Project = ({ id, name, description, users, addedOn, category }) => {
+const Project = ({
+  id,
+  name,
+  description,
+  users,
+  addedOn,
+  category,
+  authenticated
+}) => {
   const addDate = moment(addedOn).format("MMM DD, YYYY - h:mma");
 
   const renderCollaborators = () => {
@@ -28,7 +36,9 @@ const Project = ({ id, name, description, users, addedOn, category }) => {
             <Link to={`projects/${id}`}>{name}</Link>
           </Card.Title>
           <Card.Text>{description}</Card.Text>
-          <Button variant="dark">Go somewhere</Button>
+          <Button variant="dark" disabled={!authenticated} size="sm">
+            Join Project
+          </Button>
         </Card.Body>
         <Card.Footer className="text-muted">
           {renderCollaborators()}

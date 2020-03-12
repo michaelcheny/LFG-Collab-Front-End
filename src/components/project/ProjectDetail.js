@@ -2,27 +2,36 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class ProjectDetail extends Component {
+  state = {
+    project: []
+  };
+
   componentDidMount() {
     this.fetchProject();
   }
 
   fetchProject = async () => {
     const { id } = this.props.match.params;
-    console.log(id);
+    // console.log(this.props.match);
+    // console.log(id);
     const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`);
     const data = await res.json();
     console.log(data);
+    this.setState({
+      project: data
+    });
     // shove this data into the state and make a show detail page YEEEEEET
   };
 
   render() {
-    // console.log(this.props.match.params.id);
-    // let { slug } = useParams();
-    // console.log(slug);
+    console.log(this.state.project);
+    const { project } = this.state;
+
     return (
       <div>
-        sdfsdf
-        <br></br>
+        {project.name}
+
+        {project.description}
       </div>
     );
   }

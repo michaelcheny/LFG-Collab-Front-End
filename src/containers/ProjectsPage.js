@@ -14,8 +14,6 @@ class ProjectPage extends Component {
   };
 
   componentDidMount() {
-    // console.log(this.props.match);
-    // console.log(this.props.match.url);
     const { url } = this.props.match;
     if (url === "/projects") {
       this.props.fetchProjects();
@@ -26,32 +24,28 @@ class ProjectPage extends Component {
 
   // to allow switching from projects to myprojects since they share same component
   componentDidUpdate(prevProps) {
-    // console.log(this.props.location.pathname);
     const { pathname } = this.props.location;
     if (
       pathname === "/projects" &&
       prevProps.location.pathname === "/myprojects"
     ) {
-      console.log("the previous path was " + prevProps.location.pathname);
       this.props.fetchProjects();
     } else if (
       pathname === "/myprojects" &&
       prevProps.location.pathname === "/projects"
     ) {
-      console.log("the previous path was " + prevProps.location.pathname);
-
       this.props.fetchMyProjects();
     }
   }
 
-  // filterProjects = projects => {
-  //   return projects.filter(
-  //     project => project.category_id == this.state.categoryId
-  //   );
-  // };
-
   renderProjects = () => {
-    const { allProjects, myProjects, loading, match } = this.props;
+    const {
+      allProjects,
+      myProjects,
+      loading,
+      match,
+      authenticated
+    } = this.props;
     let projects;
 
     if (match.url === "/projects") {
@@ -81,6 +75,7 @@ class ProjectPage extends Component {
             users={project.users}
             addedOn={project.created_at}
             category={project.category.name}
+            authenticated={authenticated}
           />
         );
       });
@@ -108,11 +103,12 @@ class ProjectPage extends Component {
   }
 }
 
-const mapStateToProps = ({ projects }) => {
+const mapStateToProps = ({ projects, user }) => {
   return {
     allProjects: projects.projects,
     myProjects: projects.personalProjects,
-    loading: projects.loading
+    loading: projects.loading,
+    authenticated: user.authenticated
   };
 };
 
