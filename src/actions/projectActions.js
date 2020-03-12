@@ -1,4 +1,9 @@
-import { LOADING_PROJECTS, ADD_PROJECTS, ADD_MY_PROJECTS } from "./actionTypes";
+import {
+  LOADING_PROJECTS,
+  ADD_PROJECTS,
+  ADD_MY_PROJECTS,
+  ADD_CURRENT_PROJECT
+} from "./actionTypes";
 
 export const fetchProjects = () => {
   return async dispatch => {
@@ -67,6 +72,23 @@ export const createProject = (token, project) => {
       // do something hereeeee
     } catch (error) {
       console.log(error.message);
+    }
+  };
+};
+
+export const fetchProject = id => {
+  return async dispatch => {
+    try {
+      dispatch({ type: LOADING_PROJECTS });
+      const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`);
+      const data = await res.json();
+      console.log(data);
+      this.setState({
+        project: data
+      });
+      dispatch({ type: ADD_CURRENT_PROJECT, payload: data });
+    } catch (error) {
+      console.log(error);
     }
   };
 };
