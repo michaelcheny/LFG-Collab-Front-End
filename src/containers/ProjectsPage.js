@@ -69,13 +69,14 @@ class ProjectPage extends Component {
         return (
           <Project
             key={project.id}
-            id={project.id}
-            name={project.name}
-            description={project.description}
-            users={project.users}
-            addedOn={project.created_at}
-            category={project.category.name}
+            // id={project.id}
+            // name={project.name}
+            // description={project.description}
+            // users={project.users}
+            // addedOn={project.created_at}
+            // category={project.category.name}
             authenticated={authenticated}
+            project={project}
           />
         );
       });

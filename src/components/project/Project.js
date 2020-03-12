@@ -5,16 +5,19 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 const Project = ({
-  id,
-  name,
-  description,
-  users,
-  addedOn,
-  category,
-  authenticated
+  // id,
+  // name,
+  // description,
+  // users,
+  // addedOn,
+  // category,
+  authenticated,
+  project
 }) => {
   // const addDate = moment(addedOn).format("MMM DD, YYYY - h:mma");
-  const addDate = moment(addedOn).format("MMM DD, YYYY");
+  console.log(project);
+  const { id, name, description, users, created_at, category } = project;
+  const addDate = moment(created_at).format("MMM DD, YYYY");
 
   const renderCollaborators = () => {
     return (
@@ -27,21 +30,16 @@ const Project = ({
     );
   };
 
-  // const renderButton = () => {
-  //   return (
-  //     <Button variant="dark" disabled={!authenticated} size="sm">
-  //           Join Project
-  //         </Button>
-  //   )
-  // }
-  // }
+  const handleJoinProject = () => {
+    console.log("clicked");
+  };
 
   return (
     <>
       <br />
       <Card>
         <Card.Header>
-          {category}
+          {category.name}
           <span className="project-date">{addDate}</span>
         </Card.Header>
         <Card.Body>
@@ -53,7 +51,12 @@ const Project = ({
           {renderCollaborators()}
         </Card.Body>
         <Card.Footer className="text-muted">
-          <Button variant="dark" disabled={!authenticated} size="sm">
+          <Button
+            variant="dark"
+            disabled={!authenticated}
+            size="sm"
+            onClick={handleJoinProject}
+          >
             Join Project
           </Button>
         </Card.Footer>
