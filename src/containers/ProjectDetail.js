@@ -36,13 +36,17 @@ class ProjectDetail extends Component {
         {project.description}
 
         <CommentForm />
-        <Comments />
+        <Comments comments={project.comments} />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = ({ projects }) => {
+  return {
+    projects
+  };
+};
 
 const mapDispatchToProps = {};
 
