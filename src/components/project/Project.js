@@ -1,22 +1,22 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Badge from "react-bootstrap/Badge";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
-const Project = ({
-  // id,
-  // name,
-  // description,
-  // users,
-  // addedOn,
-  // category,
-  authenticated,
-  project
-}) => {
-  // const addDate = moment(addedOn).format("MMM DD, YYYY - h:mma");
-  console.log(project);
-  const { id, name, description, users, created_at, category } = project;
+const Project = ({ authenticated, project }) => {
+  // console.log(project);
+  const {
+    id,
+    name,
+    description,
+    users,
+    created_at,
+    category,
+    comments,
+    reactions
+  } = project;
   const addDate = moment(created_at).format("MMM DD, YYYY");
 
   const renderCollaborators = () => {
@@ -30,14 +30,14 @@ const Project = ({
     );
   };
 
-  const handleJoinProject = () => {
-    console.log("clicked");
-  };
+  // const handleJoinProject = () => {
+  //   console.log("clicked");
+  // };
 
   return (
     <>
       <br />
-      <Card>
+      <Card bg="light" border="light">
         <Card.Header>
           {category.name}
           <span className="project-date">{addDate}</span>
@@ -51,13 +51,21 @@ const Project = ({
           {renderCollaborators()}
         </Card.Body>
         <Card.Footer className="text-muted">
+          <Link to={`projects/${id}`}>view project</Link>
+          <Button className="like-button" variant="dark" size="sm">
+            comments <Badge variant="light">{comments.length}</Badge>
+          </Button>{" "}
           <Button
+            className="like-button"
             variant="dark"
-            disabled={!authenticated}
+            // disabled={!authenticated}
             size="sm"
-            onClick={handleJoinProject}
+            // onClick={handleJoinProject}
           >
-            Join Project
+            <span role="img" aria-label="heart">
+              ❤️
+            </span>{" "}
+            <Badge variant="light">{reactions.length}</Badge>
           </Button>
         </Card.Footer>
       </Card>
