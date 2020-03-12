@@ -83,9 +83,6 @@ export const fetchProject = id => {
       const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`);
       const data = await res.json();
       console.log(data);
-      // this.setState({
-      //   project: data
-      // });
       dispatch({ type: ADD_CURRENT_PROJECT, payload: data });
     } catch (error) {
       console.log(error);

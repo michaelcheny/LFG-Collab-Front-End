@@ -7,7 +7,7 @@ const Comments = ({ comments }) => {
   const renderComments = () => {
     if (comments) {
       return comments.map(comment => (
-        <Card>
+        <Card key={comment.id}>
           <Card.Body>
             <blockquote className="blockquote mb-0">
               <p> {comment.content} </p>

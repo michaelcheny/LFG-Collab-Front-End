@@ -2,7 +2,8 @@ import {
   LOADING_PROJECTS,
   ADD_PROJECTS,
   ADD_MY_PROJECTS,
-  ADD_CURRENT_PROJECT
+  ADD_CURRENT_PROJECT,
+  ADD_COMMENT
 } from "../actions/actionTypes";
 
 const projectsReducer = (
@@ -34,6 +35,14 @@ const projectsReducer = (
         ...state,
         currentProject: action.payload,
         loading: false
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        currentProject: {
+          ...state.currentProject,
+          comments: [...state.currentProject.comments, action.payload]
+        }
       };
     default:
       return state;
