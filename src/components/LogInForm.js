@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Button from "react-bootstrap/Button";
 import { Redirect } from "react-router-dom";
 import { getToken, Login } from "../actions/usersActions";
+import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
 
 class LogInForm extends Component {
   constructor(props) {
@@ -43,74 +44,59 @@ class LogInForm extends Component {
 
   render() {
     const { auth } = this.props;
-    const { onHide, show } = this.props;
 
     if (auth) {
       return <Redirect to="/" />;
     }
 
-    // return (
-    //   <form onSubmit={this.handleSubmit}>
-    //     <input
-    //       type="text"
-    //       name="email"
-    //       placeholder="Email"
-    //       onChange={this.handleChange}
-    //       value={this.state.email}
-    //     />
-    //     <input
-    //       type="password"
-    //       name="password"
-    //       placeholder="Password"
-    //       onChange={this.handleChange}
-    //       value={this.state.password}
-    //       onKeyPress={e => this.handleKeyPress(e)}
-    //     />
-    //     <Button
-    //       className="nav-routes"
-    //       variant="secondary"
-    //       size="sm"
-    //       onClick={this.handleSubmit}
-    //     >
-    //       Log In
-    //     </Button>
-    //   </form>
-    // );
-
     return (
       <>
         <Modal
-          // onHide={onHide}
-          // show={show}
           {...this.props}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
         >
-          {/* {console.log(this.props)} */}
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-              Modal heading
-            </Modal.Title>
+            <Modal.Title id="contained-modal-title-vcenter">Log In</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Centered Modal</h4>
-            <p>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-              ac consectetur ac, vestibulum at eros.
-            </p>
+            <Form>
+              <Form.Group controlId="formGroupEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="Enter email"
+                  onChange={this.handleChange}
+                  value={this.state.email}
+                />
+              </Form.Group>
+              <Form.Group controlId="formGroupPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  onChange={this.handleChange}
+                  value={this.state.password}
+                  onKeyPress={e => this.handleKeyPress(e)}
+                />
+              </Form.Group>
+            </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.props.onHide}>Close</Button>
+            <Button
+              className="nav-routes"
+              variant="dark"
+              size="sm"
+              // block
+              onClick={this.handleSubmit}
+            >
+              Log In
+            </Button>
           </Modal.Footer>
         </Modal>
-        {/* <Button
-          variant="primary"
-          onClick={() => this.setState({ modalShow: true })}
-        >
-          Launch vertically centered modal
-        </Button> */}
       </>
     );
   }
