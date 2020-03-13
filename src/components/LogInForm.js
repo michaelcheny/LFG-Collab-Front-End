@@ -12,8 +12,7 @@ class LogInForm extends Component {
 
     this.state = {
       email: "",
-      password: "",
-      modalShow: false
+      password: ""
     };
   }
 
@@ -25,11 +24,8 @@ class LogInForm extends Component {
 
   handleSubmit = async () => {
     const { email, password } = this.state;
-    // event.preventDefault();
-
     let token = await this.props.getToken();
     this.props.login(token, email, password);
-
     this.setState({
       email: "",
       password: ""
