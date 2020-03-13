@@ -21,15 +21,7 @@ const Comments = ({ comments }) => {
     }
   };
 
-  return (
-    <div>
-      {renderComments()}
-      {/* {comments.map(comment => {
-        return <div>comment.content</div>;
-      })}
-      <br /> */}
-    </div>
-  );
+  return <div>{renderComments()}</div>;
 };
 
 export default Comments;

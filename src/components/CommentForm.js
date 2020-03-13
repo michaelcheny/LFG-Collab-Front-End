@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const CommentForm = ({ projectId, token, addComment }) => {
+const CommentForm = ({ projectId, token, addComment, authenticated }) => {
   // console.log(addComment);
   const [content, setContent] = useState("");
 
@@ -28,6 +28,7 @@ const CommentForm = ({ projectId, token, addComment }) => {
           variant="dark"
           type="submit"
           onClick={handleSubmit}
+          disabled={!authenticated}
         >
           Post comment
         </Button>

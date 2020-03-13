@@ -27,7 +27,7 @@ class ProjectDetail extends Component {
 
   render() {
     // console.log(this.state.project);
-    const { project } = this.props;
+    const { project, authenticated } = this.props;
 
     return (
       <div>
@@ -37,20 +37,22 @@ class ProjectDetail extends Component {
           projectId={project.id}
           token={this.props.token}
           addComment={this.props.addComment}
+          authenticated={authenticated}
         />
         <br />
-        MAKE THIS SHIT RERENDER MAYBE USE REDUX TO STORE THIS STATE AND STUFF
+        <h5>Comments:</h5>
         <Comments comments={project.comments} />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ projects, token }) => {
+const mapStateToProps = ({ projects, token, user }) => {
   console.log(projects);
   return {
     project: projects.currentProject,
-    token: token.token
+    token: token.token,
+    authenticated: user.authenticated
   };
 };
 
