@@ -22,6 +22,10 @@ const CommentForm = ({ projectId, token, addComment, authenticated }) => {
           rows="3"
           value={content}
           onChange={event => setContent(event.target.value)}
+          disabled={!authenticated}
+          placeholder={
+            authenticated ? "Comment here" : "Log in to leave a comment"
+          }
         />
         <Button
           className="button"

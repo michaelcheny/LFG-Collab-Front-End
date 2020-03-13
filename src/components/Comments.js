@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 
 const Comments = ({ comments }) => {
-  console.log(comments);
+  // console.log(comments);
 
   const renderComments = () => {
     if (comments) {

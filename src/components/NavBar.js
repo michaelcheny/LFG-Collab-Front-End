@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import { getToken, Logout } from "../actions/usersActions";
 
 class NavBar extends Component {
+  state = { showLogin: false };
+
   handleLogout = () => {
     const { token } = this.props;
     this.props.logOut(token);
@@ -54,9 +56,19 @@ class NavBar extends Component {
             </Link>
           </Nav.Item>
 
-          <li className="nav-routes">
-            <LogInForm />
-          </li>
+          <Nav.Item>
+            <Link to="#">
+              <li className="nav-routes">
+                <span onClick={() => this.setState({ showLogin: true })}>
+                  Log In
+                </span>
+                <LogInForm
+                  show={this.state.showLogin}
+                  onHide={() => this.setState({ showLogin: false })}
+                />
+              </li>
+            </Link>
+          </Nav.Item>
         </>
       );
     }

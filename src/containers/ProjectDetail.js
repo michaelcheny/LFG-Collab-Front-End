@@ -33,6 +33,7 @@ class ProjectDetail extends Component {
       <div>
         {project.name}
         {project.description}
+        <hr />
         <CommentForm
           projectId={project.id}
           token={this.props.token}
