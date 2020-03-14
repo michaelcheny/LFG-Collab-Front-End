@@ -52,10 +52,9 @@ class ProjectPage extends Component {
     if (match.url === "/projects") {
       this.state.categoryId === null || this.state.categoryId === "all"
         ? (projects = allProjects)
-        : (projects = allProjects.filter(project => {
-            console.log(project);
-            return project.category_id == this.state.categoryId;
-          }));
+        : (projects = allProjects.filter(
+            project => project.category_id == this.state.categoryId
+          ));
     } else {
       this.state.categoryId === null || this.state.categoryId === "all"
         ? (projects = myProjects)

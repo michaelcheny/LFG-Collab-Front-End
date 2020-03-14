@@ -47,8 +47,6 @@ export const createProject = (token, project) => {
   const { name, description, category } = project;
   return async dispatch => {
     try {
-      console.log(project);
-      console.log(token);
       const res = await fetch("http://localhost:3001/api/v1/projects", {
         method: "POST",
         headers: {
@@ -69,7 +67,7 @@ export const createProject = (token, project) => {
         throw res;
       }
       const data = await res.json();
-      // do something hereeeee
+      return data;
     } catch (error) {
       console.log(error.message);
     }

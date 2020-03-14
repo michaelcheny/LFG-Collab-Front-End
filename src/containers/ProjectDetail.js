@@ -4,6 +4,9 @@ import CommentForm from "../components/CommentForm";
 import Comments from "../components/Comments";
 import { createComment } from "../actions/commentActions";
 import { fetchProject } from "../actions/projectActions";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class ProjectDetail extends Component {
   // state = {
@@ -33,6 +36,12 @@ class ProjectDetail extends Component {
       <div>
         {project.name}
         {project.description}
+        <Container>
+          <Row>
+            <Col sm={8}>sm=8</Col>
+            <Col sm={4}>sm=4</Col>
+          </Row>
+        </Container>
         <hr />
         <CommentForm
           projectId={project.id}
