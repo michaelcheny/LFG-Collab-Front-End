@@ -49,6 +49,10 @@ code {
   float: right;
 }
 
+.blockquote {
+  font-size: medium;
+}
+
 /* nav {
   display: flex;
   justify-content: space-around;

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CommentForm from "../components/CommentForm";
 import Comments from "../components/Comments";
+import ProjectInfo from "../components/ProjectInfo";
 import { createComment } from "../actions/commentActions";
 import { fetchProject } from "../actions/projectActions";
 import Container from "react-bootstrap/Container";
@@ -17,31 +18,20 @@ class ProjectDetail extends Component {
     this.props.fetchProject(this.props.match.params.id);
   }
 
-  // fetchProject = async () => {
-  //   const { id } = this.props.match.params;
-  //   const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`);
-  //   const data = await res.json();
-  //   console.log(data);
-  //   this.setState({
-  //     project: data
-  //   });
-  //   // shove this data into the state and make a show detail page YEEEEEET
-  // };
-
   render() {
-    // console.log(this.state.project);
     const { project, authenticated } = this.props;
 
     return (
       <div>
-        {project.name}
-        {project.description}
         <Container>
           <Row>
-            <Col sm={8}>sm=8</Col>
+            <Col sm={8}>
+              <ProjectInfo project={project} />
+            </Col>
             <Col sm={4}>sm=4</Col>
           </Row>
         </Container>
+
         <hr />
         <CommentForm
           projectId={project.id}
@@ -58,7 +48,7 @@ class ProjectDetail extends Component {
 }
 
 const mapStateToProps = ({ projects, token, user }) => {
-  console.log(projects);
+  // console.log(projects);
   return {
     project: projects.currentProject,
     token: token.token,

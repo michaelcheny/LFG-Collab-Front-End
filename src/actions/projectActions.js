@@ -80,7 +80,7 @@ export const fetchProject = id => {
       dispatch({ type: LOADING_PROJECTS });
       const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`);
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       dispatch({ type: ADD_CURRENT_PROJECT, payload: data });
     } catch (error) {
       console.log(error);
