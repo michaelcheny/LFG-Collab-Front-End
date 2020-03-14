@@ -5,7 +5,7 @@ import Badge from "react-bootstrap/Badge";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
-const Project = ({ authenticated, project }) => {
+const ProjectCard = ({ authenticated, project }) => {
   // console.log(project);
   const {
     id,
@@ -74,4 +74,4 @@ const Project = ({ authenticated, project }) => {
   );
 };
 
-export default Project;
+export default ProjectCard;

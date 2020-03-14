@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Project from "../components/project/Project";
+import ProjectCard from "../components/ProjectCard";
 import {
   fetchProjects,
   fetchPersonalProjects
 } from "../actions/projectActions";
 import Spinner from "react-bootstrap/Spinner";
-import { CategorySelector } from "../components/project/CategorySelector";
+import { CategorySelector } from "../components/CategorySelector";
 
 class ProjectPage extends Component {
   state = {
@@ -68,7 +68,7 @@ class ProjectPage extends Component {
     if (!loading) {
       return projects.map(project => {
         return (
-          <Project
+          <ProjectCard
             key={project.id}
             project={project}
             authenticated={authenticated}
