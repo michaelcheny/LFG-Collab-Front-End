@@ -47,7 +47,6 @@ class ProjectPage extends Component {
       authenticated
     } = this.props;
     let projects;
-    console.log(match);
 
     if (match.url === "/projects") {
       this.state.categoryId === null || this.state.categoryId === "all"
@@ -62,8 +61,6 @@ class ProjectPage extends Component {
             project => project.category_id == this.state.categoryId
           ));
     }
-
-    console.log(projects);
 
     if (!loading) {
       return projects.map(project => {
@@ -91,7 +88,6 @@ class ProjectPage extends Component {
         <CategorySelector
           changeCategory={id => this.setState({ categoryId: id })}
         />
-        {console.log(this.state.categoryId)}
         <br />
         {this.renderProjects()}
       </div>
