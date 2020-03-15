@@ -54,7 +54,10 @@ const ProjectCard = ({ authenticated, project }) => {
         <Card.Footer className="text-muted">
           <Link to={`projects/${id}`}>view project</Link>
           <Button className="button" variant="dark" size="sm">
-            comments <Badge variant="light">{comments.length}</Badge>
+            <span role="img" aria-label="chat-bubble">
+              💬
+            </span>
+            <Badge variant="light">{comments.length}</Badge>
           </Button>{" "}
           <Button
             className="button"

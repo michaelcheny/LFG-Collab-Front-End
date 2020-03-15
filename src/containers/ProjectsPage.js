@@ -6,7 +6,6 @@ import {
   fetchPersonalProjects
 } from "../actions/projectActions";
 import { CategorySelector } from "../components/CategorySelector";
-// import Spinner from "react-bootstrap/Spinner";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 
 class ProjectPage extends Component {

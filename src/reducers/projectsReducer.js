@@ -3,7 +3,8 @@ import {
   ADD_PROJECTS,
   ADD_MY_PROJECTS,
   ADD_CURRENT_PROJECT,
-  ADD_COMMENT
+  ADD_COMMENT,
+  ADD_REACTION
 } from "../actions/actionTypes";
 
 const projectsReducer = (
@@ -42,6 +43,14 @@ const projectsReducer = (
         currentProject: {
           ...state.currentProject,
           comments: [...state.currentProject.comments, action.payload]
+        }
+      };
+    case ADD_REACTION:
+      return {
+        ...state,
+        currentProject: {
+          ...state.currentProject,
+          reactions: [...state.currentProject.reactions, action.payload]
         }
       };
     default:
