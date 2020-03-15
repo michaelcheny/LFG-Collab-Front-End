@@ -5,8 +5,9 @@ import {
   fetchProjects,
   fetchPersonalProjects
 } from "../actions/projectActions";
-import Spinner from "react-bootstrap/Spinner";
 import { CategorySelector } from "../components/CategorySelector";
+// import Spinner from "react-bootstrap/Spinner";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 class ProjectPage extends Component {
   state = {
@@ -73,11 +74,7 @@ class ProjectPage extends Component {
         );
       });
     } else {
-      return (
-        <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>
-      );
+      return <LoadingSpinner />;
     }
   };
 

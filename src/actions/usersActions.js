@@ -23,17 +23,17 @@ export const getToken = () => {
   };
 };
 
-export const Login = (csrf_token, email, password) => {
+export const Login = (token, email, password) => {
   return async dispatch => {
     try {
-      console.log(csrf_token, email, password);
+      console.log(token, email, password);
       dispatch({ type: LOGGING_IN });
       const res = await fetch("http://localhost:3001/api/v1/login", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "X-CSRF-TOKEN": csrf_token
+          "X-CSRF-TOKEN": token
         },
         body: JSON.stringify({ email, password }),
         credentials: "include"
