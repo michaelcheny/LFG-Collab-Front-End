@@ -1,9 +1,10 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Badge from "react-bootstrap/Badge";
+// import Button from "react-bootstrap/Button";
+// import Badge from "react-bootstrap/Badge";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import ProjectBadges from "./ProjectBadges";
 
 const ProjectCard = ({ authenticated, project }) => {
   // console.log(project);
@@ -53,7 +54,10 @@ const ProjectCard = ({ authenticated, project }) => {
         </Card.Body>
         <Card.Footer className="text-muted">
           <Link to={`projects/${id}`}>view project</Link>
-          <Button className="button" variant="dark" size="sm">
+
+          <ProjectBadges comments={comments} reactions={reactions} />
+
+          {/* <Button className="button" variant="dark" size="sm">
             <span role="img" aria-label="chat-bubble">
               💬
             </span>
@@ -70,7 +74,7 @@ const ProjectCard = ({ authenticated, project }) => {
               ❤️
             </span>{" "}
             <Badge variant="light">{reactions.length}</Badge>
-          </Button>
+          </Button> */}
         </Card.Footer>
       </Card>
     </>
