@@ -1,28 +1,15 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import moment from "moment";
+import CommentButtons from "../components/CommentButtons";
 
-const Comments = ({ comments, currentUser }) => {
-  // console.log(comments);
-
-  const renderButtons = comment => {
-    if (comment.user_id === currentUser.id) {
-      return (
-        <>
-          <span> update </span>
-          <span>delete</span>
-        </>
-      );
-    }
-  };
-
+const Comments = ({ comments }) => {
   const renderComments = () => {
     if (comments) {
       return comments.map(comment => {
         const addDate = moment(comment.created_at).format(
           "MMM DD, YYYY, H:mma"
         );
-        console.log(comment);
         return (
           <Card key={comment.id} className="comment-card">
             <Card.Body className="comment">
@@ -31,7 +18,12 @@ const Comments = ({ comments, currentUser }) => {
                 <footer className="blockquote-footer">
                   <cite title="Source Title">
                     {comment.user.name} @ {addDate}
-                    <span class="">{renderButtons(comment)}</span>
+                    <span class="">
+                      <CommentButtons
+                        commentId={comment.id}
+                        userId={comment.user_id}
+                      />
+                    </span>
                   </cite>
                 </footer>
               </blockquote>
