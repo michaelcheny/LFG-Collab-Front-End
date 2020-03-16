@@ -16,7 +16,16 @@ class CommentButtons extends Component {
         <>
           {" "}
           <span>edit</span> |{" "}
-          <span onClick={() => deleteComment(token, commentId)}>delete</span>
+          <span
+            onClick={() => {
+              if (
+                window.confirm("Are you sure you want to delete this comment?")
+              )
+                deleteComment(token, commentId);
+            }}
+          >
+            delete
+          </span>
         </>
       );
     }
