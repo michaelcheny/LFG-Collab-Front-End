@@ -16,7 +16,7 @@ class ProjectDetail extends Component {
   }
 
   render() {
-    const { project, authenticated } = this.props;
+    const { project, authenticated, user } = this.props;
 
     return (
       <div>
@@ -40,7 +40,7 @@ class ProjectDetail extends Component {
         <h5>
           Comments <CommentBadge comments={project.comments} />:
         </h5>
-        <Comments comments={project.comments} />
+        <Comments comments={project.comments} currentUser={user} />
       </div>
     );
   }
@@ -50,7 +50,8 @@ const mapStateToProps = ({ projects, token, user }) => {
   return {
     project: projects.currentProject,
     token: token.token,
-    authenticated: user.authenticated
+    authenticated: user.authenticated,
+    user: user.user
   };
 };
 
