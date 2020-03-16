@@ -15,7 +15,6 @@ const userReducer = (
         loading: true
       };
     case LOG_IN:
-      console.log(action.payload);
       return {
         ...state,
         user: {

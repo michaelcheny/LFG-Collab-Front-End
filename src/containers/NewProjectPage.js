@@ -10,13 +10,16 @@ class NewProjectPage extends Component {
     name: "",
     description: "",
     online: true,
-    category: "Automotive"
+    category: "Automotive",
+    triggerRedirect: false,
+    redirectId: null
   };
 
-  handleSubmit = () => {
+  handleSubmit = async () => {
     const { token, createProject } = this.props;
     console.log(this.state);
-    createProject(token, this.state);
+    const project = await createProject(token, this.state);
+    this.setState({ triggerRedirect: true, redirectId: project.id });
   };
 
   handleChange = event => {
@@ -37,7 +40,9 @@ class NewProjectPage extends Component {
 
   render() {
     const { authenticated } = this.props;
-    // if (!authenticated) return <Redirect to="/" />;
+    if (!authenticated) return <Redirect to="/" />;
+    if (this.state.triggerRedirect)
+      return <Redirect to={`/projects/${this.state.redirectId}`} />;
 
     return (
       <div>
@@ -119,12 +124,10 @@ class NewProjectPage extends Component {
   }
 }
 
-const mapStateToProps = ({ user, token }) => {
-  const { authenticated } = user;
-  // const { token } = token;
-  console.log(token);
-  return { authenticated, token: token.token };
-};
+const mapStateToProps = ({ user, token }) => ({
+  authenticated: user.authenticated,
+  token: token.token
+});
 
 const mapDispatchToProps = dispatch => {
   return {
