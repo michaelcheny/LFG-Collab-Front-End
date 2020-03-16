@@ -1,6 +1,6 @@
 import { ADD_REACTION } from "./actionTypes";
 
-export const createComment = (projectId, token, reaction) => {
+export const createReaction = (projectId, token) => {
   return async dispatch => {
     try {
       const res = await fetch("http://localhost:3001/api/v1/reactions", {
@@ -11,9 +11,7 @@ export const createComment = (projectId, token, reaction) => {
           "X-CSRF-TOKEN": token
         },
         body: JSON.stringify({
-          reaction: {
-            reaction
-          },
+          like: "1",
           projectId
         }),
         credentials: "include"
@@ -22,6 +20,7 @@ export const createComment = (projectId, token, reaction) => {
         throw res;
       }
       const data = await res.json();
+      console.log(data);
       dispatch({ type: ADD_REACTION, payload: data });
     } catch (error) {
       console.log(error.message);

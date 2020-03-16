@@ -49,6 +49,16 @@ code {
   float: right;
 }
 
+.comment {
+  padding: 10px;
+  padding-left: 20px;
+}
+
+.comment-card {
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
 .blockquote {
   font-size: medium;
 }

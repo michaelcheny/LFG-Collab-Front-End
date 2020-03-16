@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import CommentForm from "../components/CommentForm";
 import Comments from "../components/Comments";
 import ProjectInfo from "../components/ProjectInfo";
+import CommentBadge from "../components/CommentBadge";
+import ProjectBadges from "../components/LikeButton";
+
 import { createComment } from "../actions/commentActions";
 import { fetchProject } from "../actions/projectActions";
 import Container from "react-bootstrap/Container";
@@ -20,6 +23,7 @@ class ProjectDetail extends Component {
 
   render() {
     const { project, authenticated } = this.props;
+    console.log(project);
 
     return (
       <div>
@@ -27,6 +31,7 @@ class ProjectDetail extends Component {
           <Row>
             <Col sm={8}>
               <ProjectInfo project={project} />
+              {/* <ProjectBadges /> */}
             </Col>
             <Col sm={4}>sm=4</Col>
           </Row>
@@ -40,7 +45,16 @@ class ProjectDetail extends Component {
           authenticated={authenticated}
         />
         <br />
-        <h5>Comments:</h5>
+        <h5>
+          Comments{" "}
+          {/* <span role="img" aria-label="chat-bubble">
+            💬
+          </span>
+          <Badge variant="light">
+            {project.comments ? project.comments.length : 0}
+          </Badge> */}
+          <CommentBadge comments={project.comments} />:
+        </h5>
         <Comments comments={project.comments} />
       </div>
     );

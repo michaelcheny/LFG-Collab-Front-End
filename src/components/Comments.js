@@ -7,8 +7,8 @@ const Comments = ({ comments }) => {
   const renderComments = () => {
     if (comments) {
       return comments.map(comment => (
-        <Card key={comment.id}>
-          <Card.Body>
+        <Card key={comment.id} className="comment-card">
+          <Card.Body className="comment">
             <blockquote className="blockquote mb-0">
               <p> {comment.content} </p>
               <footer className="blockquote-footer">

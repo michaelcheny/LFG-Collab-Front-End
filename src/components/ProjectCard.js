@@ -4,7 +4,8 @@ import Card from "react-bootstrap/Card";
 // import Badge from "react-bootstrap/Badge";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import ProjectBadges from "./ProjectBadges";
+import ProjectBadges from "./LikeButton";
+import CommentBadge from "../components/CommentBadge";
 
 const ProjectCard = ({ authenticated, project }) => {
   // console.log(project);
@@ -54,9 +55,14 @@ const ProjectCard = ({ authenticated, project }) => {
         </Card.Body>
         <Card.Footer className="text-muted">
           <Link to={`projects/${id}`}>view project</Link>
-
-          <ProjectBadges comments={comments} reactions={reactions} />
-
+          {/* comments: {comments.length},  */}
+          {/* <ProjectBadges
+            comments={comments}
+            reactions={reactions}
+            projectId={id}
+          /> */}
+          <CommentBadge comments={comments} />
+          likes: {reactions.length}
           {/* <Button className="button" variant="dark" size="sm">
             <span role="img" aria-label="chat-bubble">
               💬
