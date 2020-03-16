@@ -4,7 +4,7 @@ import CommentForm from "../components/CommentForm";
 import Comments from "../components/Comments";
 import ProjectInfo from "../components/ProjectInfo";
 import { CommentBadge } from "../components/Badges";
-import { createComment, deleteComment } from "../actions/commentActions";
+import { createComment } from "../actions/commentActions";
 import { fetchProject } from "../actions/projectActions";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -16,7 +16,7 @@ class ProjectDetail extends Component {
   }
 
   render() {
-    const { project, authenticated, user, deleteComment, token } = this.props;
+    const { project, authenticated, token, addComment } = this.props;
 
     return (
       <div>
@@ -32,8 +32,8 @@ class ProjectDetail extends Component {
         <hr />
         <CommentForm
           projectId={project.id}
-          token={this.props.token}
-          addComment={this.props.addComment}
+          token={token}
+          addComment={addComment}
           authenticated={authenticated}
         />
         <br />
@@ -50,8 +50,7 @@ const mapStateToProps = ({ projects, token, user }) => {
   return {
     project: projects.currentProject,
     token: token.token,
-    authenticated: user.authenticated,
-    user: user.user
+    authenticated: user.authenticated
   };
 };
 
@@ -59,9 +58,7 @@ const mapDispatchToProps = dispatch => {
   return {
     addComment: (id, token, comment) =>
       dispatch(createComment(id, token, comment)),
-    fetchProject: id => dispatch(fetchProject(id)),
-    deleteComment: (token, commentId) =>
-      dispatch(deleteComment(token, commentId))
+    fetchProject: id => dispatch(fetchProject(id))
   };
 };
 
