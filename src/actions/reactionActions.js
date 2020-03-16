@@ -20,7 +20,6 @@ export const createReaction = (projectId, token) => {
         throw res;
       }
       const data = await res.json();
-      console.log(data);
       dispatch({ type: ADD_REACTION, payload: data });
     } catch (error) {
       console.log(error.message);
@@ -29,7 +28,6 @@ export const createReaction = (projectId, token) => {
 };
 
 export const deleteReaction = (token, reactionId) => {
-  console.log(reactionId);
   return async dispatch => {
     try {
       const res = await fetch(
@@ -48,7 +46,6 @@ export const deleteReaction = (token, reactionId) => {
         throw res;
       }
       const data = await res.json();
-      console.log(data);
       dispatch({ type: DELETE_REACTION, payload: data.id });
     } catch (error) {
       console.log(error.message);
