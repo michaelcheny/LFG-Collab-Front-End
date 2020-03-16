@@ -23,7 +23,7 @@ class ProjectDetail extends Component {
 
   render() {
     const { project, authenticated } = this.props;
-    console.log(project);
+    // console.log(project);
 
     return (
       <div>

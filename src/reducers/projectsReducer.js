@@ -4,7 +4,8 @@ import {
   ADD_MY_PROJECTS,
   ADD_CURRENT_PROJECT,
   ADD_COMMENT,
-  ADD_REACTION
+  ADD_REACTION,
+  DELETE_REACTION
 } from "../actions/actionTypes";
 
 const projectsReducer = (
@@ -51,6 +52,17 @@ const projectsReducer = (
         currentProject: {
           ...state.currentProject,
           reactions: [...state.currentProject.reactions, action.payload]
+        }
+      };
+    case DELETE_REACTION:
+      const reactions = state.currentProject.reactions.filter(
+        reaction => reaction.id != action.payload
+      );
+      return {
+        ...state,
+        currentProject: {
+          ...state.currentProject,
+          reactions: reactions
         }
       };
     default:
