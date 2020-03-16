@@ -5,42 +5,20 @@ import Badge from "react-bootstrap/Badge";
 import { createReaction, deleteReaction } from "../actions/reactionActions";
 
 class LikeButton extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   // console.log(this.props);
-  // }
-
   handleProjectReaction = () => {
     const { incrementLike, unLike, project, token, user } = this.props;
-    // console.log(project.reactions);
+    // Grabs all the current user's reactions
     let myReaction = project.reactions.filter(reaction => {
-      console.log(reaction);
-      console.log(user.id);
-      return reaction.user_id == user.id;
+      return reaction.user_id === user.id;
     });
-    // console.log(myReaction);
-
+    // if user already liked, then it will unlike
     if (myReaction.length > 0) {
       myReaction.forEach(r => {
         unLike(token, r.id);
       });
     } else {
-      console.log("here");
       incrementLike(project.id, token);
     }
-    // project.reactions.map(reaction => {
-    //   if (reaction.user_id == user.id) {
-    //     console.log(
-    //       "my userId: " +
-    //         user.id +
-    //         ", reactionId: " +
-    //         reaction.user_id +
-    //         "removing"
-    //     );
-    //     // remove reaction on click
-    //   }
-    // });
   };
 
   render() {
