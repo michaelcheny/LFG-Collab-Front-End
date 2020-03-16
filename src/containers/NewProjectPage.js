@@ -39,8 +39,7 @@ class NewProjectPage extends Component {
   }
 
   render() {
-    const { authenticated } = this.props;
-    if (!authenticated) return <Redirect to="/" />;
+    if (!this.props.authenticated) return <Redirect to="/" />;
     if (this.state.triggerRedirect)
       return <Redirect to={`/projects/${this.state.redirectId}`} />;
 

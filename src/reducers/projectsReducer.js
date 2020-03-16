@@ -56,7 +56,7 @@ const projectsReducer = (
       };
     case DELETE_REACTION:
       const reactions = state.currentProject.reactions.filter(
-        reaction => reaction.id != action.payload
+        reaction => reaction.id !== action.payload
       );
       return {
         ...state,

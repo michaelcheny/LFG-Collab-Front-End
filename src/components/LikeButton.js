@@ -7,8 +7,10 @@ import { createReaction, deleteReaction } from "../actions/reactionActions";
 class LikeButton extends Component {
   handleProjectReaction = () => {
     const { incrementLike, unLike, project, token, user } = this.props;
+
     // Grabs all the current user's reactions
     let myReaction = project.reactions.filter(reaction => {
+      // let myReaction = project.reactions.filter(reaction => {
       return reaction.user_id === user.id;
     });
     // if user already liked, then it will unlike
@@ -37,6 +39,7 @@ class LikeButton extends Component {
             ❤️
           </span>{" "}
           <Badge variant="light">
+            {/* {project.reactions ? project.reactions.length : 0} */}
             {project.reactions ? project.reactions.length : 0}
           </Badge>
         </Button>

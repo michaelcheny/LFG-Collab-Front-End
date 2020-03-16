@@ -1,14 +1,10 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-// import Button from "react-bootstrap/Button";
-// import Badge from "react-bootstrap/Badge";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import ProjectBadges from "./LikeButton";
-import CommentBadge from "../components/CommentBadge";
+import { CommentBadge, LikeBadge } from "./Badge";
 
 const ProjectCard = ({ authenticated, project }) => {
-  // console.log(project);
   const {
     id,
     name,
@@ -33,10 +29,6 @@ const ProjectCard = ({ authenticated, project }) => {
     );
   };
 
-  // const handleJoinProject = () => {
-  //   console.log("clicked");
-  // };
-
   return (
     <>
       <br />
@@ -55,32 +47,8 @@ const ProjectCard = ({ authenticated, project }) => {
         </Card.Body>
         <Card.Footer className="text-muted">
           <Link to={`projects/${id}`}>view project</Link>
-          {/* comments: {comments.length},  */}
-          {/* <ProjectBadges
-            comments={comments}
-            reactions={reactions}
-            projectId={id}
-          /> */}
+          <LikeBadge reactions={reactions} />
           <CommentBadge comments={comments} />
-          likes: {reactions.length}
-          {/* <Button className="button" variant="dark" size="sm">
-            <span role="img" aria-label="chat-bubble">
-              💬
-            </span>
-            <Badge variant="light">{comments.length}</Badge>
-          </Button>{" "}
-          <Button
-            className="button"
-            variant="dark"
-            // disabled={!authenticated}
-            size="sm"
-            // onClick={handleJoinProject}
-          >
-            <span role="img" aria-label="heart">
-              ❤️
-            </span>{" "}
-            <Badge variant="light">{reactions.length}</Badge>
-          </Button> */}
         </Card.Footer>
       </Card>
     </>

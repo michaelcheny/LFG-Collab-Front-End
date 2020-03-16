@@ -26,7 +26,6 @@ export const getToken = () => {
 export const Login = (token, email, password) => {
   return async dispatch => {
     try {
-      console.log(token, email, password);
       dispatch({ type: LOGGING_IN });
       const res = await fetch("http://localhost:3001/api/v1/login", {
         method: "POST",
