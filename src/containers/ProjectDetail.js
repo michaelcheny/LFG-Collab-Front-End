@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import CommentForm from "../components/CommentForm";
 import Comments from "../components/Comments";
 import ProjectInfo from "../components/ProjectInfo";
-import { CommentBadge } from "../components/Badge";
+import { CommentBadge } from "../components/Badges";
 import { createComment } from "../actions/commentActions";
 import { fetchProject } from "../actions/projectActions";
 import Container from "react-bootstrap/Container";

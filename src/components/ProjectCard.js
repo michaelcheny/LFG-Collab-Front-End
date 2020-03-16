@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { CommentBadge, LikeBadge } from "./Badge";
+import { CommentBadge, LikeBadge } from "./Badges";
 
 const ProjectCard = ({ authenticated, project }) => {
   const {
@@ -47,8 +47,10 @@ const ProjectCard = ({ authenticated, project }) => {
         </Card.Body>
         <Card.Footer className="text-muted">
           <Link to={`projects/${id}`}>view project</Link>
-          <LikeBadge reactions={reactions} />
-          <CommentBadge comments={comments} />
+          <span className="like-comment-badges">
+            <LikeBadge reactions={reactions} />
+            <CommentBadge comments={comments} />
+          </span>
         </Card.Footer>
       </Card>
     </>
