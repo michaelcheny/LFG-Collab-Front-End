@@ -37,16 +37,20 @@ const ProjectCard = ({ authenticated, project }) => {
           {category.name}
           <span className="project-date">{addDate}</span>
         </Card.Header>
+
         <Card.Body>
           <Card.Title>
             <Link to={`projects/${id}`}>{name}</Link>
           </Card.Title>
+
           <Card.Text>{description}</Card.Text>
           <hr />
           {renderCollaborators()}
         </Card.Body>
+
         <Card.Footer className="text-muted">
           <Link to={`projects/${id}`}>view project</Link>
+
           <span className="like-comment-badges">
             <LikeBadge reactions={reactions} />
             <CommentBadge comments={comments} />

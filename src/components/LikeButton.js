@@ -39,7 +39,6 @@ class LikeButton extends Component {
             ❤️
           </span>{" "}
           <Badge variant="light">
-            {/* {project.reactions ? project.reactions.length : 0} */}
             {project.reactions ? project.reactions.length : 0}
           </Badge>
         </Button>
