@@ -15,7 +15,7 @@ class CommentButtons extends Component {
       return (
         <>
           {" "}
-          <span>edit</span> |{" "}
+          <span>Edit</span> |{" "}
           <span
             onClick={() => {
               if (
@@ -24,7 +24,7 @@ class CommentButtons extends Component {
                 deleteComment(token, commentId);
             }}
           >
-            delete
+            Delete
           </span>
         </>
       );
