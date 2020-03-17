@@ -1,14 +1,28 @@
 import React from "react";
 import LikeButton from "./LikeButton";
+import Card from "react-bootstrap/Card";
 
 const ProjectInfo = ({ project }) => {
   console.log(project);
 
   const renderCollaborators = () => {
     if (project.users) {
-      return project.users.map(user => {
-        return <li className="collaborator-list">{user.name}</li>;
-      });
+      // return <li className="collaborator-list">{user.name}</li>;
+
+      return (
+        <Card style={{ width: "18rem" }}>
+          <Card.Body>
+            <Card.Title>Card Title</Card.Title>
+            {project.users.map(user => {
+              return (
+                <Card.Text>
+                  <li className="collaborator-list">{user.name}</li>
+                </Card.Text>
+              );
+            })}
+          </Card.Body>
+        </Card>
+      );
     }
   };
 
@@ -19,7 +33,7 @@ const ProjectInfo = ({ project }) => {
       <br />
       <br />
       Collaborators:
-      {renderCollaborators()}
+      {/* {renderCollaborators()} */}
       <LikeButton />
     </div>
   );

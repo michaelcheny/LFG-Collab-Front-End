@@ -9,6 +9,7 @@ import { fetchProject } from "../actions/projectActions";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
 
 class ProjectDetail extends Component {
   componentDidMount() {
@@ -18,9 +19,22 @@ class ProjectDetail extends Component {
   renderCollaborators = () => {
     const { project } = this.props;
     if (project.users) {
-      return project.users.map(user => {
-        return <li className="collaborator-list">{user.name}</li>;
-      });
+      // <li className="collaborator-list">{user.name}</li>;
+      return (
+        <Card>
+          <Card.Body>
+            <Card.Title>Collaborators</Card.Title>
+
+            {project.users.map(user => {
+              return (
+                <Card.Text>
+                  <li className="collaborator-list">{user.name}</li>
+                </Card.Text>
+              );
+            })}
+          </Card.Body>
+        </Card>
+      );
     }
   };
 
@@ -35,10 +49,7 @@ class ProjectDetail extends Component {
               <ProjectInfo project={project} />
             </Col>
             <Col sm={4}>
-              <div className="collaborators">
-                <h6>Collaborators:</h6>
-                {this.renderCollaborators()}
-              </div>
+              <div className="collaborators">{this.renderCollaborators()}</div>
             </Col>
           </Row>
         </Container>
