@@ -15,6 +15,15 @@ class ProjectDetail extends Component {
     this.props.fetchProject(this.props.match.params.id);
   }
 
+  renderCollaborators = () => {
+    const { project } = this.props;
+    if (project.users) {
+      return project.users.map(user => {
+        return <li className="collaborator-list">{user.name}</li>;
+      });
+    }
+  };
+
   render() {
     const { project, authenticated, token, addComment } = this.props;
 
@@ -25,7 +34,12 @@ class ProjectDetail extends Component {
             <Col sm={8}>
               <ProjectInfo project={project} />
             </Col>
-            <Col sm={4}>sm=4</Col>
+            <Col sm={4}>
+              <div className="collaborators">
+                <h6>Collaborators:</h6>
+                {this.renderCollaborators()}
+              </div>
+            </Col>
           </Row>
         </Container>
 

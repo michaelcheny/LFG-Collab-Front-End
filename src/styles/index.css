@@ -67,6 +67,15 @@ code {
   float: right;
 }
 
+.collaborator-list {
+  list-style: none;
+}
+
+.collaborators {
+  border: 1px black solid;
+  padding: auto;
+}
+
 /* nav {
   display: flex;
   justify-content: space-around;
