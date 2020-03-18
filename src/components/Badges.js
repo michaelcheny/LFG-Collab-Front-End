@@ -22,3 +22,14 @@ export const LikeBadge = ({ reactions }) => {
     </>
   );
 };
+
+export const HandshakeBadge = ({ collaborators }) => {
+  return (
+    <>
+      <span role="img" aria-label="handshake">
+        🤝
+      </span>
+      <Badge variant="light">{collaborators ? collaborators : 0}</Badge>
+    </>
+  );
+};

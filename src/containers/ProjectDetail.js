@@ -19,19 +19,15 @@ class ProjectDetail extends Component {
   renderCollaborators = () => {
     const { project } = this.props;
     if (project.users) {
-      // <li className="collaborator-list">{user.name}</li>;
       return (
         <Card>
           <Card.Body>
             <Card.Title>Collaborators</Card.Title>
-
-            {project.users.map(user => {
-              return (
-                <Card.Text>
-                  <li className="collaborator-list">{user.name}</li>
-                </Card.Text>
-              );
-            })}
+            <Card.Text>
+              {project.users.map(user => {
+                return <li className="collaborator-list">{user.name}</li>;
+              })}
+            </Card.Text>
           </Card.Body>
         </Card>
       );
