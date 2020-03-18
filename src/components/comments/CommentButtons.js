@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deleteComment } from "../actions/commentActions";
+import { deleteComment } from "../../actions/commentActions";
 
 class CommentButtons extends Component {
   // constructor(props) {

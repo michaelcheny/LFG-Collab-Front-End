@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import moment from "moment";
-import CommentButtons from "../components/CommentButtons";
+import CommentButtons from "./CommentButtons";
 
 const Comments = ({ comments }) => {
   const renderComments = () => {

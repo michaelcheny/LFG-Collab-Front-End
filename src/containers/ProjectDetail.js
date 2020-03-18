@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import CommentForm from "../components/CommentForm";
-import Comments from "../components/Comments";
 import ProjectInfo from "../components/ProjectInfo";
 import LikeButton from "../components/LikeButton";
 import Joinbutton from "../components/JoinButton";
-import { CommentBadge } from "../components/Badges";
-import { createComment } from "../actions/commentActions";
 import { fetchProject } from "../actions/projectActions";
+import CommentContainer from "../components/comments/CommentContainer";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -42,7 +39,7 @@ class ProjectDetail extends Component {
   };
 
   render() {
-    const { project, authenticated, token, addComment } = this.props;
+    const { project } = this.props;
 
     return (
       <div>
@@ -61,34 +58,21 @@ class ProjectDetail extends Component {
         </Container>
 
         <hr />
-        <CommentForm
-          projectId={project.id}
-          token={token}
-          addComment={addComment}
-          authenticated={authenticated}
-        />
-        <br />
-        <h5>
-          Comments <CommentBadge comments={project.comments} />:
-        </h5>
-        <Comments comments={project.comments} />
+
+        <CommentContainer />
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ projects, token, user }) => {
+const mapStateToProps = ({ projects }) => {
   return {
-    project: projects.currentProject,
-    token: token.token,
-    authenticated: user.authenticated
+    project: projects.currentProject
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    addComment: (id, token, comment) =>
-      dispatch(createComment(id, token, comment)),
     fetchProject: id => dispatch(fetchProject(id))
   };
 };
