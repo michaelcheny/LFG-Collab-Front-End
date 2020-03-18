@@ -71,6 +71,10 @@ code {
   list-style: none;
 }
 
+.user-title {
+  font-size: 16px;
+}
+
 /* .collaborators {
   border: 1px black solid;
   padding: auto;

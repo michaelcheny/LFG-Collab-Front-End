@@ -2,14 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 import { joinProject } from "../actions/projectActions";
-// let joined = false;
-class JoinButton extends Component {
-  state = {
-    joined: false
-  };
 
+class JoinButton extends Component {
   renderButton = () => {
     const { project, userId, token, authenticated, joinProject } = this.props;
+
     if (project.users) {
       let pp = project.users.filter(project => project.id === userId);
       console.log(pp);

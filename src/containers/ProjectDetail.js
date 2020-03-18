@@ -21,12 +21,17 @@ class ProjectDetail extends Component {
   renderCollaborators = () => {
     const { project } = this.props;
     if (project.users) {
+      const [owner, ...collaborators] = project.users;
       return (
         <Card>
           <Card.Body>
-            <Card.Title>Collaborators</Card.Title>
+            <Card.Title className="user-title">Owner</Card.Title>
             <Card.Text>
-              {project.users.map(user => {
+              <li className="collaborator-list">{owner.name}</li>
+            </Card.Text>
+            <Card.Title className="user-title">Collaborators</Card.Title>
+            <Card.Text>
+              {collaborators.map(user => {
                 return <li className="collaborator-list">{user.name}</li>;
               })}
             </Card.Text>
@@ -45,8 +50,9 @@ class ProjectDetail extends Component {
           <Row>
             <Col sm={8}>
               <ProjectInfo project={project} />
-              <LikeButton />
               <Joinbutton />
+              {"  "}
+              <LikeButton />
             </Col>
             <Col sm={4}>
               <div className="collaborators">{this.renderCollaborators()}</div>
