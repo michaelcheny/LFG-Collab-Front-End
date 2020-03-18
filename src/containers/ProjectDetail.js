@@ -46,7 +46,7 @@ class ProjectDetail extends Component {
             <Col sm={8}>
               <ProjectInfo project={project} />
               <LikeButton />
-              <Joinbutton projectId={project.id} />
+              <Joinbutton />
             </Col>
             <Col sm={4}>
               <div className="collaborators">{this.renderCollaborators()}</div>
