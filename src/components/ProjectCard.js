@@ -16,6 +16,8 @@ const ProjectCard = ({ authenticated, project }) => {
     reactions
   } = project;
 
+  const [owner, ...collaborators] = users;
+
   const addDate = moment(created_at).format("MMM DD, YYYY");
 
   const renderCollaborators = () => {
@@ -35,7 +37,9 @@ const ProjectCard = ({ authenticated, project }) => {
       <Card bg="light" border="light">
         <Card.Header>
           {category.name}
-          <span className="project-date">{addDate}</span>
+          <span className="project-date">
+            Started on {addDate} by {owner.name}
+          </span>
         </Card.Header>
 
         <Card.Body>
@@ -44,15 +48,15 @@ const ProjectCard = ({ authenticated, project }) => {
           </Card.Title>
 
           <Card.Text>{description}</Card.Text>
-          <hr />
-          {renderCollaborators()}
+          {/* <hr /> */}
+          {/* {renderCollaborators()} */}
         </Card.Body>
 
         <Card.Footer className="text-muted">
           <Link to={`projects/${id}`}>view project</Link>
 
           <span className="like-comment-badges">
-            <HandshakeBadge collaborators={users.length} />
+            <HandshakeBadge collaborators={collaborators.length} />
             <LikeBadge reactions={reactions} />
             <CommentBadge comments={comments} />
           </span>

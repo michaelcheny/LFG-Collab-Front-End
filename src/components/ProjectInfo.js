@@ -32,7 +32,6 @@ const ProjectInfo = ({ project }) => {
       {project.description}
       <br />
       <br />
-      Collaborators:
       {/* {renderCollaborators()} */}
       <LikeButton />
     </div>
