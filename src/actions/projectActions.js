@@ -44,7 +44,7 @@ export const fetchPersonalProjects = () => {
 };
 
 export const createProject = (token, project) => {
-  const { name, description, category } = project;
+  const { name, description, category, online } = project;
   return async dispatch => {
     try {
       const res = await fetch("http://localhost:3001/api/v1/projects", {
@@ -57,7 +57,8 @@ export const createProject = (token, project) => {
         body: JSON.stringify({
           project: {
             name,
-            description
+            description,
+            online
           },
           category
         }),

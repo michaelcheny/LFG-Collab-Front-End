@@ -29,11 +29,13 @@ const ProjectInfo = ({ project }) => {
   return (
     <div>
       <h2>{project.name}</h2>
+      <hr />
       {project.description}
       <br />
       <br />
+      <br />
       {/* {renderCollaborators()} */}
-      <LikeButton />
+      {/* <LikeButton /> */}
     </div>
   );
 };

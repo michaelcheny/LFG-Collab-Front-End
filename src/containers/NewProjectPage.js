@@ -68,12 +68,20 @@ class NewProjectPage extends Component {
               required
             >
               <option disabled>Select a category</option>
+              <option value="Advertisement">Advertisement</option>
               <option value="Automotive">Automotive</option>
               <option value="Charity">Charity</option>
               <option value="Educational">Educational</option>
-              <option value="Makers and Crafting">Makers and Crafting</option>
-              <option value="Health and Fitness">Health and Fitness</option>
+              <option value="Farming and Gardening">
+                Farming and Gardening
+              </option>
+              <option value="Fashion">Fashion</option>
               <option value="Food and Drink">Food and Drink</option>
+              <option value="Gaming">Gaming</option>
+              <option value="Health and Fitness">Health and Fitness</option>
+              <option value="Home Improvement">Home Improvement</option>
+              <option value="Makers and Crafting">Makers and Crafting</option>
+              <option value="Politics">Politics</option>
               <option value="Programming">Programming</option>
               <option value="Social Media">Social Media</option>
               <option value="Others">Others</option>
