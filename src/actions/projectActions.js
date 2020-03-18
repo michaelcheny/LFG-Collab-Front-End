@@ -44,7 +44,7 @@ export const fetchPersonalProjects = () => {
 };
 
 export const createProject = (token, project) => {
-  const { name, description, category, online } = project;
+  const { name, description, category, online, team_size } = project;
   return async dispatch => {
     try {
       const res = await fetch("http://localhost:3001/api/v1/projects", {
@@ -58,7 +58,8 @@ export const createProject = (token, project) => {
           project: {
             name,
             description,
-            online
+            online,
+            team_size
           },
           category
         }),

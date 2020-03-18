@@ -11,6 +11,7 @@ class NewProjectPage extends Component {
     description: "",
     online: true,
     category: "Automotive",
+    team_size: 2,
     triggerRedirect: false,
     redirectId: null
   };
@@ -30,6 +31,10 @@ class NewProjectPage extends Component {
 
   handleCategoryChange = event => {
     this.setState({ category: event.target.value });
+  };
+
+  handleSizeChange = event => {
+    this.setState({ team_size: event.target.value });
   };
 
   handleKeyPress(target) {
@@ -65,6 +70,7 @@ class NewProjectPage extends Component {
               as="select"
               value={this.state.category}
               onChange={this.handleCategoryChange}
+              size="sm"
               required
             >
               <option disabled>Select a category</option>
@@ -85,6 +91,26 @@ class NewProjectPage extends Component {
               <option value="Programming">Programming</option>
               <option value="Social Media">Social Media</option>
               <option value="Others">Others</option>
+            </Form.Control>
+          </Form.Group>
+
+          <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Label>Desired Team Size</Form.Label>
+            <Form.Control
+              as="select"
+              value={this.state.team_size}
+              onChange={this.handleSizeChange}
+              size="sm"
+              required
+            >
+              <option disabled>Select a category</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="6 or more">> 6</option>
             </Form.Control>
           </Form.Group>
 
