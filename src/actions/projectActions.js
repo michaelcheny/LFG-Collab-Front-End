@@ -2,7 +2,8 @@ import {
   LOADING_PROJECTS,
   ADD_PROJECTS,
   ADD_MY_PROJECTS,
-  ADD_CURRENT_PROJECT
+  ADD_CURRENT_PROJECT,
+  JOIN_PROJECT
 } from "./actionTypes";
 
 export const fetchProjects = () => {
@@ -70,6 +71,32 @@ export const createProject = (token, project) => {
       }
       const data = await res.json();
       return data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+
+export const joinProject = (token, projectId) => {
+  return async dispatch => {
+    try {
+      const res = await fetch("http://localhost:3001/api/v1/user_projects", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({
+          projectId
+        }),
+        credentials: "include"
+      });
+      if (!res.ok) {
+        throw res;
+      }
+      const data = await res.json();
+      dispatch({ type: JOIN_PROJECT, payload: data.users });
     } catch (error) {
       console.log(error.message);
     }

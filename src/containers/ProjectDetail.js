@@ -4,7 +4,7 @@ import CommentForm from "../components/CommentForm";
 import Comments from "../components/Comments";
 import ProjectInfo from "../components/ProjectInfo";
 import LikeButton from "../components/LikeButton";
-
+import Joinbutton from "../components/JoinButton";
 import { CommentBadge } from "../components/Badges";
 import { createComment } from "../actions/commentActions";
 import { fetchProject } from "../actions/projectActions";
@@ -46,6 +46,7 @@ class ProjectDetail extends Component {
             <Col sm={8}>
               <ProjectInfo project={project} />
               <LikeButton />
+              <Joinbutton projectId={project.id} />
             </Col>
             <Col sm={4}>
               <div className="collaborators">{this.renderCollaborators()}</div>

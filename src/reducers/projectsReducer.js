@@ -6,7 +6,8 @@ import {
   ADD_COMMENT,
   DELETE_COMMENT,
   ADD_REACTION,
-  DELETE_REACTION
+  DELETE_REACTION,
+  JOIN_PROJECT
 } from "../actions/actionTypes";
 
 const projectsReducer = (
@@ -41,6 +42,15 @@ const projectsReducer = (
         ...state,
         currentProject: action.payload,
         loading: false
+      };
+
+    case JOIN_PROJECT:
+      return {
+        ...state,
+        currentProject: {
+          ...state.currentProject,
+          users: action.payload
+        }
       };
 
     case ADD_COMMENT:
