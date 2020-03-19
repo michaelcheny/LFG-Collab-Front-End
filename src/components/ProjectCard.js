@@ -24,7 +24,7 @@ const ProjectCard = ({ authenticated, project }) => {
   return (
     <>
       <br />
-      <Card bg="light" border="light">
+      <Card bg="light" className="project-card">
         <Card.Header className="smaller-text">
           {category.name}
           <span className="project-date">
