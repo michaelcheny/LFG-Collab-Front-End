@@ -1,36 +1,57 @@
 import React from "react";
 import LikeButton from "./LikeButton";
+import Joinbutton from "../components/JoinButton";
+import { OnlineBadge } from "../components/Badges";
+
 import Card from "react-bootstrap/Card";
 
 const ProjectInfo = ({ project }) => {
   console.log(project);
 
-  const renderCollaborators = () => {
-    if (project.users) {
-      // return <li className="collaborator-list">{user.name}</li>;
+  // const renderCollaborators = () => {
+  //   if (project.users) {
+  //     // return <li className="collaborator-list">{user.name}</li>;
 
-      return (
-        <Card style={{ width: "18rem" }}>
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            {project.users.map(user => {
-              return (
-                <Card.Text>
-                  <li className="collaborator-list">{user.name}</li>
-                </Card.Text>
-              );
-            })}
-          </Card.Body>
-        </Card>
-      );
-    }
-  };
+  //     return (
+  //       <Card style={{ width: "18rem" }}>
+  //         <Card.Body>
+  //           <Card.Title>Card Title</Card.Title>
+  //           {project.users.map(user => {
+  //             return (
+  //               <Card.Text>
+  //                 <li className="collaborator-list">{user.name}</li>
+  //               </Card.Text>
+  //             );
+  //           })}
+  //         </Card.Body>
+  //       </Card>
+  //     );
+  //   }
+  // };
 
   return (
     <div>
-      <h2>{project.name}</h2>
+      {/* <h2>{project.name}</h2>
       <hr />
-      {project.description}
+      {project.description} */}
+
+      <Card>
+        <Card.Body>
+          <Card.Title>{project.name}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">
+            {project.category ? project.category.name : null}
+          </Card.Subtitle>
+          <Card.Text>
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </Card.Text>
+          <Card.Text>
+            <Joinbutton /> {"  "}
+            <LikeButton />
+            <OnlineBadge project={project} />
+          </Card.Text>
+        </Card.Body>
+      </Card>
       <br />
       <br />
       <br />

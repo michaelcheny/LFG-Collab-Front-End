@@ -33,3 +33,24 @@ export const HandshakeBadge = ({ collaborators }) => {
     </>
   );
 };
+
+export const OnlineBadge = ({ project }) => {
+  return (
+    <>
+      <span role="img" aria-label="online">
+        💻
+      </span>
+      <Badge variant="light">
+        {project.online ? (
+          <span role="img" aria-label="check">
+            ✅
+          </span>
+        ) : (
+          <span role="img" aria-label="cross">
+            ❎
+          </span>
+        )}
+      </Badge>
+    </>
+  );
+};

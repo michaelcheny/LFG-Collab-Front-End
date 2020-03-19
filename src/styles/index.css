@@ -76,7 +76,11 @@ code {
 }
 
 .project-detail {
-  padding-bottom: 50px;
+  padding: 40px 0px 0px 0px;
+}
+
+.mb-2 {
+  font-size: 15px;
 }
 
 /* .collaborators {
