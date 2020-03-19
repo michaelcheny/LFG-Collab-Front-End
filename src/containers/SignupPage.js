@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { getToken, Signup } from "../actions/usersActions";
 
 import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
 class SignupPage extends Component {
@@ -13,7 +14,10 @@ class SignupPage extends Component {
       name: "",
       email: "",
       password: "",
-      password_confirmation: ""
+      password_confirmation: "",
+      city: "",
+      state: "",
+      country: ""
     };
   }
 
@@ -31,7 +35,10 @@ class SignupPage extends Component {
       name: "",
       email: "",
       password: "",
-      password_confirmation: ""
+      password_confirmation: "",
+      city: "",
+      state: "",
+      country: ""
     });
   };
 
@@ -65,7 +72,7 @@ class SignupPage extends Component {
           <Form.Group controlId="formBasicName">
             <Form.Label>Name</Form.Label>
             <Form.Control
-              type="name"
+              type="text"
               name="name"
               placeholder="Enter name"
               value={this.state.name}
@@ -104,6 +111,44 @@ class SignupPage extends Component {
             />
             <Form.Text className="text-muted">Confirm your password.</Form.Text>
           </Form.Group>
+
+          <Form.Row>
+            <Form.Group as={Col} controlId="formGridCity">
+              <Form.Label>City</Form.Label>
+              <Form.Control
+                type="text"
+                name="city"
+                placeholder="Enter city"
+                value={this.state.city}
+                onChange={this.handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridState">
+              <Form.Label>State</Form.Label>
+              <Form.Control
+                type="text"
+                name="state"
+                placeholder="Enter state"
+                value={this.state.state}
+                onChange={this.handleChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridZip">
+              <Form.Label>Country</Form.Label>
+              <Form.Control
+                type="text"
+                name="country"
+                placeholder="Enter country"
+                value={this.state.country}
+                onChange={this.handleChange}
+                required
+              />
+            </Form.Group>
+          </Form.Row>
 
           <Button variant="secondary" type="submit" size="md" block>
             Register
