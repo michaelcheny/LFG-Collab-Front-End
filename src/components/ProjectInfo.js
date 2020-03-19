@@ -1,7 +1,7 @@
 import React from "react";
 import LikeButton from "./LikeButton";
 import Joinbutton from "../components/JoinButton";
-import { OnlineBadge } from "../components/Badges";
+import { OnlineBadge, PartyBadge } from "../components/Badges";
 
 import Card from "react-bootstrap/Card";
 
@@ -41,14 +41,16 @@ const ProjectInfo = ({ project }) => {
           <Card.Subtitle className="mb-2 text-muted">
             {project.category ? project.category.name : null}
           </Card.Subtitle>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
+          <Card.Text>{project.description}</Card.Text>
           <Card.Text>
             <Joinbutton /> {"  "}
             <LikeButton />
-            <OnlineBadge project={project} />
+            <span className="like-comment-badges">
+              <OnlineBadge project={project} />
+              {/* <PartyBadge project={project} />
+              Desired team size: ({project.users ? project.users.length : 0}/
+              {project.team_size}) */}
+            </span>
           </Card.Text>
         </Card.Body>
       </Card>

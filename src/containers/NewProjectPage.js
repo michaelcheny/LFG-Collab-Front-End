@@ -110,7 +110,9 @@ class NewProjectPage extends Component {
               <option value="4">4</option>
               <option value="5">5</option>
               <option value="6">6</option>
-              <option value="6 or more">> 6</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </Form.Control>
           </Form.Group>
 

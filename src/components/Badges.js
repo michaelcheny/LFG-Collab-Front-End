@@ -54,3 +54,16 @@ export const OnlineBadge = ({ project }) => {
     </>
   );
 };
+
+export const PartyBadge = ({ project }) => {
+  const num = parseInt(project.team_size);
+  // console.log(project);
+  return (
+    <>
+      <span role="img" aria-label="party">
+        🤜🤛
+      </span>
+      <Badge variant="light">{num}</Badge>
+    </>
+  );
+};

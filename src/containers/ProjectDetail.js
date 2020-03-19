@@ -22,10 +22,16 @@ class ProjectDetail extends Component {
       return (
         <Card>
           <Card.Body>
+            <Card.Title className="user-title">
+              Desired team size: ({project.users ? project.users.length : 0}/
+              {project.team_size})
+            </Card.Title>
+
             <Card.Title className="user-title">Owner</Card.Title>
             <Card.Text>
               <li className="collaborator-list">{owner.name}</li>
             </Card.Text>
+
             <Card.Title className="user-title">Collaborators</Card.Title>
             <Card.Text>
               {collaborators.map(user => {
