@@ -26,12 +26,16 @@ class ProjectDetail extends Component {
               Desired team size: ({project.users ? project.users.length : 0}/
               {project.team_size})
             </Card.Title>
-
+            <Card.Title className="user-title">
+              {project.online ? "Online Project" : "In-person Project"}
+            </Card.Title>
+            <hr />
+            {/* MOVE LAPTOP ONLINE THING, ALLOW USER TO LEAVE PROJECT, USER CHANGE
+            THEIR INFO, UPDATE PROJECT */}
             <Card.Title className="user-title">Owner</Card.Title>
             <Card.Text>
               <li className="collaborator-list">{owner.name}</li>
             </Card.Text>
-
             <Card.Title className="user-title">Collaborators</Card.Title>
             <Card.Text>
               {collaborators.map(user => {
