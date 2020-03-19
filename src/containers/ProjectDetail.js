@@ -43,7 +43,7 @@ class ProjectDetail extends Component {
 
     return (
       <div>
-        <Container>
+        <Container className="project-detail">
           <Row>
             <Col sm={8}>
               <ProjectInfo project={project} />
