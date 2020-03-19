@@ -13,7 +13,7 @@ class CommentContainer extends Component {
     const { project, token, authenticated, addComment } = this.props;
 
     return (
-      <Container>
+      <Container className="comment-container">
         <Row>
           <Col></Col>
           <Col xs={10}>

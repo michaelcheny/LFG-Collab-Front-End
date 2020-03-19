@@ -48,12 +48,9 @@ const ProjectCard = ({ authenticated, project }) => {
           </Card.Title>
 
           <Card.Text>{description}</Card.Text>
-          {/* <hr /> */}
-          {/* {renderCollaborators()} */}
         </Card.Body>
 
         <Card.Footer className="text-muted smaller-text">
-          {/* <Link to={`projects/${id}`}>view project</Link> */}
           {project.online ? "Online Project" : `${owner.city}, ${owner.state}`}
 
           <span className="like-comment-badges">
