@@ -53,7 +53,8 @@ const ProjectCard = ({ authenticated, project }) => {
         </Card.Body>
 
         <Card.Footer className="text-muted">
-          <Link to={`projects/${id}`}>view project</Link>
+          {/* <Link to={`projects/${id}`}>view project</Link> */}
+          {project.online ? "Online Project" : `${owner.city}, ${owner.state}`}
 
           <span className="like-comment-badges">
             <HandshakeBadge collaborators={collaborators.length} />

@@ -27,7 +27,9 @@ class ProjectDetail extends Component {
               {project.team_size})
             </Card.Title>
             <Card.Title className="user-title">
-              {project.online ? "Online Project" : "In-person Project"}
+              {project.online
+                ? "Online Project"
+                : `Project location: ${owner.city}, ${owner.state}`}
             </Card.Title>
             <hr />
             {/* MOVE LAPTOP ONLINE THING, ALLOW USER TO LEAVE PROJECT, USER CHANGE
