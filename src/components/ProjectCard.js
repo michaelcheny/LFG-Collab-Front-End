@@ -16,24 +16,10 @@ const ProjectCard = ({ authenticated, project }) => {
     reactions
   } = project;
 
-  // const [owner, ...collaborators] = users;
-
-  const owner = users.filter(user => user.id === project.owner_id);
+  const owner = users.find(user => user.id === project.owner_id);
   const collaborators = users.filter(user => user.id !== project.owner_id);
-  // console.log(owner);
 
   const addDate = moment(created_at).format("MMM DD, YYYY");
-
-  const renderCollaborators = () => {
-    return (
-      <ul>
-        Collaborators:
-        {users.map(user => (
-          <li key={user.id}>{user.name}</li>
-        ))}
-      </ul>
-    );
-  };
 
   return (
     <>

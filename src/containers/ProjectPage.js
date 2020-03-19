@@ -17,8 +17,13 @@ class ProjectDetail extends Component {
 
   renderCollaborators = () => {
     const { project } = this.props;
+
     if (project.users) {
-      const [owner, ...collaborators] = project.users;
+      const owner = project.users.find(user => user.id === project.owner_id);
+      const collaborators = project.users.filter(
+        user => user.id !== project.owner_id
+      );
+
       return (
         <Card>
           <Card.Body>
