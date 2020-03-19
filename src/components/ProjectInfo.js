@@ -22,9 +22,9 @@ const ProjectInfo = ({ project }) => {
           </Card.Text>
         </Card.Body>
       </Card>
+      {/* <br />
       <br />
-      <br />
-      <br />
+      <br /> */}
     </div>
   );
 };
