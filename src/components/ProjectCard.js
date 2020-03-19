@@ -16,7 +16,11 @@ const ProjectCard = ({ authenticated, project }) => {
     reactions
   } = project;
 
-  const [owner, ...collaborators] = users;
+  // const [owner, ...collaborators] = users;
+
+  const owner = users.filter(user => user.id === project.owner_id);
+  const collaborators = users.filter(user => user.id !== project.owner_id);
+  // console.log(owner);
 
   const addDate = moment(created_at).format("MMM DD, YYYY");
 

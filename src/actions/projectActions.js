@@ -96,7 +96,8 @@ export const joinProject = (token, projectId) => {
         throw res;
       }
       const data = await res.json();
-      dispatch({ type: JOIN_PROJECT, payload: data.users });
+      // dispatch({ type: JOIN_PROJECT, payload: data.users });
+      dispatch({ type: JOIN_PROJECT, payload: data });
     } catch (error) {
       console.log(error.message);
     }

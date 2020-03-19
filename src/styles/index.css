@@ -94,29 +94,6 @@ code {
   font-size: 15px;
 }
 
-/* .collaborators {
-  border: 1px black solid;
-  padding: auto;
-} */
-
-/* nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 10vh;
-  background-color: rgba(0, 0, 0, 0.836);
-  color: white;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  width: 50%;
-  justify-content: space-around;
-  align-items: center;
-  padding-left: 10px;
-} */
-
 .nav-routes {
   text-decoration: none;
   color: whitesmoke;

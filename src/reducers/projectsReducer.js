@@ -49,7 +49,7 @@ const projectsReducer = (
         ...state,
         currentProject: {
           ...state.currentProject,
-          users: action.payload
+          users: [...state.currentProject.users, action.payload]
         }
       };
 
