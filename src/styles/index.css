@@ -40,9 +40,12 @@ code {
   float: right;
 }
 
+.smaller-text {
+  font-size: 14px;
+}
+
 .project-date {
   float: right;
-  font-size: small;
 }
 
 /* .button {

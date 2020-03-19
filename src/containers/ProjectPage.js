@@ -23,13 +23,13 @@ class ProjectDetail extends Component {
         <Card>
           <Card.Body>
             <Card.Title className="user-title">
-              Desired team size: ({project.users ? project.users.length : 0}/
-              {project.team_size})
-            </Card.Title>
-            <Card.Title className="user-title">
               {project.online
                 ? "Online Project"
                 : `Project location: ${owner.city}, ${owner.state}`}
+            </Card.Title>
+            <Card.Title className="user-title">
+              Desired team size: ({project.users ? project.users.length : 0}/
+              {project.team_size})
             </Card.Title>
             <hr />
             {/* MOVE LAPTOP ONLINE THING, ALLOW USER TO LEAVE PROJECT, USER CHANGE

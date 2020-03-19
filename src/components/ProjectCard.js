@@ -35,7 +35,7 @@ const ProjectCard = ({ authenticated, project }) => {
     <>
       <br />
       <Card bg="light" border="light">
-        <Card.Header>
+        <Card.Header className="smaller-text">
           {category.name}
           <span className="project-date">
             Started on {addDate} by {owner.name}
@@ -52,7 +52,7 @@ const ProjectCard = ({ authenticated, project }) => {
           {/* {renderCollaborators()} */}
         </Card.Body>
 
-        <Card.Footer className="text-muted">
+        <Card.Footer className="text-muted smaller-text">
           {/* <Link to={`projects/${id}`}>view project</Link> */}
           {project.online ? "Online Project" : `${owner.city}, ${owner.state}`}
 
