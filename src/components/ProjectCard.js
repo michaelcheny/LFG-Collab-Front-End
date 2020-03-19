@@ -44,7 +44,10 @@ const ProjectCard = ({ authenticated, project }) => {
           {project.online ? "Online Project" : `${owner.city}, ${owner.state}`}
 
           <span className="like-comment-badges">
-            <HandshakeBadge collaborators={collaborators.length} />
+            <HandshakeBadge
+              collaborators={users.length}
+              teamSize={project.team_size}
+            />
             <LikeBadge reactions={reactions} />
             <CommentBadge comments={comments} />
           </span>
