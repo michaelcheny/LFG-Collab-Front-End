@@ -7,6 +7,7 @@ const Comments = ({ comments }) => {
   const renderComments = () => {
     if (comments) {
       return comments.map(comment => {
+        console.log(comment.content);
         const addDate = moment(comment.created_at).format(
           "MMM DD, YYYY, H:mma"
         );

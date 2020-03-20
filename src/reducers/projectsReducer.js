@@ -4,6 +4,7 @@ import {
   ADD_MY_PROJECTS,
   ADD_CURRENT_PROJECT,
   ADD_COMMENT,
+  UPDATE_COMMENT,
   DELETE_COMMENT,
   ADD_REACTION,
   DELETE_REACTION,
@@ -59,6 +60,30 @@ const projectsReducer = (
         currentProject: {
           ...state.currentProject,
           comments: [...state.currentProject.comments, action.payload]
+        }
+      };
+
+    case UPDATE_COMMENT:
+      const allComments = [...state.currentProject.comments];
+      console.log(allComments);
+      const idx = allComments.findIndex(comment => {
+        console.log(comment);
+        return comment.id === action.payload.id;
+      });
+      console.log(idx);
+      console.log(state.currentProject.comments[idx]);
+
+      return {
+        ...state,
+        currentProject: {
+          ...state.currentProject,
+          comments: [...state.currentProject.comments],
+          ...state.currentProject.comments,
+          [idx]: action.payload
+          // {
+          //   ...state.currentProject.comments[idx],
+          //   content: action.payload.content
+          // }
         }
       };
 

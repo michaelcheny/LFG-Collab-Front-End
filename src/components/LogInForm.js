@@ -39,7 +39,7 @@ class LogInForm extends Component {
   }
 
   render() {
-    const { auth } = this.props;
+    const { auth, show, onHide } = this.props;
 
     if (auth) {
       return <Redirect to="/" />;
@@ -48,7 +48,8 @@ class LogInForm extends Component {
     return (
       <>
         <Modal
-          {...this.props}
+          show={show}
+          onHide={onHide}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered

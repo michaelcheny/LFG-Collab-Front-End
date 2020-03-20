@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deleteComment } from "../../actions/commentActions";
+import EditCommentForm from "./EditCommentForm";
 
 class CommentButtons extends Component {
   // constructor(props) {
   // super(props);
   // console.log(this.props);
   // }
+  state = {
+    editFormShow: false
+  };
 
   renderButtons = () => {
     const { commentId, userId, user, deleteComment, token } = this.props;
@@ -15,7 +19,14 @@ class CommentButtons extends Component {
       return (
         <>
           {" "}
-          <span>Edit</span> |{" "}
+          <span
+            onClick={() => {
+              this.setState({ editFormShow: true });
+            }}
+          >
+            Edit
+          </span>{" "}
+          |{" "}
           <span
             onClick={() => {
               if (
@@ -26,6 +37,11 @@ class CommentButtons extends Component {
           >
             Delete
           </span>
+          <EditCommentForm
+            id={commentId}
+            show={this.state.editFormShow}
+            onHide={() => this.setState({ editFormShow: false })}
+          />
         </>
       );
     }

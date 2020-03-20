@@ -5,8 +5,6 @@ import Joinbutton from "../components/JoinButton";
 import Card from "react-bootstrap/Card";
 
 const ProjectInfo = ({ project }) => {
-  console.log(project);
-
   return (
     <div>
       <Card>
@@ -15,6 +13,7 @@ const ProjectInfo = ({ project }) => {
           <Card.Subtitle className="mb-2 text-muted">
             {project.category ? project.category.name : null}
           </Card.Subtitle>
+          <hr />
           <Card.Text>{project.description}</Card.Text>
           <Card.Text>
             <Joinbutton /> {"  "}
@@ -22,9 +21,6 @@ const ProjectInfo = ({ project }) => {
           </Card.Text>
         </Card.Body>
       </Card>
-      {/* <br />
-      <br />
-      <br /> */}
     </div>
   );
 };
