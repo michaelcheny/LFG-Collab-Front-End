@@ -18,7 +18,7 @@ const Comments = ({ comments }) => {
                 <footer className="blockquote-footer">
                   <cite title="Source Title">
                     {comment.user.name} @ {addDate}
-                    <span class="">
+                    <span className="comment-buttons">
                       <CommentButtons
                         commentId={comment.id}
                         userId={comment.user_id}

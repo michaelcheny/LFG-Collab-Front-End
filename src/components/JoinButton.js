@@ -8,9 +8,8 @@ class JoinButton extends Component {
     const { project, userId, token, authenticated, joinProject } = this.props;
 
     if (project.users && project.users.length < project.team_size) {
-      let pp = project.users.filter(project => project.id === userId);
-      console.log(pp);
-      if (pp.length > 0) {
+      let userProject = project.users.find(project => project.id === userId);
+      if (userProject) {
         return (
           <Button variant="dark" size="sm" disabled>
             Already Joined
@@ -34,9 +33,7 @@ class JoinButton extends Component {
     } else {
       return (
         <Button variant="dark" size="sm" disabled>
-          Team Full{console.log(project.users)}
-          Team Full{console.log(project)}
-          Team Full{console.log(project.team_size)}
+          Team Full
         </Button>
       );
     }

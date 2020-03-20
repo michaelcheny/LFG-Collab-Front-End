@@ -46,7 +46,11 @@ class ProjectDetail extends Component {
             <Card.Title className="user-title">Collaborators</Card.Title>
             <Card.Text>
               {collaborators.map(user => {
-                return <li className="collaborator-list">{user.name}</li>;
+                return (
+                  <li key={user.id} className="collaborator-list">
+                    {user.name}
+                  </li>
+                );
               })}
             </Card.Text>
           </Card.Body>
