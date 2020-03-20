@@ -9,22 +9,8 @@ import { CommentBadge } from "../Badges";
 import { getComments, createComment } from "../../actions/commentActions";
 
 class CommentContainer extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   // console.log(this.props);
-  // }
-
-  // componentDidMount() {
-  //   console.log(this.props);
-  //   const { fetchComments, comments, id } = this.props;
-  //   if (comments.length === 0) {
-  //     fetchComments(id);
-  //   }
-  // }
-
   render() {
     const { project, token, authenticated, addComment, comments } = this.props;
-    // console.log(comments);
     return (
       <Container className="comment-container">
         <Row>

@@ -4,10 +4,6 @@ import { deleteComment } from "../../actions/commentActions";
 import EditCommentForm from "./EditCommentForm";
 
 class CommentButtons extends Component {
-  // constructor(props) {
-  // super(props);
-  // console.log(this.props);
-  // }
   state = {
     editFormShow: false
   };
