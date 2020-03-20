@@ -70,6 +70,10 @@ code {
   margin-bottom: 5px;
 }
 
+.button {
+  margin: 10px 0px;
+}
+
 .blockquote {
   font-size: medium;
 }

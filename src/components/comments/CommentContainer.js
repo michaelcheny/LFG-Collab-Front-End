@@ -24,7 +24,7 @@ class CommentContainer extends Component {
 
   render() {
     const { project, token, authenticated, addComment, comments } = this.props;
-    console.log(comments);
+    // console.log(comments);
     return (
       <Container className="comment-container">
         <Row>

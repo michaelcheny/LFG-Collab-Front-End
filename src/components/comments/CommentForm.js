@@ -33,6 +33,7 @@ const CommentForm = ({ projectId, token, addComment, authenticated }) => {
           type="submit"
           onClick={handleSubmit}
           disabled={!authenticated}
+          size="sm"
         >
           Post comment
         </Button>
