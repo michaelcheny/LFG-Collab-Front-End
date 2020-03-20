@@ -54,14 +54,14 @@ const projectsReducer = (
         }
       };
 
-    case ADD_COMMENT:
-      return {
-        ...state,
-        currentProject: {
-          ...state.currentProject,
-          comments: [...state.currentProject.comments, action.payload]
-        }
-      };
+    // case ADD_COMMENT:
+    //   return {
+    //     ...state,
+    //     currentProject: {
+    //       ...state.currentProject,
+    //       comments: [...state.currentProject.comments, action.payload]
+    //     }
+    //   };
 
     // case UPDATE_COMMENT:
     //   const allComments = [...state.currentProject.comments];

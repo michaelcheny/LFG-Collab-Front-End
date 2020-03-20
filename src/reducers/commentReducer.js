@@ -25,6 +25,9 @@ const commentsReducer = (state = [], action) => {
         return comment;
       });
 
+    case ADD_COMMENT:
+      return [...state, action.payload];
+
     case DELETE_COMMENT:
       const comments = state.currentProject.comments.filter(
         comment => comment.id !== action.payload

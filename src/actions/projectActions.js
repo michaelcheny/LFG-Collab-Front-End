@@ -37,7 +37,6 @@ export const fetchPersonalProjects = () => {
         throw res;
       }
       const data = await res.json();
-      // console.log(data.projects);
       dispatch({ type: ADD_MY_PROJECTS, payload: data.projects });
     } catch (error) {
       console.log(error.message);
@@ -97,7 +96,6 @@ export const joinProject = (token, projectId) => {
         throw res;
       }
       const data = await res.json();
-      // dispatch({ type: JOIN_PROJECT, payload: data.users });
       dispatch({ type: JOIN_PROJECT, payload: data });
     } catch (error) {
       console.log(error.message);
@@ -111,7 +109,6 @@ export const fetchProject = id => {
       dispatch({ type: LOADING_PROJECTS });
       const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`);
       const data = await res.json();
-      console.log(data);
       dispatch({ type: ADD_CURRENT_PROJECT, payload: data });
       dispatch({ type: GET_COMMENTS, payload: data.comments });
     } catch (error) {
