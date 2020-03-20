@@ -11,6 +11,9 @@ const Comments = ({ comments }) => {
         const addDate = moment(comment.created_at).format(
           "MMM DD, YYYY, H:mma"
         );
+        const updatedDate = moment(comment.updated_at).format(
+          "MMM DD, YYYY, H:mma"
+        );
         return (
           <Card key={comment.id} className="comment-card">
             <Card.Body className="comment">
@@ -18,7 +21,10 @@ const Comments = ({ comments }) => {
                 <p> {comment.content} </p>
                 <footer className="blockquote-footer">
                   <cite title="Source Title">
-                    {comment.user.name} @ {addDate}
+                    {comment.user.name} @ {addDate} IF CREATED AT AND UPDATED AT
+                    DONT MATCH THEN USE UPDATE AT{" "}
+                    {addDate !== updatedDate ? updatedDate : addDate} REFACTOR
+                    THIS STUFF
                     <span className="comment-buttons">
                       <CommentButtons
                         commentId={comment.id}
