@@ -1,15 +1,12 @@
 import {
-  LOADING_COMMENTS,
   GET_COMMENTS,
   ADD_COMMENT,
   DELETE_COMMENT,
-  UPDATE_COMMENT,
-  LOADING_PROJECTS
+  UPDATE_COMMENT
 } from "./actionTypes";
 
 export const getComments = ({ id }) => {
   return async dispatch => {
-    dispatch({ type: LOADING_COMMENTS });
     const res = await fetch(
       `http://localhost:3001/api/v1/projects/${id}/comments`,
       {
@@ -21,7 +18,6 @@ export const getComments = ({ id }) => {
       type: GET_COMMENTS,
       payload: data
     });
-    // return data;
   };
 };
 
@@ -78,9 +74,6 @@ export const EditComment = (commentId, token, content) => {
         throw res;
       }
       const data = await res.json();
-      // dispatch({ type: ADD_COMMENT, payload: data });
-      // add dispatch ehre
-      console.log(data);
       dispatch({ type: UPDATE_COMMENT, payload: data });
     } catch (error) {
       console.log(error.message);

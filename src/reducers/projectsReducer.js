@@ -87,17 +87,17 @@ const projectsReducer = (
     //     }
     //   };
 
-    case DELETE_COMMENT:
-      const comments = state.currentProject.comments.filter(
-        comment => comment.id !== action.payload
-      );
-      return {
-        ...state,
-        currentProject: {
-          ...state.currentProject,
-          comments: comments
-        }
-      };
+    // case DELETE_COMMENT:
+    //   const comments = state.currentProject.comments.filter(
+    //     comment => comment.id !== action.payload
+    //   );
+    //   return {
+    //     ...state,
+    //     currentProject: {
+    //       ...state.currentProject,
+    //       comments: comments
+    //     }
+    //   };
 
     case ADD_REACTION:
       return {

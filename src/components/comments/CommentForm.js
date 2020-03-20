@@ -3,12 +3,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 const CommentForm = ({ projectId, token, addComment, authenticated }) => {
-  // console.log(addComment);
   const [content, setContent] = useState("");
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(content);
     addComment(projectId, token, content);
     setContent("");
   };
