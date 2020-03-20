@@ -1,4 +1,29 @@
-import { ADD_COMMENT, DELETE_COMMENT, UPDATE_COMMENT } from "./actionTypes";
+import {
+  LOADING_COMMENTS,
+  GET_COMMENTS,
+  ADD_COMMENT,
+  DELETE_COMMENT,
+  UPDATE_COMMENT,
+  LOADING_PROJECTS
+} from "./actionTypes";
+
+export const getComments = ({ id }) => {
+  return async dispatch => {
+    dispatch({ type: LOADING_COMMENTS });
+    const res = await fetch(
+      `http://localhost:3001/api/v1/projects/${id}/comments`,
+      {
+        credentials: "include"
+      }
+    );
+    const data = await res.json();
+    dispatch({
+      type: GET_COMMENTS,
+      payload: data
+    });
+    // return data;
+  };
+};
 
 export const createComment = (projectId, token, content) => {
   return async dispatch => {

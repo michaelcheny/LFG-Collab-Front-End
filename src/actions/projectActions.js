@@ -3,7 +3,8 @@ import {
   ADD_PROJECTS,
   ADD_MY_PROJECTS,
   ADD_CURRENT_PROJECT,
-  JOIN_PROJECT
+  JOIN_PROJECT,
+  GET_COMMENTS
 } from "./actionTypes";
 
 export const fetchProjects = () => {
@@ -110,8 +111,9 @@ export const fetchProject = id => {
       dispatch({ type: LOADING_PROJECTS });
       const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`);
       const data = await res.json();
-      // console.log(data);
+      console.log(data);
       dispatch({ type: ADD_CURRENT_PROJECT, payload: data });
+      dispatch({ type: GET_COMMENTS, payload: data.comments });
     } catch (error) {
       console.log(error);
     }

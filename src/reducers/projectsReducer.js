@@ -63,29 +63,29 @@ const projectsReducer = (
         }
       };
 
-    case UPDATE_COMMENT:
-      const allComments = [...state.currentProject.comments];
-      console.log(allComments);
-      const idx = allComments.findIndex(comment => {
-        console.log(comment);
-        return comment.id === action.payload.id;
-      });
-      console.log(idx);
-      console.log(state.currentProject.comments[idx]);
+    // case UPDATE_COMMENT:
+    //   const allComments = [...state.currentProject.comments];
+    //   console.log(allComments);
+    //   const idx = allComments.findIndex(comment => {
+    //     console.log(comment);
+    //     return comment.id === action.payload.id;
+    //   });
+    //   console.log(idx);
+    //   console.log(state.currentProject.comments[idx]);
 
-      return {
-        ...state,
-        currentProject: {
-          ...state.currentProject,
-          comments: [...state.currentProject.comments],
-          ...state.currentProject.comments,
-          [idx]: action.payload
-          // {
-          //   ...state.currentProject.comments[idx],
-          //   content: action.payload.content
-          // }
-        }
-      };
+    //   return {
+    //     ...state,
+    //     currentProject: {
+    //       ...state.currentProject,
+    //       comments: [...state.currentProject.comments],
+    //       ...state.currentProject.comments,
+    //       [idx]: action.payload
+    //       // {
+    //       //   ...state.currentProject.comments[idx],
+    //       //   content: action.payload.content
+    //       // }
+    //     }
+    //   };
 
     case DELETE_COMMENT:
       const comments = state.currentProject.comments.filter(

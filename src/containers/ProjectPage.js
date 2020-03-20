@@ -80,7 +80,7 @@ class ProjectDetail extends Component {
 
         <hr />
 
-        <CommentContainer />
+        <CommentContainer id={project.id} />
       </div>
     );
   }
