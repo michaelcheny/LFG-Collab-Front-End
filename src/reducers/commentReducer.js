@@ -29,16 +29,8 @@ const commentsReducer = (state = [], action) => {
       return [...state, action.payload];
 
     case DELETE_COMMENT:
-      const comments = state.currentProject.comments.filter(
-        comment => comment.id !== action.payload
-      );
-      return {
-        ...state,
-        currentProject: {
-          ...state.currentProject,
-          comments: comments
-        }
-      };
+      const comments = state.filter(comment => comment.id !== action.payload);
+      return comments;
 
     default:
       return state;
