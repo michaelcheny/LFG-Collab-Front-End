@@ -5,6 +5,7 @@ import { getToken, Login } from "../actions/usersActions";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import ErrorBox from "../components/ErrorBox";
 
 class LogInForm extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class LogInForm extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      error: false
     };
   }
 
@@ -25,11 +27,15 @@ class LogInForm extends Component {
   handleSubmit = async () => {
     const { email, password } = this.state;
     let token = await this.props.getToken();
-    this.props.login(token, email, password);
-    this.setState({
-      email: "",
-      password: ""
-    });
+    let response = await this.props.login(token, email, password);
+    console.log(response);
+    if (response.error && response.error === "error") {
+      this.setState({
+        email: "",
+        password: "",
+        error: true
+      });
+    }
   };
 
   handleKeyPress(target) {
@@ -58,6 +64,9 @@ class LogInForm extends Component {
             <Modal.Title id="contained-modal-title-vcenter">Log In</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            {this.state.error ? (
+              <ErrorBox errors={["Invalid credentials, please try again."]} />
+            ) : null}
             <Form>
               <Form.Group controlId="formGroupEmail">
                 <Form.Label>Email address</Form.Label>
@@ -67,6 +76,7 @@ class LogInForm extends Component {
                   placeholder="Enter email"
                   onChange={this.handleChange}
                   value={this.state.email}
+                  required
                 />
               </Form.Group>
               <Form.Group controlId="formGroupPassword">
@@ -78,6 +88,7 @@ class LogInForm extends Component {
                   onChange={this.handleChange}
                   value={this.state.password}
                   onKeyPress={e => this.handleKeyPress(e)}
+                  required
                 />
               </Form.Group>
             </Form>

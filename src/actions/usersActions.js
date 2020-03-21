@@ -37,22 +37,25 @@ export const Login = (token, email, password) => {
         body: JSON.stringify({ email, password }),
         credentials: "include"
       });
-      if (!res.ok) {
-        throw res;
-      }
+      // if (!res.ok) {
+      //   throw res;
+      // }
       const data = await res.json();
-      dispatch({
-        type: LOG_IN,
-        payload: {
-          id: data.id,
-          email: data.email,
-          name: data.name,
-          city: data.city,
-          state: data.state,
-          country: data.country,
-          authenticated: true
-        }
-      });
+      if (!Object.keys(data).includes("error")) {
+        dispatch({
+          type: LOG_IN,
+          payload: {
+            id: data.id,
+            email: data.email,
+            name: data.name,
+            city: data.city,
+            state: data.state,
+            country: data.country,
+            authenticated: true
+          }
+        });
+      }
+      return data;
     } catch (error) {
       console.log(error);
     }

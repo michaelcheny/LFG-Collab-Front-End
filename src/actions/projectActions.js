@@ -66,9 +66,9 @@ export const createProject = (token, project) => {
         }),
         credentials: "include"
       });
-      if (!res.ok) {
-        throw res;
-      }
+      // if (!res.ok) {
+      //   throw res;
+      // }
       const data = await res.json();
       return data;
     } catch (error) {

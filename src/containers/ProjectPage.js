@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProjectInfo from "../components/ProjectInfo";
-import LikeButton from "../components/LikeButton";
-import Joinbutton from "../components/JoinButton";
 import { fetchProject } from "../actions/projectActions";
 import CommentContainer from "../components/comments/CommentContainer";
 import Container from "react-bootstrap/Container";
@@ -37,8 +35,7 @@ class ProjectDetail extends Component {
               {project.team_size})
             </Card.Title>
             <hr />
-            {/* MOVE LAPTOP ONLINE THING, ALLOW USER TO LEAVE PROJECT, USER CHANGE
-            THEIR INFO, UPDATE PROJECT */}
+
             <Card.Title className="user-title">Owner</Card.Title>
             <Card.Text>
               <li className="collaborator-list">{owner.name}</li>
@@ -68,9 +65,6 @@ class ProjectDetail extends Component {
           <Row>
             <Col sm={8}>
               <ProjectInfo project={project} />
-              {/* <Joinbutton />
-              {"  "}
-              <LikeButton /> */}
             </Col>
             <Col sm={4}>
               <div className="collaborators">{this.renderCollaborators()}</div>

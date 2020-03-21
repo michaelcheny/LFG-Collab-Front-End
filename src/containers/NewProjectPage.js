@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import { createProject } from "../actions/projectActions";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import ErrorBox from "../components/ErrorBox";
 
 class NewProjectPage extends Component {
   state = {
@@ -13,14 +14,21 @@ class NewProjectPage extends Component {
     category: "Automotive",
     team_size: 2,
     triggerRedirect: false,
-    redirectId: null
+    redirectId: null,
+    errors: false,
+    errorMessages: []
   };
 
-  handleSubmit = async () => {
+  handleSubmit = async event => {
     const { token, createProject } = this.props;
-    console.log(this.state);
+    event.preventDefault();
+    // console.log(this.state);
     const project = await createProject(token, this.state);
-    this.setState({ triggerRedirect: true, redirectId: project.id });
+    if (project.errors && project.errors.length > 0) {
+      this.setState({ errors: true, errorMessages: project.errors });
+    } else {
+      this.setState({ triggerRedirect: true, redirectId: project.id });
+    }
   };
 
   handleChange = event => {
@@ -51,6 +59,11 @@ class NewProjectPage extends Component {
     return (
       <div>
         <h2>Start a New Project</h2>
+
+        {this.state.errors ? (
+          <ErrorBox errors={this.state.errorMessages} />
+        ) : null}
+
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="exampleForm.ControlInput1">
             <Form.Label>Title</Form.Label>
@@ -142,15 +155,7 @@ class NewProjectPage extends Component {
             }
           />
 
-          <Button
-            variant="dark"
-            type="submit"
-            onClick={e => {
-              e.preventDefault();
-              this.handleSubmit();
-            }}
-            block
-          >
+          <Button variant="dark" type="submit" block>
             Post Project
           </Button>
         </Form>
