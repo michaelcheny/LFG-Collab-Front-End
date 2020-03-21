@@ -24,7 +24,7 @@ class CommentContainer extends Component {
             />
             <br />
             <h5>
-              Comments <CommentBadge comments={project.comments} />:
+              Comments <CommentBadge comments={comments} />:
             </h5>
             <Comments comments={comments} />
           </Col>
