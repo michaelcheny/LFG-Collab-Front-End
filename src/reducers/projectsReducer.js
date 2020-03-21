@@ -77,10 +77,6 @@ const projectsReducer = (
     //       comments: [...state.currentProject.comments],
     //       ...state.currentProject.comments,
     //       [idx]: action.payload
-    //       // {
-    //       //   ...state.currentProject.comments[idx],
-    //       //   content: action.payload.content
-    //       // }
     //     }
     //   };
 

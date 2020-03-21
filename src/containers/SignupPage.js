@@ -33,13 +33,7 @@ class SignupPage extends Component {
     event.preventDefault();
     let token = await this.props.getToken();
     let response = await this.props.register(token, this.state);
-    // console.log(response);
     if (response.errors && response.errors.length > 0) {
-      // response.errors.map(error => {
-      //   this.setState({
-      //     errorMessages: error.message
-      //   });
-      // });
       this.setState({
         name: "",
         email: "",
@@ -175,12 +169,9 @@ class SignupPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { user } = state;
-  return {
-    authenticated: user.authenticated
-  };
-};
+const mapStateToProps = ({ user }) => ({
+  authenticated: user.authenticated
+});
 
 const mapDispatchToProps = dispatch => {
   return {

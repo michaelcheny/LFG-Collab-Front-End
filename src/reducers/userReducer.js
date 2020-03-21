@@ -20,7 +20,7 @@ const userReducer = (
         user: {
           id: action.payload.id,
           name: action.payload.name,
-          // email: action.payload.email,
+          email: action.payload.email,
           city: action.payload.city,
           state: action.payload.state,
           country: action.payload.country

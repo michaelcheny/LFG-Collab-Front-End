@@ -45,6 +45,7 @@ export const Login = (token, email, password) => {
         type: LOG_IN,
         payload: {
           id: data.id,
+          email: data.email,
           name: data.name,
           city: data.city,
           state: data.state,
@@ -101,7 +102,7 @@ export const Signup = (token, user) => {
           type: LOG_IN,
           payload: {
             id: data.id,
-            // email: data.email,
+            email: data.email,
             name: data.name,
             city: data.city,
             state: data.state,
