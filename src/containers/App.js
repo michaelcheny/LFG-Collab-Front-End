@@ -9,6 +9,7 @@ import ProjectPage from "./ProjectsPage";
 import ProjectDetail from "./ProjectPage";
 import SignupPage from "./SignupPage";
 import NewProjectPage from "./NewProjectPage";
+import MyProfile from "./MyProfile";
 
 class App extends Component {
   // componentDidMount() {
@@ -27,9 +28,9 @@ class App extends Component {
               <Route path="/myprojects" exact component={ProjectPage} />
               <Route path="/projects" exact component={ProjectPage} />
               <Route path="/projects/:id" component={ProjectDetail} />
-
               <Route path="/registration" component={SignupPage} />
               <Route path="/newproject" component={NewProjectPage} />
+              <Route path="/account" component={MyProfile} />
               {/* <Route path="/link3" component={something} /> */}
             </Switch>
           </Layout>
