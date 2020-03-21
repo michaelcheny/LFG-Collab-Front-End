@@ -96,21 +96,25 @@ export const Signup = (token, user) => {
       });
       const data = await res.json();
       console.log(data);
-      dispatch({
-        type: LOG_IN,
-        payload: {
-          id: data.id,
-          // email: data.email,
-          name: data.name,
-          city: data.city,
-          state: data.state,
-          country: data.country,
-          authenticated: true
-        }
-      });
+      if (!Object.keys(data).includes("errors")) {
+        dispatch({
+          type: LOG_IN,
+          payload: {
+            id: data.id,
+            // email: data.email,
+            name: data.name,
+            city: data.city,
+            state: data.state,
+            country: data.country,
+            authenticated: true
+          }
+        });
+      }
+      return data;
     } catch (error) {
       console.log(error);
-      alert(error.message);
+      // return error;
+      // alert(error.message);
     }
   };
 };

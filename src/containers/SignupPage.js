@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { getToken, Signup } from "../actions/usersActions";
-
+import ErrorBox from "../components/ErrorBox";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -17,7 +17,9 @@ class SignupPage extends Component {
       password_confirmation: "",
       city: "",
       state: "",
-      country: ""
+      country: "",
+      errors: false,
+      errorMessages: []
     };
   }
 
@@ -30,16 +32,26 @@ class SignupPage extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     let token = await this.props.getToken();
-    this.props.register(token, this.state);
-    this.setState({
-      name: "",
-      email: "",
-      password: "",
-      password_confirmation: "",
-      city: "",
-      state: "",
-      country: ""
-    });
+    let response = await this.props.register(token, this.state);
+    // console.log(response);
+    if (response.errors && response.errors.length > 0) {
+      // response.errors.map(error => {
+      //   this.setState({
+      //     errorMessages: error.message
+      //   });
+      // });
+      this.setState({
+        name: "",
+        email: "",
+        password: "",
+        password_confirmation: "",
+        city: "",
+        state: "",
+        country: "",
+        errors: true,
+        errorMessages: response.errors
+      });
+    }
   };
 
   render() {
@@ -52,6 +64,10 @@ class SignupPage extends Component {
     return (
       <div>
         <h1>Registration</h1>
+
+        {this.state.errors ? (
+          <ErrorBox errors={this.state.errorMessages} />
+        ) : null}
 
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicEmail">

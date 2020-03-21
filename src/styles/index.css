@@ -103,3 +103,7 @@ code {
   color: whitesmoke;
   /* padding-left: 2px; */
 }
+
+.error-box {
+  border: 1px solid red;
+}

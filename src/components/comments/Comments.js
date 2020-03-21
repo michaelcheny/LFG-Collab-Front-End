@@ -10,16 +10,13 @@ const Comments = ({ comments }) => {
         const addDate = moment(comment.created_at).format(
           "MMM DD, YYYY, h:mma"
         );
-        // const updatedDate = moment(comment.updated_at).format(
-        //   "MMM DD, YYYY, h:mma"
-        // );
         const updatedDate = moment(comment.updated_at)
           .startOf("hour")
           .fromNow();
 
         const renderDate = () => {
           return comment.created_at !== comment.updated_at
-            ? addDate + " edited " + updatedDate
+            ? addDate + " (edited " + updatedDate + ")"
             : addDate;
         };
 
