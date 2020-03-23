@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
-import ProjectCard from "../components/ProjectCard";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
@@ -29,12 +27,9 @@ const NewestProjects = () => {
         return (
           <li>
             <Link to={`projects/${project.id}`}>{project.name}</Link>
-            <span style={{ "font-size": "12px" }}>
+            <span className="smaller-text">
               {" "}
-              added{" "}
-              {moment(project.updated_at)
-                .startOf("hour")
-                .fromNow()}
+              added {moment(project.created_at).fromNow()}
             </span>
           </li>
         );

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Carousel from "../components/Carousel";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import NewestProjects from "../components/NewestProjects";
@@ -36,23 +35,6 @@ class HomePage extends Component {
             <NewestProjects />
           </Container>
         </Jumbotron>
-
-        {/* <Carousel
-          carouselItems={[
-            <img
-              src="https://www.petmd.com/sites/default/files/dog-stomach-noises-2.jpg"
-              alt="pic"
-            />,
-            <img
-              src="https://i.ytimg.com/vi/JVjtMl3APFs/hqdefault.jpg"
-              alt="pic"
-            />,
-            <img
-              src="http://news.bbcimg.co.uk/media/images/58682000/jpg/_58682918_wild_dog_screz.jpg"
-              alt="pic"
-            />
-          ]}
-        /> */}
       </div>
     );
   }
