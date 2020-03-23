@@ -49,7 +49,7 @@ export const OnlineBadge = ({ project }) => {
           </span>
         ) : (
           <span role="img" aria-label="cross">
-            ❎
+            ❌
           </span>
         )}
       </Badge>

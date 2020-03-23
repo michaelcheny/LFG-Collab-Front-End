@@ -23,9 +23,9 @@ class ProfilePage extends Component {
   render() {
     const { user, authenticated, token, projects } = this.props;
 
-    if (!authenticated) {
-      return <Redirect to="/" />;
-    }
+    // if (!authenticated) {
+    //   return <Redirect to="/" />;
+    // }
 
     return (
       <Container>
