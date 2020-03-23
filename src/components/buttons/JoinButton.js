@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
-import { joinProject } from "../actions/projectActions";
+import { joinProject } from "../../actions/projectActions";
 
 class JoinButton extends Component {
   renderButton = () => {

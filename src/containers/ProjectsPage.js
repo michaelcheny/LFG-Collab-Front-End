@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ProjectCard from "../components/ProjectCard";
+import ProjectCard from "../components/project/ProjectCard";
 import {
   fetchProjects,
   fetchPersonalProjects

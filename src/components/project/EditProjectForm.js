@@ -7,18 +7,6 @@ import { updateProject } from "../../actions/projectActions";
 import ErrorBox from "../../components/ErrorBox";
 
 class EditProjectForm extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     name: "",
-  //     description: "",
-  //     online: "",
-  //     team_size: "",
-  //     errors: false,
-  //     errorMessages: []
-  //   };
-  //   console.log(this.props);
-  // }
   state = {
     id: "",
     name: "",
@@ -34,7 +22,6 @@ class EditProjectForm extends Component {
   }
 
   fillFormWithProject = async () => {
-    // console.log(this.props);
     const { projectId } = this.props;
     const res = await fetch(
       `http://localhost:3001/api/v1/projects/${projectId}`
@@ -47,7 +34,6 @@ class EditProjectForm extends Component {
       online: data.online,
       team_size: data.team_size
     });
-    // console.log(this.state);
   };
 
   handleSizeChange = event => {
@@ -90,6 +76,7 @@ class EditProjectForm extends Component {
           {this.state.errors ? (
             <ErrorBox errors={this.state.errorMessages} />
           ) : null}
+
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="exampleForm.ControlInput1">
               <Form.Label>Title</Form.Label>
@@ -118,6 +105,7 @@ class EditProjectForm extends Component {
                 <option value="4">4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>
+                <option value="7">7</option>
                 <option value="8">8</option>
                 <option value="9">9</option>
                 <option value="10">10</option>

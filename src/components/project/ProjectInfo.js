@@ -1,7 +1,6 @@
 import React from "react";
-import LikeButton from "./LikeButton";
-import Joinbutton from "../components/JoinButton";
-
+import LikeButton from "../buttons/LikeButton";
+import Joinbutton from "../buttons/JoinButton";
 import Card from "react-bootstrap/Card";
 
 const ProjectInfo = ({ project }) => {

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
-import { createReaction, deleteReaction } from "../actions/reactionActions";
+import { createReaction, deleteReaction } from "../../actions/reactionActions";
 
 class LikeButton extends Component {
   handleProjectReaction = () => {

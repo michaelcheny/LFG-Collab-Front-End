@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import ProjectInfo from "../components/ProjectInfo";
+import ProjectInfo from "../components/project/ProjectInfo";
 import { fetchProject } from "../actions/projectActions";
 import CommentContainer from "../components/comments/CommentContainer";
 import Container from "react-bootstrap/Container";

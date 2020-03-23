@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { CommentBadge, LikeBadge, HandshakeBadge } from "./Badges";
+import { CommentBadge, LikeBadge, HandshakeBadge } from "../Badges";
 
 const ProjectCard = ({ authenticated, project }) => {
   const {
