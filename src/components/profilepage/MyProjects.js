@@ -34,8 +34,6 @@ const MyProjects = ({ projects }) => {
               </span>
             </Card.Body>
           </Card>
-          {/* <h6 className="account-page-tile"></h6>
-          <span className="smaller-text"></span> */}
         </div>
       );
     });

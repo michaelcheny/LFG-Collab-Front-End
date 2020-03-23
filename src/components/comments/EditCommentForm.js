@@ -52,7 +52,7 @@ class EditCommentForm extends Component {
         <Modal.Body>
           <Form>
             <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Update you comment:</Form.Label>
+              <Form.Label>Update your comment:</Form.Label>
               <Form.Control
                 as="textarea"
                 rows="3"
