@@ -74,20 +74,6 @@ class NavBar extends Component {
     }
   };
 
-  // greeting = () => {
-  //   const { authenticated } = this.props;
-  //   if (authenticated) {
-  //     return (
-  //       <Nav.Item>
-  //         {/* <Link to="/registration">
-  //             <li className="nav-routes">Register</li>
-  //           </Link> */}
-  //         <li className="nav-routes">Hi {this.props.currentUser.name}!</li>
-  //       </Nav.Item>
-  //     );
-  //   }
-  // };
-
   render() {
     return (
       <StyledNav>
@@ -96,8 +82,6 @@ class NavBar extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              {/* {this.greeting()} */}
-
               <Nav.Item>
                 <Link to="/">
                   <li className="nav-routes">Home</li>

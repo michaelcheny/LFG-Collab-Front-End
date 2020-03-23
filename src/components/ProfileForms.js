@@ -5,7 +5,6 @@ import Button from "react-bootstrap/Button";
 export const EmailForm = ({ show, onHide }) => {
   return (
     <Modal
-      // {...props}
       show={show}
       onHide={onHide}
       size="lg"

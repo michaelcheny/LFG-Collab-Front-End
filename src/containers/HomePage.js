@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Carousel from "../components/Carousel";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Container from "react-bootstrap/Container";
+import NewestProjects from "../components/NewestProjects";
 
 class HomePage extends Component {
   renderGreeting = () => {
@@ -16,11 +19,25 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <h2>Home Page</h2>
+        <h2>Welcome to LFG Collab</h2>
 
         {this.renderGreeting()}
 
-        <Carousel
+        <Jumbotron fluid>
+          <Container>
+            <h1>Join online or local projects around the world!</h1>
+            <p>
+              Welcome to LFG Collab where you will find projects posted by users
+              around the world. Join a project that you feel strong about and
+              want to collaborate on. Projects can by about anything, from an
+              online pair programming sessions, to group fitness workouts, to an
+              online open-source app collaborations.
+            </p>
+            <NewestProjects />
+          </Container>
+        </Jumbotron>
+
+        {/* <Carousel
           carouselItems={[
             <img
               src="https://www.petmd.com/sites/default/files/dog-stomach-noises-2.jpg"
@@ -35,7 +52,7 @@ class HomePage extends Component {
               alt="pic"
             />
           ]}
-        />
+        /> */}
       </div>
     );
   }
