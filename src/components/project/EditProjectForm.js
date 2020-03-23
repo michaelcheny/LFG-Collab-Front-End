@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { updateProject } from "../../actions/projectActions";
 import ErrorBox from "../../components/ErrorBox";
+import { withRouter } from "react-router-dom";
 
 class EditProjectForm extends Component {
   state = {
@@ -19,12 +20,12 @@ class EditProjectForm extends Component {
 
   componentDidMount() {
     this.fillFormWithProject();
+    console.log(this.props);
   }
 
   fillFormWithProject = async () => {
-    const { projectId } = this.props;
     const res = await fetch(
-      `http://localhost:3001/api/v1/projects/${projectId}`
+      `http://localhost:3001/api/v1/projects/${this.props.match.params.id}`
     );
     const data = await res.json();
     this.setState({
@@ -162,4 +163,6 @@ const mapDispatchToProps = dispatch => ({
   updateProject: (token, project) => dispatch(updateProject(token, project))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditProjectForm);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(EditProjectForm)
+);

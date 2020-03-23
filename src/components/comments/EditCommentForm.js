@@ -11,7 +11,6 @@ class EditCommentForm extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log(prevState);
     if (prevState.content === "tacotacotaco") {
       this.getCommentContent();
     }
@@ -23,7 +22,6 @@ class EditCommentForm extends Component {
         `http://localhost:3001/api/v1/comments/${this.props.id}`
       );
       const data = await res.json();
-      console.log(data);
       this.setState({
         content: data.content
       });
