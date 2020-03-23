@@ -22,7 +22,6 @@ class EditAccountForm extends Component {
 
   componentDidMount() {
     const { user } = this.props;
-    console.log(user);
     this.setState({
       email: user.email,
       name: user.name,
@@ -42,10 +41,8 @@ class EditAccountForm extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    console.log(this.state);
     const { token, user, updateUser, onHide } = this.props;
     const updatedUser = await updateUser(token, this.state, user.id);
-    console.log(updatedUser);
     if (Object.keys(updatedUser).includes("errors")) {
       this.setState({
         password: "",
@@ -194,7 +191,6 @@ class EditAccountForm extends Component {
           >
             Update Account
           </Button>
-          {/* <Button onClick={onHide}>Close</Button> */}
         </Modal.Footer>
       </Modal>
     );

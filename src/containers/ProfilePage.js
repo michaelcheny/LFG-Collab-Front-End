@@ -8,26 +8,39 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import AccountInfo from "../components/profilepage/AccountInfo";
-
+import { Redirect } from "react-router-dom";
+import { fetchPersonalProjects } from "../actions/projectActions";
+import MyProjects from "../components/profilepage/MyProjects";
 class ProfilePage extends Component {
   state = {
     showEmailForm: false
   };
 
+  componentDidMount() {
+    this.props.fetchProjects();
+  }
+
   render() {
-    const { user, authenticated, token } = this.props;
+    const { user, authenticated, token, projects } = this.props;
+
+    if (!authenticated) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <Container>
         <Row>
           <Col></Col>
           <Col xs={8}>
-            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+            <Tabs defaultActiveKey="profile">
               <Tab eventKey="home" title="Stats">
                 "teddies"
               </Tab>
+
               <Tab eventKey="profile" title="Profile">
-                "poopoo"
+                <MyProjects projects={projects} />
               </Tab>
+
               <Tab eventKey="contact" title="Account">
                 <AccountInfo user={user} />
                 <hr />
@@ -52,12 +65,15 @@ class ProfilePage extends Component {
   }
 }
 
-const mapStateToProps = ({ user, token }) => ({
+const mapStateToProps = ({ user, token, projects }) => ({
   user: user.user,
   authenticated: user.authenticated,
-  token: token.token
+  token: token.token,
+  projects: projects.personalProjects
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  fetchProjects: () => dispatch(fetchPersonalProjects())
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

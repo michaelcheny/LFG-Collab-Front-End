@@ -9,7 +9,6 @@ const AccountInfo = ({ user }) => {
       <h6 className="account-page-tile">Name</h6>
       <span className="smaller-text">{user.name}</span>
       <span className="like-comment-badges"></span>
-
       <h5 className="account-page-tile">Location</h5>
       <h6 className="account-page-tile">City</h6>
       <span className="smaller-text">{user.city}</span>
