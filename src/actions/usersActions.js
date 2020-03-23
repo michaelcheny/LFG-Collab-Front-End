@@ -5,7 +5,8 @@ import {
   CLEAR_TOKEN,
   SIGNING_UP,
   GET_TOKEN,
-  ADD_TOKEN
+  ADD_TOKEN,
+  UPDATE_USER
 } from "./actionTypes";
 
 export const getToken = () => {
@@ -37,9 +38,6 @@ export const Login = (token, email, password) => {
         body: JSON.stringify({ email, password }),
         credentials: "include"
       });
-      // if (!res.ok) {
-      //   throw res;
-      // }
       const data = await res.json();
       if (!Object.keys(data).includes("error")) {
         dispatch({
@@ -65,12 +63,10 @@ export const Login = (token, email, password) => {
 export const Logout = token => {
   return async dispatch => {
     try {
-      // dispatch({ type: LOGGING_OUT });
       const res = await fetch("http://localhost:3001/api/v1/logout", {
         method: "DELETE",
         headers: {
           Accept: "application/json",
-          // "Content-Type": "application/json",
           "X-CSRF-TOKEN": token
         },
         credentials: "include"
@@ -117,8 +113,43 @@ export const Signup = (token, user) => {
       return data;
     } catch (error) {
       console.log(error);
-      // return error;
-      // alert(error.message);
+    }
+  };
+};
+
+export const UpdateUser = (token, user, id) => {
+  return async dispatch => {
+    try {
+      dispatch({ type: SIGNING_UP });
+      const res = await fetch(`http://localhost:3001/api/v1/users/${id}`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({ user: user }),
+        credentials: "include"
+      });
+      const data = await res.json();
+      console.log(data);
+      if (!Object.keys(data).includes("errors")) {
+        dispatch({
+          type: UPDATE_USER,
+          payload: {
+            id: data.id,
+            email: data.email,
+            name: data.name,
+            city: data.city,
+            state: data.state,
+            country: data.country,
+            authenticated: true
+          }
+        });
+      }
+      return data;
+    } catch (error) {
+      console.log(error);
     }
   };
 };

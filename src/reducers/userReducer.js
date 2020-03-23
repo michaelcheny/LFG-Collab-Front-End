@@ -1,4 +1,9 @@
-import { LOGGING_IN, LOG_IN, LOG_OUT } from "../actions/actionTypes";
+import {
+  LOGGING_IN,
+  LOG_IN,
+  LOG_OUT,
+  UPDATE_USER
+} from "../actions/actionTypes";
 
 const userReducer = (
   state = {
@@ -27,6 +32,18 @@ const userReducer = (
         },
         authenticated: !!action.payload.authenticated,
         loading: false
+      };
+    case UPDATE_USER:
+      return {
+        ...state,
+        user: {
+          id: action.payload.id,
+          name: action.payload.name,
+          email: action.payload.email,
+          city: action.payload.city,
+          state: action.payload.state,
+          country: action.payload.country
+        }
       };
     case LOG_OUT:
       return {

@@ -53,7 +53,6 @@ const ProjectCard = ({ authenticated, project }) => {
           </span>
         </Card.Footer>
       </Card>
-      {console.log(owner)}
     </>
   );
 };

@@ -100,7 +100,6 @@ class ProjectDetail extends Component {
         <EditProjectForm
           show={this.state.showUpdateForm}
           onHide={() => this.setState({ showUpdateForm: false })}
-          projectId={project.id}
         />
 
         <hr />

@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { updateProject } from "../../actions/projectActions";
 import ErrorBox from "../../components/ErrorBox";
+// to use match
 import { withRouter } from "react-router-dom";
 
 class EditProjectForm extends Component {
@@ -121,7 +122,6 @@ class EditProjectForm extends Component {
                 name="description"
                 onChange={this.handleChange}
                 value={this.state.description}
-                // onKeyPress={e => this.handleKeyPress(e)}
                 required
               />
             </Form.Group>
@@ -131,7 +131,6 @@ class EditProjectForm extends Component {
               id="custom-switch"
               label="Online project"
               defaultChecked={this.state.online}
-              onKeyPress={e => this.handleKeyPress(e)}
               onClick={() =>
                 this.setState(prevState => ({
                   online: !prevState.online
