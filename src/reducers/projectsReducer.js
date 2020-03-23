@@ -5,8 +5,10 @@ import {
   ADD_CURRENT_PROJECT,
   ADD_REACTION,
   DELETE_REACTION,
-  JOIN_PROJECT
+  JOIN_PROJECT,
+  UPDATE_PROJECT
 } from "../actions/actionTypes";
+import { act } from "react-dom/test-utils";
 
 const projectsReducer = (
   state = {
@@ -40,6 +42,12 @@ const projectsReducer = (
         ...state,
         currentProject: action.payload,
         loading: false
+      };
+
+    case UPDATE_PROJECT:
+      return {
+        ...state,
+        currentProject: action.payload
       };
 
     case JOIN_PROJECT:

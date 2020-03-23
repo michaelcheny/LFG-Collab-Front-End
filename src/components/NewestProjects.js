@@ -10,7 +10,7 @@ const NewestProjects = () => {
       const res = await fetch("http://localhost:3001/api/v1/newest-projects");
       const data = await res.json();
       setProjects(data);
-      console.log(projects);
+      // console.log(projects);
     } catch (error) {
       console.log(error);
     }

@@ -7,11 +7,35 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import EditProjectForm from "../components/project/EditProjectForm";
 
 class ProjectDetail extends Component {
+  state = {
+    showUpdateForm: false
+  };
+
   componentDidMount() {
     this.props.fetchProject(this.props.match.params.id);
   }
+
+  editButtonforOwner = () => {
+    const { user, project } = this.props;
+    if (project.owner_id === user.id) {
+      return (
+        <span>
+          <hr />
+          <Button
+            variant="dark"
+            size="sm"
+            onClick={() => this.setState({ showUpdateForm: true })}
+          >
+            Edit Project
+          </Button>
+        </span>
+      );
+    }
+  };
 
   renderCollaborators = () => {
     const { project } = this.props;
@@ -49,6 +73,7 @@ class ProjectDetail extends Component {
                   </li>
                 );
               })}
+              {this.editButtonforOwner()}
             </Card.Text>
           </Card.Body>
         </Card>
@@ -72,6 +97,12 @@ class ProjectDetail extends Component {
           </Row>
         </Container>
 
+        <EditProjectForm
+          show={this.state.showUpdateForm}
+          onHide={() => this.setState({ showUpdateForm: false })}
+          projectId={project.id}
+        />
+
         <hr />
 
         <CommentContainer id={project.id} />
@@ -80,11 +111,10 @@ class ProjectDetail extends Component {
   }
 }
 
-const mapStateToProps = ({ projects }) => {
-  return {
-    project: projects.currentProject
-  };
-};
+const mapStateToProps = ({ projects, user }) => ({
+  project: projects.currentProject,
+  user: user.user
+});
 
 const mapDispatchToProps = dispatch => {
   return {

@@ -4,7 +4,8 @@ import {
   ADD_MY_PROJECTS,
   ADD_CURRENT_PROJECT,
   JOIN_PROJECT,
-  GET_COMMENTS
+  GET_COMMENTS,
+  UPDATE_PROJECT
 } from "./actionTypes";
 
 export const fetchProjects = () => {
@@ -66,10 +67,40 @@ export const createProject = (token, project) => {
         }),
         credentials: "include"
       });
-      // if (!res.ok) {
-      //   throw res;
-      // }
       const data = await res.json();
+      return data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+
+export const updateProject = (token, project) => {
+  const { id, name, description, online, team_size } = project;
+  console.log(project);
+  return async dispatch => {
+    try {
+      const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({
+          project: {
+            name,
+            description,
+            online,
+            team_size
+          }
+        }),
+        credentials: "include"
+      });
+      const data = await res.json();
+      if (!Object.keys(data).includes("errors")) {
+        dispatch({ type: UPDATE_PROJECT, payload: data });
+      }
       return data;
     } catch (error) {
       console.log(error.message);
