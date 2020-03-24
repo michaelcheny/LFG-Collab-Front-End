@@ -16,12 +16,12 @@ const MyProjects = ({ project }) => {
       <div>
         <Card border="light">
           <Card.Body>
-            <Card.Title onClick={() => setShowDescription(!showDescription)}>
-              {project.name}
-            </Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
-              {project.category.name}
-            </Card.Subtitle>
+            <div onClick={() => setShowDescription(!showDescription)}>
+              <Card.Title>{project.name}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">
+                {project.category.name}
+              </Card.Subtitle>
+            </div>
 
             {showDescription ? (
               <Card.Text>{project.description}</Card.Text>
