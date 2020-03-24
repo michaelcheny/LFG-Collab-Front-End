@@ -62,13 +62,21 @@ class ProjectDetail extends Component {
 
             <Card.Title className="user-title">Owner</Card.Title>
             <Card.Text>
-              <li className="collaborator-list">{owner.name}</li>
+              <li className="collaborator-list">
+                <img src={owner.image} alt="user-pic" className="small-image" />
+                {owner.name}
+              </li>
             </Card.Text>
             <Card.Title className="user-title">Collaborators</Card.Title>
             <Card.Text>
               {collaborators.map(user => {
                 return (
                   <li key={user.id} className="collaborator-list">
+                    <img
+                      src={user.image}
+                      alt="user-pic"
+                      className="small-image"
+                    />
                     {user.name}
                   </li>
                 );

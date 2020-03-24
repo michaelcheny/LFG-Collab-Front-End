@@ -46,6 +46,7 @@ class LogInForm extends Component {
 
   render() {
     const { auth, show, onHide } = this.props;
+    const { email, password } = this.state;
 
     if (auth) {
       return <Redirect to="/" />;
@@ -75,7 +76,7 @@ class LogInForm extends Component {
                   name="email"
                   placeholder="Enter email"
                   onChange={this.handleChange}
-                  value={this.state.email}
+                  value={email}
                   required
                 />
               </Form.Group>
@@ -86,7 +87,7 @@ class LogInForm extends Component {
                   name="password"
                   placeholder="Password"
                   onChange={this.handleChange}
-                  value={this.state.password}
+                  value={password}
                   onKeyPress={e => this.handleKeyPress(e)}
                   required
                 />
@@ -98,7 +99,7 @@ class LogInForm extends Component {
               className="nav-routes"
               variant="dark"
               size="sm"
-              // block
+              block
               onClick={this.handleSubmit}
             >
               Log In
@@ -110,20 +111,14 @@ class LogInForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { user } = state;
+const mapStateToProps = ({ user }) => ({
+  user: user.user,
+  auth: user.authenticated
+});
 
-  return {
-    user: user.user,
-    auth: user.authenticated
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    login: (token, email, password) => dispatch(Login(token, email, password)),
-    getToken: () => dispatch(getToken())
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  login: (token, email, password) => dispatch(Login(token, email, password)),
+  getToken: () => dispatch(getToken())
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogInForm);
