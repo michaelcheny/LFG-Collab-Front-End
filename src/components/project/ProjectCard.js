@@ -27,7 +27,9 @@ const ProjectCard = ({ authenticated, project }) => {
         <Card.Header className="smaller-text">
           {category.name}
           <span className="project-date">
-            Started on {addDate} by {owner.name}
+            Started on {addDate} by{" "}
+            <img src={owner.image} className="smaller-image" alt="owner-pic" />
+            {owner.name}
           </span>
         </Card.Header>
 
