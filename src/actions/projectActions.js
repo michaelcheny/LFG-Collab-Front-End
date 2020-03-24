@@ -76,7 +76,7 @@ export const createProject = (token, project) => {
 };
 
 export const updateProject = (token, project) => {
-  const { id, name, description, online, team_size } = project;
+  const { id, name, description, online, team_size, completed } = project;
   console.log(project);
   return async dispatch => {
     try {
@@ -92,7 +92,8 @@ export const updateProject = (token, project) => {
             name,
             description,
             online,
-            team_size
+            team_size,
+            completed
           }
         }),
         credentials: "include"

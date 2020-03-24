@@ -15,6 +15,7 @@ class EditProjectForm extends Component {
     description: "",
     online: "",
     team_size: "",
+    completed: false,
     errors: false,
     errorMessages: []
   };
@@ -33,7 +34,8 @@ class EditProjectForm extends Component {
       name: data.name,
       description: data.description,
       online: data.online,
-      team_size: data.team_size
+      team_size: data.team_size,
+      completed: data.completed
     });
   };
 
@@ -49,7 +51,6 @@ class EditProjectForm extends Component {
 
   handleSubmit = async event => {
     const { token, updateProject, onHide } = this.props;
-
     event.preventDefault();
     const project = await updateProject(token, this.state);
     if (project.errors && project.errors.length > 0) {
@@ -125,9 +126,10 @@ class EditProjectForm extends Component {
               />
             </Form.Group>
 
+            {/* <Form.Group> */}
             <Form.Check
               type="switch"
-              id="custom-switch"
+              id="online-switch"
               label="Online project"
               defaultChecked={this.state.online}
               onClick={() =>
@@ -136,6 +138,20 @@ class EditProjectForm extends Component {
                 }))
               }
             />
+            {/* </Form.Group> */}
+            {/* <Form.Group> */}
+            <Form.Check
+              type="switch"
+              id="completed-switch"
+              label="Completed?"
+              defaultChecked={this.state.completed}
+              onClick={() =>
+                this.setState(prevState => ({
+                  completed: !prevState.completed
+                }))
+              }
+            />
+            {/* </Form.Group> */}
           </Form>
         </Modal.Body>
         <Modal.Footer>
