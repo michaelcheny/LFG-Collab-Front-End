@@ -10,6 +10,7 @@ import ProjectDetail from "./ProjectPage";
 import SignupPage from "./SignupPage";
 import NewProjectPage from "./NewProjectPage";
 import ProfilePage from "./ProfilePage";
+import NoMatch from "../components/NoMatch";
 
 class App extends Component {
   // componentDidMount() {
@@ -30,6 +31,7 @@ class App extends Component {
               <Route path="/registration" component={SignupPage} />
               <Route path="/newproject" component={NewProjectPage} />
               <Route path="/account" component={ProfilePage} />
+              <Route component={NoMatch} />
             </Switch>
           </Layout>
           <Footer />

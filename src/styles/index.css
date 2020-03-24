@@ -111,3 +111,10 @@ li {
 .account-page-tile {
   padding-top: 20px;
 }
+
+.img {
+  float: left;
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+}

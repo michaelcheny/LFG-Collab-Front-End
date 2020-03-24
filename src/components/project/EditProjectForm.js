@@ -21,7 +21,6 @@ class EditProjectForm extends Component {
 
   componentDidMount() {
     this.fillFormWithProject();
-    console.log(this.props);
   }
 
   fillFormWithProject = async () => {

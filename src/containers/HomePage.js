@@ -32,6 +32,7 @@ class HomePage extends Component {
               online pair programming sessions, to group fitness workouts, to an
               online open-source app collaborations.
             </p>
+
             <NewestProjects />
           </Container>
         </Jumbotron>

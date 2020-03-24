@@ -22,7 +22,15 @@ const Comments = ({ comments }) => {
           <Card key={comment.id} className="comment-card">
             <Card.Body className="comment">
               <blockquote className="blockquote mb-0">
-                <p> {comment.content} </p>
+                <p>
+                  {" "}
+                  <img
+                    src={comment.user.image}
+                    className="img"
+                    alt="user-pic"
+                  />
+                  {comment.content}{" "}
+                </p>
                 <footer className="blockquote-footer">
                   <cite title="Source Title">
                     {comment.user.name} @ {renderDate()}
