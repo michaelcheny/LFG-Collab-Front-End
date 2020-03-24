@@ -27,12 +27,6 @@ class NavBar extends Component {
           </Nav.Item>
 
           <Nav.Item>
-            <Link to="/myprojects">
-              <li className="nav-routes">My Projects</li>
-            </Link>
-          </Nav.Item>
-
-          <Nav.Item>
             <Link to="/account">
               <li className="nav-routes">My Profile</li>
             </Link>

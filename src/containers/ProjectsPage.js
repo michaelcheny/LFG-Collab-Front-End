@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProjectCard from "../components/project/ProjectCard";
-import {
-  fetchProjects,
-  fetchPersonalProjects
-} from "../actions/projectActions";
+import { fetchProjects } from "../actions/projectActions";
 import { CategorySelector } from "../components/CategorySelector";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 import Container from "react-bootstrap/Container";
@@ -17,53 +14,19 @@ class ProjectPage extends Component {
   };
 
   componentDidMount() {
-    const { url } = this.props.match;
-    if (url === "/projects") {
-      this.props.fetchProjects();
-    } else {
-      this.props.fetchMyProjects();
-    }
-  }
-
-  // to allow switching from projects to myprojects since they share same component
-  componentDidUpdate(prevProps) {
-    const { pathname } = this.props.location;
-    if (
-      pathname === "/projects" &&
-      prevProps.location.pathname === "/myprojects"
-    ) {
-      this.props.fetchProjects();
-    } else if (
-      pathname === "/myprojects" &&
-      prevProps.location.pathname === "/projects"
-    ) {
-      this.props.fetchMyProjects();
-    }
+    this.props.fetchProjects();
   }
 
   renderProjects = () => {
-    const {
-      allProjects,
-      myProjects,
-      loading,
-      match,
-      authenticated
-    } = this.props;
+    const { allProjects, loading, authenticated } = this.props;
+
     let projects;
 
-    if (match.url === "/projects") {
-      this.state.categoryId === null || this.state.categoryId === "all"
-        ? (projects = allProjects)
-        : (projects = allProjects.filter(
-            project => project.category_id == this.state.categoryId
-          ));
-    } else {
-      this.state.categoryId === null || this.state.categoryId === "all"
-        ? (projects = myProjects)
-        : (projects = myProjects.filter(
-            project => project.category_id == this.state.categoryId
-          ));
-    }
+    this.state.categoryId === null || this.state.categoryId === "all"
+      ? (projects = allProjects)
+      : (projects = allProjects.filter(
+          project => project.category_id == this.state.categoryId
+        ));
 
     if (!loading) {
       return projects.map(project => {
@@ -82,36 +45,34 @@ class ProjectPage extends Component {
 
   render() {
     return (
-      <div>
-        <Container>
-          <Row>
-            <Col></Col>
-            <Col xs={9}>
-              <h1>Available Projects</h1>
-              <CategorySelector
-                changeCategory={id => this.setState({ categoryId: id })}
-              />
-              <br />
-              {this.renderProjects()}
-            </Col>
-            <Col></Col>
-          </Row>
-        </Container>
-      </div>
+      <Container>
+        <Row>
+          <Col></Col>
+
+          <Col xs={9}>
+            <h1>Available Projects</h1>
+            <CategorySelector
+              changeCategory={id => this.setState({ categoryId: id })}
+            />
+            <br />
+            {this.renderProjects()}
+          </Col>
+
+          <Col></Col>
+        </Row>
+      </Container>
     );
   }
 }
 
 const mapStateToProps = ({ projects, user }) => ({
   allProjects: projects.projects,
-  myProjects: projects.personalProjects,
   loading: projects.loading,
   authenticated: user.authenticated
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchProjects: () => dispatch(fetchProjects()),
-  fetchMyProjects: () => dispatch(fetchPersonalProjects())
+  fetchProjects: () => dispatch(fetchProjects())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectPage);

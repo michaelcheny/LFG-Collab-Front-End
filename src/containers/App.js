@@ -25,7 +25,6 @@ class App extends Component {
           <Layout>
             <Switch>
               <Route path="/" exact component={HomePage} />
-              <Route path="/myprojects" exact component={ProjectPage} />
               <Route path="/projects" exact component={ProjectPage} />
               <Route path="/projects/:id" component={ProjectDetail} />
               <Route path="/registration" component={SignupPage} />
