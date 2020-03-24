@@ -46,6 +46,7 @@ export const Login = (token, email, password) => {
             id: data.id,
             email: data.email,
             name: data.name,
+            image: data.image,
             city: data.city,
             state: data.state,
             country: data.country,
@@ -83,7 +84,7 @@ export const Logout = token => {
 export const Signup = (token, user) => {
   return async dispatch => {
     try {
-      dispatch({ type: SIGNING_UP });
+      // dispatch({ type: SIGNING_UP });
       const res = await fetch("http://localhost:3001/api/v1/signup", {
         method: "POST",
         headers: {
@@ -103,6 +104,7 @@ export const Signup = (token, user) => {
             id: data.id,
             email: data.email,
             name: data.name,
+            image: data.image,
             city: data.city,
             state: data.state,
             country: data.country,
@@ -120,7 +122,7 @@ export const Signup = (token, user) => {
 export const UpdateUser = (token, user, id) => {
   return async dispatch => {
     try {
-      dispatch({ type: SIGNING_UP });
+      // dispatch({ type: SIGNING_UP });
       const res = await fetch(`http://localhost:3001/api/v1/users/${id}`, {
         method: "PATCH",
         headers: {
@@ -140,6 +142,44 @@ export const UpdateUser = (token, user, id) => {
             id: data.id,
             email: data.email,
             name: data.name,
+            city: data.city,
+            state: data.state,
+            country: data.country,
+            authenticated: true
+          }
+        });
+      }
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const UpdateImage = (token, image, id) => {
+  return async dispatch => {
+    try {
+      // dispatch({ type: SIGNING_UP });
+      const res = await fetch(`http://localhost:3001/api/v1/users/${id}`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-CSRF-TOKEN": token
+        },
+        body: JSON.stringify({ user: image }),
+        credentials: "include"
+      });
+      const data = await res.json();
+      console.log(data);
+      if (!Object.keys(data).includes("errors")) {
+        dispatch({
+          type: UPDATE_USER,
+          payload: {
+            id: data.id,
+            email: data.email,
+            name: data.name,
+            image: data.image,
             city: data.city,
             state: data.state,
             country: data.country,

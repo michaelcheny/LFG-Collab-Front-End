@@ -11,9 +11,12 @@ import AccountInfo from "../components/profilepage/AccountInfo";
 import { Redirect } from "react-router-dom";
 import { fetchPersonalProjects } from "../actions/projectActions";
 import MyProjects from "../components/profilepage/MyProjects";
+import UpdateImageForm from "../components/profilepage/UpdateImageForm";
+
 class ProfilePage extends Component {
   state = {
-    showEmailForm: false
+    showEmailForm: false,
+    showImageForm: false
   };
 
   componentDidMount() {
@@ -48,6 +51,7 @@ class ProfilePage extends Component {
               <Tab eventKey="contact" title="Account">
                 <AccountInfo user={user} />
                 <hr />
+
                 <Button
                   variant="dark"
                   onClick={() => this.setState({ showEmailForm: true })}
@@ -55,6 +59,17 @@ class ProfilePage extends Component {
                   Edit account
                 </Button>
 
+                <Button
+                  variant="dark"
+                  onClick={() => this.setState({ showImageForm: true })}
+                >
+                  Update image
+                </Button>
+
+                <UpdateImageForm
+                  show={this.state.showImageForm}
+                  onHide={() => this.setState({ showImageForm: false })}
+                />
                 <EditAccountForm
                   show={this.state.showEmailForm}
                   onHide={() => this.setState({ showEmailForm: false })}

@@ -18,6 +18,7 @@ class SignupPage extends Component {
       city: "",
       state: "",
       country: "",
+      image: "",
       errors: false,
       errorMessages: []
     };
@@ -42,6 +43,7 @@ class SignupPage extends Component {
         city: "",
         state: "",
         country: "",
+        image: "",
         errors: true,
         errorMessages: response.errors
       });
@@ -91,6 +93,21 @@ class SignupPage extends Component {
             />
             <Form.Text className="text-muted">
               Please enter first and last name.
+            </Form.Text>
+          </Form.Group>
+
+          <Form.Group controlId="formBasicString">
+            <Form.Label>Image</Form.Label>
+            <Form.Control
+              type="text"
+              name="image"
+              placeholder="Paste image url path"
+              value={this.state.image}
+              onChange={this.handleChange}
+              // required
+            />
+            <Form.Text className="text-muted">
+              Please paste the url path to your image. PNG prefered.
             </Form.Text>
           </Form.Group>
 

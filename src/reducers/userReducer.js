@@ -20,12 +20,18 @@ const userReducer = (
         loading: true
       };
     case LOG_IN:
+      // let img;
+      // action.payload.image === ""
+      //   ? (img =
+      //       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png")
+      //   : (img = action.payload.image);
       return {
         ...state,
         user: {
           id: action.payload.id,
           name: action.payload.name,
           email: action.payload.email,
+          image: action.payload.image,
           city: action.payload.city,
           state: action.payload.state,
           country: action.payload.country
@@ -40,6 +46,7 @@ const userReducer = (
           id: action.payload.id,
           name: action.payload.name,
           email: action.payload.email,
+          image: action.payload.image,
           city: action.payload.city,
           state: action.payload.state,
           country: action.payload.country

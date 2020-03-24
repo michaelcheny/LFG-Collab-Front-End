@@ -4,6 +4,11 @@ const AccountInfo = ({ user }) => {
   return (
     <>
       <h5 className="account-page-tile">Account settings</h5>
+      <h6 className="account-page-tile">Profile picture</h6>
+      <img src={user.image} className="img" alt="user-pic" />
+      <br />
+      <br />
+
       <h6 className="account-page-tile">Email address</h6>
       <span className="smaller-text">{user.email}</span>
       <h6 className="account-page-tile">Name</h6>
