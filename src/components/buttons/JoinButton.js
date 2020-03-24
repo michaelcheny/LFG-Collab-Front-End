@@ -15,6 +15,12 @@ class JoinButton extends Component {
             Already Joined
           </Button>
         );
+      } else if (project.completed) {
+        return (
+          <Button variant="dark" size="sm" disabled>
+            Completed
+          </Button>
+        );
       } else {
         return (
           <Button
@@ -40,7 +46,8 @@ class JoinButton extends Component {
   };
 
   render() {
-    return <>{this.renderButton()}</>;
+    const { userId, project } = this.props;
+    return <>{userId === project.owner_id ? null : this.renderButton()}</>;
   }
 }
 
