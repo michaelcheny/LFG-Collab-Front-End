@@ -1,30 +1,14 @@
-import {
-  LOGGING_IN,
-  LOG_IN,
-  LOG_OUT,
-  UPDATE_USER
-} from "../actions/actionTypes";
+import { LOG_IN, LOG_OUT, UPDATE_USER } from "../actions/actionTypes";
 
 const userReducer = (
   state = {
     user: {},
-    authenticated: false,
-    loading: false
+    authenticated: false
   },
   action
 ) => {
   switch (action.type) {
-    case LOGGING_IN:
-      return {
-        ...state,
-        loading: true
-      };
     case LOG_IN:
-      // let img;
-      // action.payload.image === ""
-      //   ? (img =
-      //       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png")
-      //   : (img = action.payload.image);
       return {
         ...state,
         user: {
@@ -36,8 +20,7 @@ const userReducer = (
           state: action.payload.state,
           country: action.payload.country
         },
-        authenticated: !!action.payload.authenticated,
-        loading: false
+        authenticated: true
       };
     case UPDATE_USER:
       return {

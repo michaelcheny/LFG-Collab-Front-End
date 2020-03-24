@@ -15,13 +15,12 @@ export class UpdateImageForm extends Component {
   handleSubmit = async event => {
     const { token, userId, updateImage, onHide } = this.props;
     event.preventDefault();
-    console.log(this.state);
     const data = await updateImage(token, this.state, userId);
     if (Object.keys(data).includes("errors")) {
       this.setState({
         password: "",
         errors: true,
-        errorMessages: ["Incorrect password"]
+        errorMessages: ["Incorrect password, please try again."]
       });
     } else {
       onHide();
@@ -35,10 +34,13 @@ export class UpdateImageForm extends Component {
   };
 
   render() {
+    const { errorMessages, errors, image, password } = this.state;
+    const { show, onHide } = this.props;
+
     return (
       <Modal
-        show={this.props.show}
-        onHide={this.props.onHide}
+        show={show}
+        onHide={onHide}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -49,9 +51,7 @@ export class UpdateImageForm extends Component {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {this.state.errors ? (
-            <ErrorBox errors={this.state.errorMessages} />
-          ) : null}
+          {errors ? <ErrorBox errors={errorMessages} /> : null}
           <Form>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Image Url</Form.Label>
@@ -59,7 +59,7 @@ export class UpdateImageForm extends Component {
                 type="text"
                 name="image"
                 placeholder="Paste Image Url"
-                value={this.state.image}
+                value={image}
                 onChange={this.handleChange}
                 size="sm"
                 required
@@ -75,7 +75,7 @@ export class UpdateImageForm extends Component {
                 type="password"
                 name="password"
                 placeholder="Enter password"
-                value={this.state.password}
+                value={password}
                 onChange={this.handleChange}
                 size="sm"
                 required

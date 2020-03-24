@@ -51,21 +51,18 @@ class ProfilePage extends Component {
               <Tab eventKey="contact" title="Account">
                 <AccountInfo user={user} />
                 <hr />
-
                 <Button
                   variant="dark"
                   onClick={() => this.setState({ showEmailForm: true })}
                 >
                   Edit account
-                </Button>
-
+                </Button>{" "}
                 <Button
                   variant="dark"
                   onClick={() => this.setState({ showImageForm: true })}
                 >
                   Update image
                 </Button>
-
                 <UpdateImageForm
                   show={this.state.showImageForm}
                   onHide={() => this.setState({ showImageForm: false })}

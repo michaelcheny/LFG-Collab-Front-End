@@ -3,7 +3,6 @@ import {
   LOG_IN,
   LOG_OUT,
   CLEAR_TOKEN,
-  SIGNING_UP,
   GET_TOKEN,
   ADD_TOKEN,
   UPDATE_USER
@@ -42,16 +41,7 @@ export const Login = (token, email, password) => {
       if (!Object.keys(data).includes("error")) {
         dispatch({
           type: LOG_IN,
-          payload: {
-            id: data.id,
-            email: data.email,
-            name: data.name,
-            image: data.image,
-            city: data.city,
-            state: data.state,
-            country: data.country,
-            authenticated: true
-          }
+          payload: data
         });
       }
       return data;
@@ -84,7 +74,6 @@ export const Logout = token => {
 export const Signup = (token, user) => {
   return async dispatch => {
     try {
-      // dispatch({ type: SIGNING_UP });
       const res = await fetch("http://localhost:3001/api/v1/signup", {
         method: "POST",
         headers: {
@@ -100,16 +89,7 @@ export const Signup = (token, user) => {
       if (!Object.keys(data).includes("errors")) {
         dispatch({
           type: LOG_IN,
-          payload: {
-            id: data.id,
-            email: data.email,
-            name: data.name,
-            image: data.image,
-            city: data.city,
-            state: data.state,
-            country: data.country,
-            authenticated: true
-          }
+          payload: data
         });
       }
       return data;
@@ -122,7 +102,6 @@ export const Signup = (token, user) => {
 export const UpdateUser = (token, user, id) => {
   return async dispatch => {
     try {
-      // dispatch({ type: SIGNING_UP });
       const res = await fetch(`http://localhost:3001/api/v1/users/${id}`, {
         method: "PATCH",
         headers: {
@@ -138,15 +117,7 @@ export const UpdateUser = (token, user, id) => {
       if (!Object.keys(data).includes("errors")) {
         dispatch({
           type: UPDATE_USER,
-          payload: {
-            id: data.id,
-            email: data.email,
-            name: data.name,
-            city: data.city,
-            state: data.state,
-            country: data.country,
-            authenticated: true
-          }
+          payload: data
         });
       }
       return data;
@@ -159,7 +130,6 @@ export const UpdateUser = (token, user, id) => {
 export const UpdateImage = (token, image, id) => {
   return async dispatch => {
     try {
-      // dispatch({ type: SIGNING_UP });
       const res = await fetch(`http://localhost:3001/api/v1/users/${id}`, {
         method: "PATCH",
         headers: {
@@ -175,16 +145,7 @@ export const UpdateImage = (token, image, id) => {
       if (!Object.keys(data).includes("errors")) {
         dispatch({
           type: UPDATE_USER,
-          payload: {
-            id: data.id,
-            email: data.email,
-            name: data.name,
-            image: data.image,
-            city: data.city,
-            state: data.state,
-            country: data.country,
-            authenticated: true
-          }
+          payload: data
         });
       }
       return data;
