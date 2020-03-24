@@ -7,6 +7,9 @@ import {
 } from "../actions/projectActions";
 import { CategorySelector } from "../components/CategorySelector";
 import { LoadingSpinner } from "../components/LoadingSpinner";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class ProjectPage extends Component {
   state = {
@@ -80,31 +83,35 @@ class ProjectPage extends Component {
   render() {
     return (
       <div>
-        <h1>Available Projects</h1>
-        <CategorySelector
-          changeCategory={id => this.setState({ categoryId: id })}
-        />
-        <br />
-        {this.renderProjects()}
+        <Container>
+          <Row>
+            <Col></Col>
+            <Col xs={9}>
+              <h1>Available Projects</h1>
+              <CategorySelector
+                changeCategory={id => this.setState({ categoryId: id })}
+              />
+              <br />
+              {this.renderProjects()}
+            </Col>
+            <Col></Col>
+          </Row>
+        </Container>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ projects, user }) => {
-  return {
-    allProjects: projects.projects,
-    myProjects: projects.personalProjects,
-    loading: projects.loading,
-    authenticated: user.authenticated
-  };
-};
+const mapStateToProps = ({ projects, user }) => ({
+  allProjects: projects.projects,
+  myProjects: projects.personalProjects,
+  loading: projects.loading,
+  authenticated: user.authenticated
+});
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchProjects: () => dispatch(fetchProjects()),
-    fetchMyProjects: () => dispatch(fetchPersonalProjects())
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  fetchProjects: () => dispatch(fetchProjects()),
+  fetchMyProjects: () => dispatch(fetchPersonalProjects())
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectPage);

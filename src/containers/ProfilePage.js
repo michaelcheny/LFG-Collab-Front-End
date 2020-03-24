@@ -37,8 +37,12 @@ class ProfilePage extends Component {
                 "teddies"
               </Tab>
 
-              <Tab eventKey="profile" title="Profile">
-                <MyProjects projects={projects} />
+              <Tab eventKey="profile" title="Projects">
+                <h5 className="account-page-tile">My Projects</h5>
+
+                {projects.map(project => {
+                  return <MyProjects project={project} />;
+                })}
               </Tab>
 
               <Tab eventKey="contact" title="Account">

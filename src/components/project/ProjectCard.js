@@ -17,13 +17,14 @@ const ProjectCard = ({ authenticated, project }) => {
   } = project;
 
   const owner = users.find(user => user.id === project.owner_id);
-  const collaborators = users.filter(user => user.id !== project.owner_id);
+  // const collaborators = users.filter(user => user.id !== project.owner_id);
 
   const addDate = moment(created_at).format("MMM DD, YYYY");
 
   return (
     <>
       <br />
+
       <Card bg="light" className="project-card">
         <Card.Header className="smaller-text">
           {category.name}
