@@ -22,7 +22,6 @@ class NewProjectPage extends Component {
   handleSubmit = async event => {
     const { token, createProject } = this.props;
     event.preventDefault();
-    // console.log(this.state);
     const project = await createProject(token, this.state);
     if (project.errors && project.errors.length > 0) {
       this.setState({ errors: true, errorMessages: project.errors });
@@ -170,10 +169,8 @@ const mapStateToProps = ({ user, token }) => ({
   token: token.token
 });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    createProject: (token, project) => dispatch(createProject(token, project))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  createProject: (token, project) => dispatch(createProject(token, project))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewProjectPage);

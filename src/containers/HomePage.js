@@ -41,12 +41,9 @@ class HomePage extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { user } = state;
-  return {
-    currentUser: user.user,
-    authenticated: user.authenticated
-  };
-};
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.user,
+  authenticated: user.authenticated
+});
 
 export default connect(mapStateToProps)(HomePage);

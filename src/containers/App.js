@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import NavBar from "../components/NavBar";
@@ -13,12 +12,7 @@ import ProfilePage from "./ProfilePage";
 import NoMatch from "../components/NoMatch";
 
 class App extends Component {
-  // componentDidMount() {
-  //   this.props.getToken();
-  // }
-
   render() {
-    // const { authenticated, currentUser, logOut, token } = this.props;
     return (
       <div className="app">
         <Router>
@@ -41,22 +35,4 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   const { user, token } = state;
-//   console.log(user);
-//   return {
-//     authenticated: user.authenticated,
-//     currentUser: user.user,
-//     token: token.token
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     getToken: () => dispatch(getToken()),
-//     logOut: token => dispatch(Logout(token))
-//   };
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
 export default App;
