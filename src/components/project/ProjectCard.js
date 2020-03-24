@@ -33,7 +33,10 @@ const ProjectCard = ({ authenticated, project }) => {
 
         <Card.Body>
           <Card.Title>
-            <Link to={`projects/${id}`}>{name}</Link>
+            <Link to={`projects/${id}`}>{name} </Link>
+            {project.completed ? (
+              <span className="smaller-text completed"> Completed</span>
+            ) : null}
           </Card.Title>
 
           <Card.Text>{description}</Card.Text>

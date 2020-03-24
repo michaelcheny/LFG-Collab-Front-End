@@ -44,6 +44,10 @@ code {
   font-size: 14px;
 }
 
+.completed {
+  font-weight: bold;
+}
+
 .project-date {
   float: right;
 }

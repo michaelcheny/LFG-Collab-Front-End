@@ -8,7 +8,12 @@ const ProjectInfo = ({ project }) => {
     <div>
       <Card>
         <Card.Body>
-          <Card.Title>{project.name}</Card.Title>
+          <Card.Title>
+            {project.name}
+            {project.completed ? (
+              <span className="smaller-text completed"> Completed</span>
+            ) : null}
+          </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
             {project.category ? project.category.name : null}
           </Card.Subtitle>

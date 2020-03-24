@@ -24,11 +24,11 @@ class ProfilePage extends Component {
   }
 
   render() {
-    const { user, authenticated, token, projects } = this.props;
+    const { user, authenticated, projects } = this.props;
 
-    // if (!authenticated) {
-    //   return <Redirect to="/" />;
-    // }
+    if (!authenticated) {
+      return <Redirect to="/" />;
+    }
 
     return (
       <Container>
@@ -36,10 +36,6 @@ class ProfilePage extends Component {
           <Col></Col>
           <Col xs={8}>
             <Tabs defaultActiveKey="profile">
-              {/* <Tab eventKey="home" title="Stats">
-                "teddies"
-              </Tab> */}
-
               <Tab eventKey="profile" title="Projects">
                 <h5 className="account-page-tile">My Projects</h5>
 
@@ -81,10 +77,9 @@ class ProfilePage extends Component {
   }
 }
 
-const mapStateToProps = ({ user, token, projects }) => ({
+const mapStateToProps = ({ user, projects }) => ({
   user: user.user,
   authenticated: user.authenticated,
-  token: token.token,
   projects: projects.personalProjects
 });
 

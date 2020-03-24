@@ -12,7 +12,7 @@ class JoinButton extends Component {
       if (userProject) {
         return (
           <Button variant="dark" size="sm" disabled>
-            Already Joined
+            Joined
           </Button>
         );
       } else if (project.completed) {
