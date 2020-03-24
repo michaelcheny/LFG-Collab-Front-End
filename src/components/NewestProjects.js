@@ -24,7 +24,7 @@ const NewestProjects = () => {
       <h5>Check out the newest projects:</h5>
       {projects.map(project => {
         return (
-          <li>
+          <li key={project.id}>
             <Link to={`projects/${project.id}`}>{project.name}</Link>
             <span className="smaller-text">
               {" "}

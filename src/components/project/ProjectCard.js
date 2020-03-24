@@ -23,8 +23,6 @@ const ProjectCard = ({ authenticated, project }) => {
 
   return (
     <>
-      <br />
-
       <Card bg="light" className="project-card">
         <Card.Header className="smaller-text">
           {category.name}

@@ -55,6 +55,7 @@ class ProjectPage extends Component {
               changeCategory={id => this.setState({ categoryId: id })}
             />
             <br />
+            <br />
             {this.renderProjects()}
           </Col>
 
