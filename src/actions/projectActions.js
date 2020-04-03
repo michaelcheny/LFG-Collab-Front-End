@@ -46,6 +46,7 @@ export const fetchPersonalProjects = () => {
 };
 
 export const createProject = (token, project) => {
+  console.log(6);
   const { name, description, category, online, team_size } = project;
   return async dispatch => {
     try {
@@ -68,11 +69,17 @@ export const createProject = (token, project) => {
         credentials: "include"
       });
       const data = await res.json();
+      console.log(7);
+      dispatch({ type: ADD_CURRENT_PROJECT, payload: data });
       return data;
+      console.log(8);
     } catch (error) {
+      console.log(9);
       console.log(error.message);
     }
+    console.log(10);
   };
+  console.log(11);
 };
 
 export const updateProject = (token, project) => {

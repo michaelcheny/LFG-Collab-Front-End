@@ -8,7 +8,6 @@ import {
   JOIN_PROJECT,
   UPDATE_PROJECT
 } from "../actions/actionTypes";
-import { act } from "react-dom/test-utils";
 
 const projectsReducer = (
   state = {
@@ -19,6 +18,7 @@ const projectsReducer = (
   },
   action
 ) => {
+  console.log(12);
   switch (action.type) {
     case LOADING_PROJECTS:
       return { ...state, loading: true };

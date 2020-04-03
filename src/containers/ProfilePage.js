@@ -35,7 +35,7 @@ class ProfilePage extends Component {
         <Row>
           <Col></Col>
           <Col xs={8}>
-            <Tabs defaultActiveKey="profile">
+            <Tabs defaultActiveKey="profile" className="profile-container">
               <Tab eventKey="profile" title="Projects">
                 <h5 className="account-page-tile">My Projects</h5>
 

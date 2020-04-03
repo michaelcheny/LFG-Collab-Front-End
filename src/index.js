@@ -15,6 +15,12 @@ const store = createStore(
   composeEnhancers(applyMiddleware(thunk))
 );
 
+// For using Redux without the Dev Tools
+// const store = createStore(
+//   rootReducer,
+//   applyMiddleware(thunk)
+// );
+
 ReactDOM.render(
   <Provider store={store}>
     <App />

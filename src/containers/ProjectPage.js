@@ -71,14 +71,17 @@ class ProjectDetail extends Component {
             <Card.Text>
               {collaborators.map(user => {
                 return (
-                  <li key={user.id} className="collaborator-list">
-                    <img
-                      src={user.image}
-                      alt="user-pic"
-                      className="small-image"
-                    />
-                    {user.name}
-                  </li>
+                  <>
+                    <li key={user.id} className="collaborator-list">
+                      <img
+                        src={user.image}
+                        alt="user-pic"
+                        className="small-image"
+                      />
+                      {user.name}
+                    </li>
+                    <br />
+                  </>
                 );
               })}
               {this.editButtonforOwner()}

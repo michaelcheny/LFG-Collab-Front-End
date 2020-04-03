@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="footer">
       {/* <hr /> */}
-      <h6 className="footer-text">© 2020 Michael Chen</h6>
+      <h6 className="footer-text">© Michael Chen 2020</h6>
     </div>
   );
 };

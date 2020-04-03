@@ -92,6 +92,7 @@ code {
 
 .user-title {
   font-size: 16px;
+  margin: 10px;
 }
 
 .project-detail {
@@ -135,4 +136,8 @@ li {
   width: 25px;
   height: 25px;
   margin-right: 4px;
+}
+
+.profile-container {
+  margin-top: 50px;
 }
