@@ -3,8 +3,20 @@ import { connect } from "react-redux";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import NewestProjects from "../components/NewestProjects";
+import moment from "moment";
+import { subscribeToTimer } from "../api";
 
 class HomePage extends Component {
+  constructor(props) {
+    super(props);
+
+    subscribeToTimer((err, timestamp) => this.setState({ timestamp }));
+  }
+
+  state = {
+    timestamp: "no timestamp yet",
+  };
+
   renderGreeting = () => {
     const { currentUser, authenticated } = this.props;
 
@@ -32,6 +44,10 @@ class HomePage extends Component {
               online pair programming sessions, to group fitness workouts, to an
               online open-source app collaborations.
             </p>
+            <p>
+              This is the timer value:{" "}
+              {moment(this.state.timestamp).format("h:mm:ss a")}
+            </p>
 
             <NewestProjects />
           </Container>
@@ -43,7 +59,7 @@ class HomePage extends Component {
 
 const mapStateToProps = ({ user }) => ({
   currentUser: user.user,
-  authenticated: user.authenticated
+  authenticated: user.authenticated,
 });
 
 export default connect(mapStateToProps)(HomePage);

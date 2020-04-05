@@ -5,11 +5,11 @@ import {
   ADD_CURRENT_PROJECT,
   JOIN_PROJECT,
   GET_COMMENTS,
-  UPDATE_PROJECT
+  UPDATE_PROJECT,
 } from "./actionTypes";
 
 export const fetchProjects = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       dispatch({ type: LOADING_PROJECTS });
       const res = await fetch("http://localhost:3001/api/v1/projects/");
@@ -25,13 +25,13 @@ export const fetchProjects = () => {
 };
 
 export const fetchPersonalProjects = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       dispatch({ type: LOADING_PROJECTS });
       const res = await fetch(
         "http://localhost:3001/api/v1/personal-projects",
         {
-          credentials: "include"
+          credentials: "include",
         }
       );
       if (!res.ok) {
@@ -46,53 +46,15 @@ export const fetchPersonalProjects = () => {
 };
 
 export const createProject = (token, project) => {
-  console.log(6);
   const { name, description, category, online, team_size } = project;
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const res = await fetch("http://localhost:3001/api/v1/projects", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "X-CSRF-TOKEN": token
-        },
-        body: JSON.stringify({
-          project: {
-            name,
-            description,
-            online,
-            team_size
-          },
-          category
-        }),
-        credentials: "include"
-      });
-      const data = await res.json();
-      console.log(7);
-      dispatch({ type: ADD_CURRENT_PROJECT, payload: data });
-      return data;
-      console.log(8);
-    } catch (error) {
-      console.log(9);
-      console.log(error.message);
-    }
-    console.log(10);
-  };
-  console.log(11);
-};
-
-export const updateProject = (token, project) => {
-  const { id, name, description, online, team_size, completed } = project;
-  console.log(project);
-  return async dispatch => {
-    try {
-      const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`, {
-        method: "PATCH",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "X-CSRF-TOKEN": token
+          "X-CSRF-TOKEN": token,
         },
         body: JSON.stringify({
           project: {
@@ -100,10 +62,42 @@ export const updateProject = (token, project) => {
             description,
             online,
             team_size,
-            completed
-          }
+          },
+          category,
         }),
-        credentials: "include"
+        credentials: "include",
+      });
+      const data = await res.json();
+      dispatch({ type: ADD_CURRENT_PROJECT, payload: data });
+      return data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
+
+export const updateProject = (token, project) => {
+  const { id, name, description, online, team_size, completed } = project;
+  console.log(project);
+  return async (dispatch) => {
+    try {
+      const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-CSRF-TOKEN": token,
+        },
+        body: JSON.stringify({
+          project: {
+            name,
+            description,
+            online,
+            team_size,
+            completed,
+          },
+        }),
+        credentials: "include",
       });
       const data = await res.json();
       if (!Object.keys(data).includes("errors")) {
@@ -117,19 +111,19 @@ export const updateProject = (token, project) => {
 };
 
 export const joinProject = (token, projectId) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const res = await fetch("http://localhost:3001/api/v1/user_projects", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "X-CSRF-TOKEN": token
+          "X-CSRF-TOKEN": token,
         },
         body: JSON.stringify({
-          projectId
+          projectId,
         }),
-        credentials: "include"
+        credentials: "include",
       });
       if (!res.ok) {
         throw res;
@@ -142,8 +136,8 @@ export const joinProject = (token, projectId) => {
   };
 };
 
-export const fetchProject = id => {
-  return async dispatch => {
+export const fetchProject = (id) => {
+  return async (dispatch) => {
     try {
       dispatch({ type: LOADING_PROJECTS });
       const res = await fetch(`http://localhost:3001/api/v1/projects/${id}`);

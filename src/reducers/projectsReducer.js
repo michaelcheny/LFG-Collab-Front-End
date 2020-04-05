@@ -6,7 +6,7 @@ import {
   ADD_REACTION,
   DELETE_REACTION,
   JOIN_PROJECT,
-  UPDATE_PROJECT
+  UPDATE_PROJECT,
 } from "../actions/actionTypes";
 
 const projectsReducer = (
@@ -14,11 +14,10 @@ const projectsReducer = (
     projects: [],
     personalProjects: [],
     currentProject: [],
-    loading: false
+    loading: false,
   },
   action
 ) => {
-  console.log(12);
   switch (action.type) {
     case LOADING_PROJECTS:
       return { ...state, loading: true };
@@ -27,27 +26,27 @@ const projectsReducer = (
       return {
         ...state,
         projects: action.payload,
-        loading: false
+        loading: false,
       };
 
     case ADD_MY_PROJECTS:
       return {
         ...state,
         personalProjects: action.payload,
-        loading: false
+        loading: false,
       };
 
     case ADD_CURRENT_PROJECT:
       return {
         ...state,
         currentProject: action.payload,
-        loading: false
+        loading: false,
       };
 
     case UPDATE_PROJECT:
       return {
         ...state,
-        currentProject: action.payload
+        currentProject: action.payload,
       };
 
     case JOIN_PROJECT:
@@ -55,8 +54,8 @@ const projectsReducer = (
         ...state,
         currentProject: {
           ...state.currentProject,
-          users: [...state.currentProject.users, action.payload]
-        }
+          users: [...state.currentProject.users, action.payload],
+        },
       };
 
     // case ADD_COMMENT:
@@ -105,20 +104,20 @@ const projectsReducer = (
         ...state,
         currentProject: {
           ...state.currentProject,
-          reactions: [...state.currentProject.reactions, action.payload]
-        }
+          reactions: [...state.currentProject.reactions, action.payload],
+        },
       };
 
     case DELETE_REACTION:
       const reactions = state.currentProject.reactions.filter(
-        reaction => reaction.id !== action.payload
+        (reaction) => reaction.id !== action.payload
       );
       return {
         ...state,
         currentProject: {
           ...state.currentProject,
-          reactions: reactions
-        }
+          reactions: reactions,
+        },
       };
 
     default:
