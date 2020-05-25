@@ -4,25 +4,47 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import io from "socket.io-client";
-
-let socket = io(":3002");
+import { connect } from "react-redux";
 
 class ChatBox extends Component {
-  constructor() {
-    super();
-    if (!socket) {
-      socket = io(":3002");
-    }
+  constructor(props) {
+    super(props);
+    // if (!socket) {
+    //   socket = io(":3002");
+    // }
+    this.state = {
+      message: "",
+      messages: [],
+    };
+    this.socket = io(":3002");
+
+    this.socket.on("RECEIVE_MESSAGE", function (data) {
+      addMessage(data);
+    });
+
+    const addMessage = (data) => {
+      console.log(data);
+      this.setState({ messages: [...this.state.messages, data] });
+      console.log(this.state.messages);
+    };
   }
-  state = {
-    message: "",
-  };
 
   sendMessage = (message) => {
     // console.log("hello");
-    socket.emit("chat message", message);
+    this.socket.emit("SEND_MESSAGE", {
+      author: this.props.user.name,
+      message: message,
+    });
     this.setState({ message: "" });
   };
+
+  // renderMessages = () => {
+  //   this.socket.on("chat message", (msg) => {
+  //     this.setState({ messages: this.state.messages.concat(msg) });
+  //   });
+  //   // if (this.state.messages) this.state.messages.map((msg) => <p>{msg}</p>);
+  //   console.log(this.state.message);
+  // };
 
   render() {
     return (
@@ -35,7 +57,15 @@ class ChatBox extends Component {
           /> */}
           <Card.Body>
             <Card.Title>CHAT GOES BRRRRRRR</Card.Title>
-            <Card.Text>PLACEHOLDER FOR THE CHAT</Card.Text>
+            <Card.Text>
+              {this.state.messages.map((message) => {
+                return (
+                  <div>
+                    {message.author}: {message.message}
+                  </div>
+                );
+              })}
+            </Card.Text>
             <InputGroup
               className="mb-3"
               // will eventually move style to css.. maybe
@@ -60,4 +90,8 @@ class ChatBox extends Component {
     );
   }
 }
-export default ChatBox;
+
+const mapStateToProps = ({ user }) => ({
+  user: user.user,
+});
+export default connect(mapStateToProps)(ChatBox);
