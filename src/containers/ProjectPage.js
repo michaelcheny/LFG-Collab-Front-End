@@ -101,7 +101,7 @@ class ProjectDetail extends Component {
           onHide={() => this.setState({ showUpdateForm: false })}
         />
 
-        <ChatBox />
+        <ChatBox room={this.props.match.params.id} />
 
         <hr />
 

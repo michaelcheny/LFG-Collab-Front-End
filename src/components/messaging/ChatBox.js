@@ -18,15 +18,19 @@ class ChatBox extends Component {
     };
     this.socket = io(":3002");
 
-    this.socket.on("RECEIVE_MESSAGE", function (data) {
+    this.socket.on("RECEIVE_MESSAGE", (data) => {
       addMessage(data);
     });
 
     const addMessage = (data) => {
-      console.log(data);
+      // console.log(data);
       this.setState({ messages: [...this.state.messages, data] });
-      console.log(this.state.messages);
+      // console.log(this.state.messages);
     };
+  }
+
+  componentDidMount() {
+    this.socket.emit("join", { user: this.props.user.name, room: this.props.room });
   }
 
   sendMessage = (message) => {
@@ -34,6 +38,7 @@ class ChatBox extends Component {
     this.socket.emit("SEND_MESSAGE", {
       author: this.props.user.name,
       message: message,
+      room: this.props.room,
     });
     this.setState({ message: "" });
   };
@@ -49,7 +54,7 @@ class ChatBox extends Component {
   render() {
     return (
       <div className="chat-box">
-        <Card style={{ width: "32rem", height: "40rem", margin: "auto" }}>
+        <Card style={{ width: "32rem", height: "40rem", margin: "auto", overflow: "auto" }}>
           {/* <Card.Img
             variant="top"
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.isynergi.com.au%2Fwp-content%2Fuploads%2F2016%2F11%2Fbubble_consulting_chat-512.png&f=1&nofb=1"
@@ -69,7 +74,13 @@ class ChatBox extends Component {
             <InputGroup
               className="mb-3"
               // will eventually move style to css.. maybe
-              style={{ position: "absolute", bottom: "0", left: "0", padding: "0px 10px 0px" }}
+              style={{
+                position: "absolute",
+                bottom: "0",
+                left: "0",
+                padding: "0px 10px 0px",
+                marginTop: "2rem",
+              }}
             >
               <FormControl
                 placeholder="Enter group message..."
