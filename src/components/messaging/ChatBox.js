@@ -5,6 +5,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import io from "socket.io-client";
 import { connect } from "react-redux";
+import moment from "moment";
 
 class ChatBox extends Component {
   constructor(props) {
@@ -39,34 +40,24 @@ class ChatBox extends Component {
       author: this.props.user.name,
       message: message,
       room: this.props.room,
+      date: Date.now(),
     });
     this.setState({ message: "" });
   };
-
-  // renderMessages = () => {
-  //   this.socket.on("chat message", (msg) => {
-  //     this.setState({ messages: this.state.messages.concat(msg) });
-  //   });
-  //   // if (this.state.messages) this.state.messages.map((msg) => <p>{msg}</p>);
-  //   console.log(this.state.message);
-  // };
 
   render() {
     return (
       <div className="chat-box">
         <Card style={{ width: "32rem", height: "40rem", margin: "auto", overflow: "auto" }}>
-          {/* <Card.Img
-            variant="top"
-            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.isynergi.com.au%2Fwp-content%2Fuploads%2F2016%2F11%2Fbubble_consulting_chat-512.png&f=1&nofb=1"
-            style={{ height: "50px", width: "50px" }}
-          /> */}
           <Card.Body>
             <Card.Title>CHAT GOES BRRRRRRR</Card.Title>
             <Card.Text>
               {this.state.messages.map((message) => {
                 return (
                   <div>
-                    {message.author}: {message.message}
+                    {message.author}
+                    <span style={{ fontSize: "12px" }}>({moment(message.date).format("LT")})</span>:{" "}
+                    {message.message}
                   </div>
                 );
               })}
