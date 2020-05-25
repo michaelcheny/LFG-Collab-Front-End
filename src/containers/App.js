@@ -10,8 +10,17 @@ import SignupPage from "./SignupPage";
 import NewProjectPage from "./NewProjectPage";
 import ProfilePage from "./ProfilePage";
 import NoMatch from "../components/NoMatch";
+import { getToken, autoLogin } from "../actions/usersActions";
+import { connect } from "react-redux";
 
 class App extends Component {
+  componentDidMount() {
+    const { getToken, autoLogin } = this.props;
+    getToken().then((token) => {
+      autoLogin(token);
+    });
+  }
+
   render() {
     return (
       <div className="app">
@@ -35,4 +44,10 @@ class App extends Component {
   }
 }
 
-export default App;
+// export default App;
+const mapDispatchToProps = (dispatch) => ({
+  autoLogin: (token) => dispatch(autoLogin(token)),
+  getToken: () => dispatch(getToken()),
+});
+
+export default connect(null, mapDispatchToProps)(App);

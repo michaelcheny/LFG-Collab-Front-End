@@ -5,26 +5,26 @@ import {
   CLEAR_TOKEN,
   GET_TOKEN,
   ADD_TOKEN,
-  UPDATE_USER
+  UPDATE_USER,
 } from "./actionTypes";
 
 export const getToken = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     dispatch({ type: GET_TOKEN });
     const res = await fetch("http://localhost:3001/api/v1/auth-check", {
-      credentials: "include"
+      credentials: "include",
     });
     const data = await res.json();
     dispatch({
       type: ADD_TOKEN,
-      payload: data.csrf_auth_token
+      payload: data.csrf_auth_token,
     });
     return data.csrf_auth_token;
   };
 };
 
 export const Login = (token, email, password) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       dispatch({ type: LOGGING_IN });
       const res = await fetch("http://localhost:3001/api/v1/login", {
@@ -32,16 +32,16 @@ export const Login = (token, email, password) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "X-CSRF-TOKEN": token
+          "X-CSRF-TOKEN": token,
         },
         body: JSON.stringify({ email, password }),
-        credentials: "include"
+        credentials: "include",
       });
       const data = await res.json();
       if (!Object.keys(data).includes("error")) {
         dispatch({
           type: LOG_IN,
-          payload: data
+          payload: data,
         });
       }
       return data;
@@ -51,16 +51,38 @@ export const Login = (token, email, password) => {
   };
 };
 
-export const Logout = token => {
-  return async dispatch => {
+export const autoLogin = (token) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch("http://localhost:3001/api/v1/auto_login", {
+        headers: {
+          "X-CSRF-TOKEN": token,
+        },
+        credentials: "include",
+      });
+      const data = await res.json();
+      if (Object.keys(data).includes("error")) return;
+      dispatch({
+        type: LOG_IN,
+        payload: data,
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const Logout = (token) => {
+  return async (dispatch) => {
     try {
       const res = await fetch("http://localhost:3001/api/v1/logout", {
         method: "DELETE",
         headers: {
           Accept: "application/json",
-          "X-CSRF-TOKEN": token
+          "X-CSRF-TOKEN": token,
         },
-        credentials: "include"
+        credentials: "include",
       });
       dispatch({ type: LOG_OUT });
       dispatch({ type: CLEAR_TOKEN });
@@ -72,24 +94,24 @@ export const Logout = token => {
 };
 
 export const Signup = (token, user) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const res = await fetch("http://localhost:3001/api/v1/signup", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "X-CSRF-TOKEN": token
+          "X-CSRF-TOKEN": token,
         },
         body: JSON.stringify({ user: user }),
-        credentials: "include"
+        credentials: "include",
       });
       const data = await res.json();
       console.log(data);
       if (!Object.keys(data).includes("errors")) {
         dispatch({
           type: LOG_IN,
-          payload: data
+          payload: data,
         });
       }
       return data;
@@ -100,24 +122,24 @@ export const Signup = (token, user) => {
 };
 
 export const UpdateUser = (token, user, id) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const res = await fetch(`http://localhost:3001/api/v1/users/${id}`, {
         method: "PATCH",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "X-CSRF-TOKEN": token
+          "X-CSRF-TOKEN": token,
         },
         body: JSON.stringify({ user: user }),
-        credentials: "include"
+        credentials: "include",
       });
       const data = await res.json();
       console.log(data);
       if (!Object.keys(data).includes("errors")) {
         dispatch({
           type: UPDATE_USER,
-          payload: data
+          payload: data,
         });
       }
       return data;
@@ -128,24 +150,24 @@ export const UpdateUser = (token, user, id) => {
 };
 
 export const UpdateImage = (token, image, id) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const res = await fetch(`http://localhost:3001/api/v1/users/${id}`, {
         method: "PATCH",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "X-CSRF-TOKEN": token
+          "X-CSRF-TOKEN": token,
         },
         body: JSON.stringify({ user: image }),
-        credentials: "include"
+        credentials: "include",
       });
       const data = await res.json();
       console.log(data);
       if (!Object.keys(data).includes("errors")) {
         dispatch({
           type: UPDATE_USER,
-          payload: data
+          payload: data,
         });
       }
       return data;
