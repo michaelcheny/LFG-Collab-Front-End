@@ -36,7 +36,6 @@ class HomePage extends Component {
               anything, from an online pair programming sessions, to group fitness workouts, to an online
               open-source app collaborations.
             </p>
-            <p>This is the timer value: {moment(this.state.timestamp).format("h:mm:ss a")}</p>
 
             <NewestProjects />
           </Container>
