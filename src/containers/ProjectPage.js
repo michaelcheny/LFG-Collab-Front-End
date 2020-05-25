@@ -9,10 +9,11 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import EditProjectForm from "../components/project/EditProjectForm";
+import ChatBox from "../components/messaging/ChatBox";
 
 class ProjectDetail extends Component {
   state = {
-    showUpdateForm: false
+    showUpdateForm: false,
   };
 
   componentDidMount() {
@@ -25,11 +26,7 @@ class ProjectDetail extends Component {
       return (
         <span>
           <hr />
-          <Button
-            variant="dark"
-            size="sm"
-            onClick={() => this.setState({ showUpdateForm: true })}
-          >
+          <Button variant="dark" size="sm" onClick={() => this.setState({ showUpdateForm: true })}>
             Edit Project
           </Button>
         </span>
@@ -41,22 +38,17 @@ class ProjectDetail extends Component {
     const { project } = this.props;
 
     if (project.users) {
-      const owner = project.users.find(user => user.id === project.owner_id);
-      const collaborators = project.users.filter(
-        user => user.id !== project.owner_id
-      );
+      const owner = project.users.find((user) => user.id === project.owner_id);
+      const collaborators = project.users.filter((user) => user.id !== project.owner_id);
 
       return (
         <Card>
           <Card.Body>
             <Card.Title className="user-title">
-              {project.online
-                ? "Online Project"
-                : `Project location: ${owner.city}, ${owner.state}`}
+              {project.online ? "Online Project" : `Project location: ${owner.city}, ${owner.state}`}
             </Card.Title>
             <Card.Title className="user-title">
-              Desired team size: ({project.users ? project.users.length : 0}/
-              {project.team_size})
+              Desired team size: ({project.users ? project.users.length : 0}/{project.team_size})
             </Card.Title>
             <hr />
 
@@ -69,15 +61,11 @@ class ProjectDetail extends Component {
             </Card.Text>
             <Card.Title className="user-title">Collaborators</Card.Title>
             <Card.Text>
-              {collaborators.map(user => {
+              {collaborators.map((user) => {
                 return (
                   <>
                     <li key={user.id} className="collaborator-list">
-                      <img
-                        src={user.image}
-                        alt="user-pic"
-                        className="small-image"
-                      />
+                      <img src={user.image} alt="user-pic" className="small-image" />
                       {user.name}
                     </li>
                     <br />
@@ -113,6 +101,8 @@ class ProjectDetail extends Component {
           onHide={() => this.setState({ showUpdateForm: false })}
         />
 
+        <ChatBox />
+
         <hr />
 
         <CommentContainer id={project.id} />
@@ -123,12 +113,12 @@ class ProjectDetail extends Component {
 
 const mapStateToProps = ({ projects, user }) => ({
   project: projects.currentProject,
-  user: user.user
+  user: user.user,
 });
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchProject: id => dispatch(fetchProject(id))
+    fetchProject: (id) => dispatch(fetchProject(id)),
   };
 };
 
