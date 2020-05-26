@@ -14,6 +14,7 @@ class ChatBox extends Component {
     //   socket = io(":3002");
     // }
     this.state = {
+      user: props.user,
       message: "",
       messages: [],
     };
@@ -26,16 +27,17 @@ class ChatBox extends Component {
     const addMessage = (data) => {
       // console.log(data);
       this.setState({ messages: [...this.state.messages, data] });
-      // console.log(this.state.messages);
+      // SCROLL TO THE BOTTOM OF THE MESSAGE BOX THING
+      const chatDiv = document.querySelector(".chat-box");
+      chatDiv.scrollTop = chatDiv.scrollHeight;
     };
   }
 
   componentDidMount() {
-    this.socket.emit("join", { user: this.props.user.name, room: this.props.room });
+    this.socket.emit("join", { user: this.state.user.name, room: this.props.room });
   }
 
   sendMessage = (message) => {
-    // console.log("hello");
     this.socket.emit("SEND_MESSAGE", {
       author: this.props.user.name,
       message: message,
@@ -47,14 +49,15 @@ class ChatBox extends Component {
 
   render() {
     return (
-      <div className="chat-box">
-        <Card style={{ width: "32rem", height: "40rem", margin: "auto", overflow: "auto" }}>
-          <Card.Body>
+      <div>
+        <Card style={{ width: "32rem", height: "41rem", margin: "auto" }}>
+          <Card.Body className="chat-box" style={{ maxHeight: "38rem", overflowY: "auto" }}>
             <Card.Title>CHAT GOES BRRRRRRR</Card.Title>
-            <Card.Text>
+            <hr />
+            <Card.Text style={{}}>
               {this.state.messages.map((message) => {
                 return (
-                  <div>
+                  <div style={{ marginBottom: "3px" }}>
                     {message.author}
                     <span style={{ fontSize: "12px" }}>({moment(message.date).format("LT")})</span>:{" "}
                     {message.message}
@@ -62,31 +65,31 @@ class ChatBox extends Component {
                 );
               })}
             </Card.Text>
-            <InputGroup
-              className="mb-3"
-              // will eventually move style to css.. maybe
-              style={{
-                position: "absolute",
-                bottom: "0",
-                left: "0",
-                padding: "0px 10px 0px",
-                marginTop: "2rem",
-              }}
-            >
-              <FormControl
-                placeholder="Enter group message..."
-                type="text"
-                value={this.state.message}
-                onChange={(e) => this.setState({ message: e.target.value })}
-                onKeyPress={(e) => (e.key === "Enter" ? this.sendMessage(this.state.message) : null)}
-              />
-              <InputGroup.Append>
-                <Button variant="dark" onClick={() => this.sendMessage(this.state.message)}>
-                  Send
-                </Button>
-              </InputGroup.Append>
-            </InputGroup>
           </Card.Body>
+          <InputGroup
+            className="mb-3"
+            // will eventually move style to css.. maybe
+            style={{
+              position: "absolute",
+              bottom: "0",
+              left: "0",
+              padding: "0px 10px 0px",
+              marginTop: "2rem",
+            }}
+          >
+            <FormControl
+              placeholder="Enter group message..."
+              type="text"
+              value={this.state.message}
+              onChange={(e) => this.setState({ message: e.target.value })}
+              onKeyPress={(e) => (e.key === "Enter" ? this.sendMessage(this.state.message) : null)}
+            />
+            <InputGroup.Append>
+              <Button variant="dark" onClick={() => this.sendMessage(this.state.message)}>
+                Send
+              </Button>
+            </InputGroup.Append>
+          </InputGroup>
         </Card>
       </div>
     );
