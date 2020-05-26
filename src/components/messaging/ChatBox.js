@@ -50,7 +50,7 @@ class ChatBox extends Component {
   render() {
     return (
       <div>
-        <Card style={{ width: "32rem", height: "41rem", margin: "auto" }}>
+        <Card style={{ width: "35rem", height: "41rem", margin: "auto" }}>
           <Card.Body className="chat-box" style={{ maxHeight: "38rem", overflowY: "auto" }}>
             <Card.Title>CHAT GOES BRRRRRRR</Card.Title>
             <hr />

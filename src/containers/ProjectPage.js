@@ -81,7 +81,7 @@ class ProjectDetail extends Component {
   };
 
   render() {
-    const { project } = this.props;
+    const { project, user } = this.props;
 
     return (
       <div>
@@ -95,16 +95,13 @@ class ProjectDetail extends Component {
             </Col>
           </Row>
         </Container>
-
         <EditProjectForm
           show={this.state.showUpdateForm}
           onHide={() => this.setState({ showUpdateForm: false })}
         />
 
         <ChatBox room={this.props.match.params.id} />
-
         <hr />
-
         <CommentContainer id={project.id} />
       </div>
     );
