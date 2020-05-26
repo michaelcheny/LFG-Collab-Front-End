@@ -80,6 +80,15 @@ class ProjectDetail extends Component {
     }
   };
 
+  renderChatForCollaborators = () => {
+    const { project, user } = this.props;
+    if (project.users) {
+      for (let u of project.users) {
+        if (u.id === user.id) return <ChatBox room={this.props.match.params.id} />;
+      }
+    }
+  };
+
   render() {
     const { project, user } = this.props;
 
@@ -100,7 +109,9 @@ class ProjectDetail extends Component {
           onHide={() => this.setState({ showUpdateForm: false })}
         />
 
-        <ChatBox room={this.props.match.params.id} />
+        {this.renderChatForCollaborators()}
+
+        {/* <ChatBox room={this.props.match.params.id} /> */}
         <hr />
         <CommentContainer id={project.id} />
       </div>
